@@ -98,7 +98,7 @@ export default function Navbar() {
             >
                 <ul className="menu menu-horizontal px-1 space-x-2">
                 {links.map((link) => (
-                            <button className="btn btn-xs btn-primary" key={link.name}>
+                            <button className="btn btn-xs btn-primary rounded-full" key={link.name}>
                                 <Link href={link.url}>{link.name}</Link>
                             </button>
                         ))}
