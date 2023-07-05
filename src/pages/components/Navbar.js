@@ -19,6 +19,14 @@ const links = [
         name: "Soporte",
         url: "https://rigelec.freshdesk.com/support/home",
     },
+    {
+        name: "Rigelec Cloud",
+        url: "https://cloud.rigelec.com.ar/",
+    },
+    {
+        name: "B2B",
+        url: "https://clientes.rigelec.com.ar/",
+    }
 ];
 
 export default function Navbar() {
