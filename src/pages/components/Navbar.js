@@ -18,7 +18,7 @@ const links = [
     {
         name: "Soporte",
         url: "https://rigelec.freshdesk.com/support/home",
-    }
+    },
 ];
 
 export default function Navbar() {
@@ -97,11 +97,18 @@ export default function Navbar() {
                 } duration-200 transition-all`}
             >
                 <ul className="menu menu-horizontal px-1 space-x-2">
-                {links.map((link) => (
-                            <button className="btn btn-xs btn-primary rounded-full" key={link.name}>
-                                <Link href={link.url}>{link.name}</Link>
-                            </button>
-                        ))}
+                    {links.map((link) => (
+                        <button
+                            className={`btn btn-xs rounded-full ${
+                                navbarBg == "bg-transparent"
+                                    ? "btn-primary"
+                                    : "btn-ghost"
+                            }`}
+                            key={link.name}
+                        >
+                            <Link href={link.url}>{link.name}</Link>
+                        </button>
+                    ))}
                 </ul>
             </div>
         </div>
