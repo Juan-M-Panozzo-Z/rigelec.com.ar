@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
-export default function navbar() {
+export default function Navbar() {
     const [navbarBg, setNavbarBg] = useState("bg-transparent");
 
     useEffect(() => {

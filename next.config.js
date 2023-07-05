@@ -2,7 +2,7 @@
 const nextConfig = {
   // url images
   images: {
-    domains: ['fastly.picsum.photos'],
+    domains: ['fastly.picsum.photos', 'webservice.rigelec.com.ar'],
   },
   reactStrictMode: true,
 }
