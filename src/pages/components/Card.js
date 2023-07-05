@@ -13,7 +13,8 @@ export default function Card({ ...props }) {
                     className="rounded-xl aspect-square object-cover"
                     width={600}
                     height={600}
-                    placeholder="blur"
+                    placeholder="empty"
+                    
                 />
             </figure>
             <div className="card-body items-center justify-center space-y-2">
