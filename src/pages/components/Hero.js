@@ -18,14 +18,14 @@ export default function Hero() {
                 alt="hero"
             />
             <div className="absolute -top-10 left-0 w-full h-full flex justify-center items-center">
-                <div className="text-center m-4 p-6 rounded-box bg-white bg-opacity-10 backdrop-filter backdrop-blur-md shadow-xl flex flex-col gap-4">
-                    <h1 className="text-3xl md:text-6xl text-gray-700">
+                <div className="text-center m-4 p-6 rounded-box text-white bg-white bg-opacity-10 backdrop-filter backdrop-blur-md shadow-xl flex flex-col gap-4">
+                    <h1 className="text-3xl md:text-6xl">
                         ¿Necesitas comprar algo?
                     </h1>
                     <h3 className="md:text-xl">
                         No te preocupes, ingresa a nuestra tienda desde aquí
                     </h3>
-                    <span className="md:text-xl animate-bounce">👇</span>
+                    <span className="md:text-3xl animate-bounce">👇</span>
                     <a
                         href="https://front-ecommerce-phi.vercel.app/"
                         target="_blank"
