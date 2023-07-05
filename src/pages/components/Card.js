@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Card({ ...props }) {
     return (
-        <div className="card w-72 mx-auto bg-base-100 shadow-xl hover:bg-base-300 transition-all duration-200">
+        <div className="card md:w-72 mx-auto bg-base-100 shadow-xl hover:bg-base-300 transition-all duration-200">
             <figure>
                 <Image
                     src={
