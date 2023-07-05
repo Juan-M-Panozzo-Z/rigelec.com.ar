@@ -5,8 +5,6 @@ import SectionFluid from "./components/SectionFluid";
 import SectionTitle from "./components/SectionTitle";
 import Card from "./components/Card";
 import axios from "axios";
-import Footer from "./components/Footer";
-import Carousel from "./components/Carousel";
 
 const basicAuth = {
     username: "BTOC",

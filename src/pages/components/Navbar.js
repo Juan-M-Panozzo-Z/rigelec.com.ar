@@ -15,6 +15,10 @@ const links = [
         name: "Tienda",
         url: "https://front-ecommerce-phi.vercel.app/",
     },
+    {
+        name: "Soporte",
+        url: "https://rigelec.freshdesk.com/support/home",
+    }
 ];
 
 export default function Navbar() {
