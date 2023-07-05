@@ -4,7 +4,7 @@ export default function Hero() {
     return (
         <section>
             <Image
-                className="h-screen object-cover rounded-b-box"
+                className="h-screen object-cover rounded-b-box opacity-90"
                 src="/assets/hero/1.jpg"
                 width={1920}
                 height={1080}
