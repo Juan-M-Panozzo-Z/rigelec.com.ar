@@ -8,10 +8,6 @@ const links = [
         url: "/",
     },
     {
-        name: "Pro Red",
-        url: "http://prored.com.ar/socio_rigelec.html",
-    },
-    {
         name: "Tienda",
         url: "https://front-ecommerce-phi.vercel.app/",
     },
@@ -26,6 +22,10 @@ const links = [
     {
         name: "B2B",
         url: "https://clientes.rigelec.com.ar/",
+    },
+    {
+        name: "Pro Red",
+        url: "http://prored.com.ar/socio_rigelec.html",
     },
 ];
 
