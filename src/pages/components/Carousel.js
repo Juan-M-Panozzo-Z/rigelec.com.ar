@@ -6,7 +6,7 @@ const marcas = [
     "ALIC.svg",
     "argenplas.svg",
     "artelum.svg",
-    "baw.svg",
+    "Baw.svg",
     "CAMBRE.svg",
     "candil.svg",
 ];
