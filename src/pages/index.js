@@ -54,19 +54,19 @@ export default function Home() {
                 <SectionTitle title="Articulos destacados" />
                 <div className="tabs tabs-boxed bg-base-100 flex justify-center">
                     <a
-                        className={`tab xs:tab-xs sm:tab-sm md:tab-md transition-all duration-200 ${activeTab === 0 ? "tab-active" : ""}`}
+                        className={`tab transition-all duration-200 ${activeTab === 0 ? "tab-active" : ""}`}
                         onClick={() => handleTabClick(0)}
                     >
                         Energías Renovables
                     </a>
                     <a
-                        className={`tab xs:tab-xs sm:tab-sm md:tab-md transition-all duration-200 ${activeTab === 1 ? "tab-active" : ""}`}
+                        className={`tab transition-all duration-200 ${activeTab === 1 ? "tab-active" : ""}`}
                         onClick={() => handleTabClick(1)}
                     >
                         Iluminación
                     </a>
                     <a
-                        className={`tab xs:tab-xs sm:tab-sm md:tab-md transition-all duration-200 ${activeTab === 2 ? "tab-active" : ""}`}
+                        className={`tab transition-all duration-200 ${activeTab === 2 ? "tab-active" : ""}`}
                         onClick={() => handleTabClick(2)}
                     >
                         Industria
