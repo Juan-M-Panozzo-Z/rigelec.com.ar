@@ -1,5 +1,7 @@
 import Head from "next/head"
 import Header from "../components/Header"
+import Carousel from "../components/Carousel"
+import Footer from "../components/Footer"
 
 export default function IndexLayout({ children, ...props }) {
     return (
@@ -10,6 +12,8 @@ export default function IndexLayout({ children, ...props }) {
                 </Head>
             <Header />
            <main>{children}</main>
+           <Carousel />
+            <Footer />
         </>
     )
 }

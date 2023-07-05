@@ -23,10 +23,16 @@ export default function Hero() {
                         ¿Necesitas comprar algo?
                     </h1>
                     <h3 className="md:text-xl">
-                    No te preocupes, ingresa a nuestra tienda desde aquí
+                        No te preocupes, ingresa a nuestra tienda desde aquí
                     </h3>
                     <span className="md:text-xl animate-bounce">👇</span>
-                    <a href="https://tienda.rigelec.com.ar" target="_blank" className="btn btn-primary mx-auto hover:bg-transparent">Ir a la tienda</a>
+                    <a
+                        href="https://front-ecommerce-phi.vercel.app/"
+                        target="_blank"
+                        className="btn btn-primary mx-auto hover:bg-transparent"
+                    >
+                        Ir a la tienda
+                    </a>
                 </div>
             </div>
         </section>

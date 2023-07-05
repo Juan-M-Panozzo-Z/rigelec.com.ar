@@ -68,8 +68,6 @@ export default function Home() {
                     className="w-full h-96 rounded-box"
                 ></iframe>
             </SectionFluid>
-            <Carousel />
-            <Footer />
         </Layout>
     );
 }

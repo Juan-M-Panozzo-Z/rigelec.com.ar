@@ -13,7 +13,7 @@ const links = [
     },
     {
         name: "Tienda",
-        url: "https://tienda.rigelec.com.ar",
+        url: "https://front-ecommerce-phi.vercel.app/",
     },
 ];
 
