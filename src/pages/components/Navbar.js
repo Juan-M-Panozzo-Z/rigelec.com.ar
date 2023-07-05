@@ -8,8 +8,8 @@ const links = [
         url: "/",
     },
     {
-        name: "Nosotros",
-        url: "/nosotros",
+        name: "Pro Red",
+        url: "http://prored.com.ar/socio_rigelec.html",
     },
     {
         name: "Tienda",
@@ -26,7 +26,7 @@ const links = [
     {
         name: "B2B",
         url: "https://clientes.rigelec.com.ar/",
-    }
+    },
 ];
 
 export default function Navbar() {
