@@ -21,7 +21,7 @@ const headers = {
 export default function Home() {
     const [articles, setArticles] = useState([]);
     useEffect(() => {
-        const articlesIds = [1500, 5500, 7500];
+        const articlesIds = [7600, 7900, 19600];
         Promise.all(
             articlesIds.map((id) =>
                 axios.get(
@@ -34,8 +34,8 @@ export default function Home() {
             )
         )
             .then((responses) => {
-                const articless = responses.map((res) => res.data);
-                setArticles(articless);
+                const articles = responses.map((res) => res.data);
+                setArticles(articles);
             })
             .catch((err) => {
                 console.log(err);

@@ -18,7 +18,7 @@ export default function Hero() {
                 alt="hero"
             />
             <div className="absolute -top-10 left-0 w-full h-full flex justify-center items-center">
-                <div className="text-center m-4 p-6 rounded-box text-white bg-white bg-opacity-10 backdrop-filter backdrop-blur-md shadow-xl flex flex-col gap-4">
+                <div className="text-center m-4 p-8 rounded-box text-white bg-black bg-opacity-20 backdrop-filter backdrop-blur-sm shadow-md flex flex-col gap-4">
                     <h1 className="text-3xl md:text-6xl">
                         ¿Necesitas comprar algo?
                     </h1>
@@ -29,7 +29,7 @@ export default function Hero() {
                     <a
                         href="https://front-ecommerce-phi.vercel.app/"
                         target="_blank"
-                        className="btn btn-primary mx-auto hover:bg-transparent"
+                        className="btn btn-primary mx-auto hover:bg-transparent rounded-full text-white transition-all"
                     >
                         Ir a la tienda
                     </a>

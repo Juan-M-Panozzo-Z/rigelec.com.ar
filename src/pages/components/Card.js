@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Card({ ...props }) {
     return (
-        <div className="card bg-base-100 shadow-xl hover:bg-primary-focus hover:text-white transition-all duration-200">
+        <div className="card w-72 mx-auto bg-base-100 shadow-xl hover:bg-base-300 transition-all duration-200">
             <figure>
                 <Image
                     src={
@@ -10,7 +10,7 @@ export default function Card({ ...props }) {
                         "https://fastly.picsum.photos/id/279/700/700.jpg?hmac=pzMBL1z_csgGokJt7gA0et3goPwqEfzfZCy4LZj5Ouk"
                     }
                     alt={props.title}
-                    className="rounded-xl aspect-square object-cover"
+                    className="rounded-box aspect-square object-cover"
                     width={600}
                     height={600}
                     placeholder="empty"
