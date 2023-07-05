@@ -40,7 +40,7 @@ export default function Navbar() {
 
     return (
         <div
-            className={`navbar rounded-b-box fixed top-0 left-0 z-20 ${navbarBg} transition-all duration-200`}
+            className={`navbar md:px-20 rounded-b-box fixed top-0 left-0 z-20 ${navbarBg} transition-all duration-200`}
         >
             <div className="navbar-start">
                 <div className="dropdown">
@@ -62,7 +62,7 @@ export default function Navbar() {
                     </label>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+                        className="menu menu-md dropdown-content mt-4 z-[1] p-2 shadow bg-base-100 rounded-box w-56"
                     >
                         {links.map((link) => (
                             <li key={link.name}>
