@@ -29,7 +29,7 @@ export default function Hero() {
                     <a
                         href="https://front-ecommerce-phi.vercel.app/"
                         target="_blank"
-                        className="btn btn-primary mx-auto hover:bg-transparent rounded-full text-white transition-all"
+                        className="btn btn-primary mx-auto rounded-full text-white transition-all"
                     >
                         Ir a la tienda
                     </a>
