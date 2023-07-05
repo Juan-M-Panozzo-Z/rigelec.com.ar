@@ -96,11 +96,11 @@ export default function Navbar() {
                         : "text-gray-700"
                 } duration-200 transition-all`}
             >
-                <ul className="menu menu-horizontal px-1">
+                <ul className="menu menu-horizontal px-1 space-x-2">
                 {links.map((link) => (
-                            <li key={link.name}>
+                            <button className="btn btn-xs btn-primary" key={link.name}>
                                 <Link href={link.url}>{link.name}</Link>
-                            </li>
+                            </button>
                         ))}
                 </ul>
             </div>
