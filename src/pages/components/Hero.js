@@ -26,7 +26,7 @@ export default function Hero() {
                     No te preocupes, ingresa a nuestra tienda desde aquí
                     </h3>
                     <span className="md:text-xl animate-bounce">👇</span>
-                    <a href="#" className="btn btn-primary mx-auto hover:bg-transparent">Ir a la tienda</a>
+                    <a href="https://tienda.rigelec.com.ar" target="_blank" className="btn btn-primary mx-auto hover:bg-transparent">Ir a la tienda</a>
                 </div>
             </div>
         </section>

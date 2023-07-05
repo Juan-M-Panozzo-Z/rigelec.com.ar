@@ -1,5 +1,21 @@
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect } from "react";
+
+const links = [
+    {
+        name: "Home",
+        url: "/",
+    },
+    {
+        name: "Nosotros",
+        url: "/nosotros",
+    },
+    {
+        name: "Tienda",
+        url: "https://tienda.rigelec.com.ar",
+    },
+];
 
 export default function Navbar() {
     const [navbarBg, setNavbarBg] = useState("bg-transparent");
@@ -19,7 +35,9 @@ export default function Navbar() {
     }, []);
 
     return (
-        <div className={`navbar rounded-b-box fixed top-0 left-0 z-20 ${navbarBg} transition-all duration-200`}>
+        <div
+            className={`navbar rounded-b-box fixed top-0 left-0 z-20 ${navbarBg} transition-all duration-200`}
+        >
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -42,36 +60,46 @@ export default function Navbar() {
                         tabIndex={0}
                         className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
                     >
-                        <li>
-                            <a>Item 1</a>
-                        </li>
-                        <li>
-                            <a>Item 2</a>
-                        </li>
-                        <li>
-                            <a>Item 3</a>
-                        </li>
+                        {links.map((link) => (
+                            <li key={link.name}>
+                                <Link href={link.url}>{link.name}</Link>
+                            </li>
+                        ))}
                     </ul>
                 </div>
                 <a className="btn btn-ghost normal-case text-xl">
-                    <Image src="/assets/logos/original.svg" width={60} height={60} alt="logo" />
-                    <span className={`${navbarBg == 'bg-transparent' ? "text-white" : "text-gray-700"} duration-200 transition-all`} >Rigelec</span>
+                    <Image
+                        src="/assets/logos/original.svg"
+                        width={60}
+                        height={60}
+                        alt="logo"
+                    />
+                    <span
+                        className={`${
+                            navbarBg == "bg-transparent"
+                                ? "text-white"
+                                : "text-gray-700"
+                        } duration-200 transition-all`}
+                    >
+                        Rigelec
+                    </span>
                 </a>
             </div>
-            <div className={`navbar-end hidden lg:flex ${navbarBg == 'bg-transparent' ? "text-white" : "text-gray-700"} duration-200 transition-all`}>
+            <div
+                className={`navbar-end hidden lg:flex ${
+                    navbarBg == "bg-transparent"
+                        ? "text-white"
+                        : "text-gray-700"
+                } duration-200 transition-all`}
+            >
                 <ul className="menu menu-horizontal px-1">
-                    <li>
-                        <a>Item 1</a>
-                    </li>
-                    
-                    <li>
-                        <a>Item 2</a>
-                    </li>
-                    <li>
-                        <a>Item 3</a>
-                    </li>
+                {links.map((link) => (
+                            <li key={link.name}>
+                                <Link href={link.url}>{link.name}</Link>
+                            </li>
+                        ))}
                 </ul>
             </div>
         </div>
     );
-};
+}
