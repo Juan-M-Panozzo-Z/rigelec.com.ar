@@ -19,7 +19,7 @@ export default function Card({ ...props }) {
             </figure>
             <div className="card-body items-center justify-center space-y-2">
                 <h2 className="card-title text-sm flex-grow">{props.title}</h2>
-                <button className="btn btn-primary">
+                <button className="btn btn-primary rounded-full">
                     <a
                         href={props.urlArchivo}
                         target="_blank"
