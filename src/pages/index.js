@@ -3,105 +3,63 @@ import Layout from "./layouts/indexLayout";
 import Section from "./components/Section";
 import SectionFluid from "./components/SectionFluid";
 import SectionTitle from "./components/SectionTitle";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { useMediaQuery } from "@react-hook/media-query";
 import Card from "./components/Card";
 import axios from "axios";
 
-const basicAuth = {
-    username: "BTOC",
-    password: "BTOC",
-};
-
-const headers = {
-    "Content-Type": "application/json",
-    Authorization:
-        "Basic " + btoa(basicAuth.username + ":" + basicAuth.password),
-    EmpID: "1",
-};
-
 export default function Home() {
-    const [activeTab, setActiveTab] = useState(0);
     const [articles, setArticles] = useState([]);
+    const isMedium = useMediaQuery("only screen and (max-width: 768px)");
 
-    const handleTabClick = (index) => {
-        setActiveTab(index);
-    };
 
     useEffect(() => {
-        const articlesIds = [7600, 7900, 19600];
-        Promise.all(
-            articlesIds.map((id) =>
-                axios.get(
-                    `https://webservice.rigelec.com.ar/articulos/${id}`,
-                    {
-                        headers: headers,
-                    },
-                    basicAuth
-                )
-            )
-        )
-            .then((responses) => {
-                const articles = responses.map((res) => res.data);
-                setArticles(articles);
+        axios
+            .get("/api/ultimosIngresos")
+            .then((response) => {
+                setArticles(response.data);
             })
-            .catch((err) => {
-                console.log(err);
+            .catch((error) => {
+                console.log(error);
             });
     }, []);
 
     return (
         <Layout title="Home">
-            <Suspense fallback={<div>Loading...</div>}>
-                <Section>
-                    <SectionTitle title="Articulos destacados" />
-                    <div className="tabs tabs-boxed bg-base-100 flex justify-center">
-                        <a
-                            className={`tab transition-all duration-200 ${
-                                activeTab === 0 ? "tab-active" : ""
-                            }`}
-                            onClick={() => handleTabClick(0)}
-                        >
-                            Energías Renovables
-                        </a>
-                        <a
-                            className={`tab transition-all duration-200 ${
-                                activeTab === 1 ? "tab-active" : ""
-                            }`}
-                            onClick={() => handleTabClick(1)}
-                        >
-                            Iluminación
-                        </a>
-                        <a
-                            className={`tab transition-all duration-200 ${
-                                activeTab === 2 ? "tab-active" : ""
-                            }`}
-                            onClick={() => handleTabClick(2)}
-                        >
-                            Industria
-                        </a>
-                    </div>
-                    <div className="mt-8 grid md:grid-cols-3 text-center gap-8">
-                        {articles.map((article) => (
+            <Section className={'px-8 md:px-12'}>
+                <SectionTitle title="Ultimos ingresos" />
+                <Slider
+                    dots={true}
+                    infinite={true}
+                    speed={500}
+                    slidesToShow={isMedium ? 1 : 3}
+                    slidesToScroll={isMedium ? 1 : 3}
+                    className="w-full"
+                >
+                    {articles.map((article) => (
+                        <div key={article.ID} className="pb-16 md:pb-8">
                             <Card
-                                key={article.title}
-                                title={article.descripcion}
-                                urlArchivo={article.urlArchivo}
-                                image={article.imageUrl}
+                                title={article.Descripcion}
+                                subtitle={article.Marca}
+                                description={`${article.Modelo} ${article.Medida}`}
+                                image={article.ImageUrl}
                             />
-                        ))}
-                    </div>
-                </Section>
-            </Suspense>
-            <Suspense fallback={<div>Loading...</div>}>
-                <SectionFluid>
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3405.958804991934!2d-58.0255689251823!3d-31.387699394863642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95ade810c013decd%3A0xed4b0d1cc11c9336!2sRIGELEC%20ELECTRICIDAD%20e%20ILUMINACI%C3%93N%20%2B%20ENERGIAS%20RENOVABLES!5e0!3m2!1sen!2sar!4v1688583605125!5m2!1sen!2sar"
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        className="w-full h-96 rounded-box"
-                    ></iframe>
-                </SectionFluid>
-            </Suspense>
+                        </div>
+                    ))}
+                </Slider>
+            </Section>
+
+            <SectionFluid>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3405.958804991934!2d-58.0255689251823!3d-31.387699394863642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95ade810c013decd%3A0xed4b0d1cc11c9336!2sRIGELEC%20ELECTRICIDAD%20e%20ILUMINACI%C3%93N%20%2B%20ENERGIAS%20RENOVABLES!5e0!3m2!1sen!2sar!4v1688583605125!5m2!1sen!2sar"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    className="w-full h-96 rounded-box"
+                ></iframe>
+            </SectionFluid>
         </Layout>
     );
 }
