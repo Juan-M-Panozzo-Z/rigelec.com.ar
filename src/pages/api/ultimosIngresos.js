@@ -2,7 +2,7 @@ const Firebird = require("node-firebird");
 
 export default function handler(req, res) {
     const options = {
-        host: "10.16.10.16",
+        host: "201.252.141.39",
         port: 3050,
         database: "D:\\ETSOL\\PaljetERP\\database\\DBSIF.FDB",
         user: "SYSDBA",
