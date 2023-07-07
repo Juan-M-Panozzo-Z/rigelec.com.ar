@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import Marquee from "react-fast-marquee";
 
 const links = [
     {
@@ -47,8 +48,14 @@ export default function Navbar() {
     }, []);
 
     return (
+        <div className="flex flex-col w-full fixed top-0 left-0 z-20">
+        <Marquee className="bg-gradient-to-r from-primary to-secondary text-white py-1" speed="50">
+                <div className="flex-1 px-2">
+                    Veniam velit irure aliquip officia reprehenderit do sunt excepteur quis eu dolore exercitation.
+                </div>
+            </Marquee>
         <div
-            className={`navbar md:px-20 rounded-b-box fixed top-0 left-0 z-20 ${navbarBg} transition-all duration-200`}
+            className={`navbar md:px-20 rounded-b-box  ${navbarBg} transition-all duration-200`}
         >
             <div className="navbar-start">
                 <div className="dropdown">
@@ -119,6 +126,7 @@ export default function Navbar() {
                     ))}
                 </ul>
             </div>
+        </div>
         </div>
     );
 }

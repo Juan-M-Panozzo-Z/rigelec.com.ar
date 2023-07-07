@@ -11,7 +11,9 @@ export default function IndexLayout({ children, ...props }) {
                 <meta name="description" content={props.description} />
                 </Head>
             <Header />
-           <main>{children}</main>
+           <main>
+           {children}
+           </main>
            <Carousel />
             <Footer />
         </>
