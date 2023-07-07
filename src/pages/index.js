@@ -27,7 +27,7 @@ export default function Home() {
                 console.log(error);
             })
             .finally(() => {
-                // setIsLoading(false);
+                setIsLoading(false);
             });
     }, []);
 
