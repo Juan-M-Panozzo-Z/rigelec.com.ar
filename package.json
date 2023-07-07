@@ -28,6 +28,7 @@
     "tailwindcss": "3.3.2"
   },
   "devDependencies": {
-    "daisyui": "^3.1.7"
+    "daisyui": "^3.1.7",
+    "npm": "^9.8.0"
   }
 }
