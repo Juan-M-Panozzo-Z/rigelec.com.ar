@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Card({ ...props }) {
     return (
-        <div className="pb-16 md:pb-8">
+        <div className="pb-32 md:pb-8">
             <div className="card mx-8 bg-base-100 shadow-xl shadow-base-200 transition-all duration-200">
                 <figure>
                     <Image
