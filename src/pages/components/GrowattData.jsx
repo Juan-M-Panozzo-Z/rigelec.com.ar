@@ -7,24 +7,19 @@ export default function GrowattData() {
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        // setIsLoading(true);
-        // axios
-        //   .get("/api/growattData")
-        //   .then((response) => {
-        //     setGrowattData(response);
-        //     console.log(response.data);
-        //   })
-        //   .catch((error) => {
-        //     console.log(error);
-        //   })
-        //   .finally(() => {
-        //     setIsLoading(false);
-        //   });
-        setGrowattData({
-            data: {
-                eMonth: 145,
-            },
-        });
+        setIsLoading(true);
+        axios
+            .get("/api/growattData")
+            .then((response) => {
+                setGrowattData(response);
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+            .finally(() => {
+                setIsLoading(false);
+            });
     }, []);
 
     return (
@@ -41,7 +36,8 @@ export default function GrowattData() {
                             style={{ width: "2rem" }}
                         ></Player>
                         <span className="text-sm">
-                        Energía generada: <strong>{growattData?.data?.eMonth} Kwh</strong>
+                            Energía generada:{" "}
+                            <strong>{growattData?.data?.eMonth} Kwh</strong>
                         </span>
                     </div>
                 )}
