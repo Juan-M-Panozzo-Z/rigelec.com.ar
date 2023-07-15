@@ -2,6 +2,7 @@ import Head from "next/head"
 import Header from "../components/Header"
 import Carousel from "../components/Carousel"
 import Footer from "../components/Footer"
+import GrowattData from "../components/GrowattData"
 
 export default function IndexLayout({ children, ...props }) {
     return (
@@ -16,6 +17,8 @@ export default function IndexLayout({ children, ...props }) {
            </main>
            <Carousel />
             <Footer />
+            {/* FloatComponents */}
+            <GrowattData />
         </>
     )
 }
