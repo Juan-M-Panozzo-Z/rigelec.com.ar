@@ -27,7 +27,7 @@ export default function GrowattData() {
         {isLoading ? (
           <span className="loading-spinner loading"></span>
         ) : (
-          `${growattData.data.eMonth} Kwh`
+          `${growattData?.data?.eMonth} Kwh`
         )}
       </h1>
     </div>
