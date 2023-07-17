@@ -23,7 +23,7 @@ export default function GrowattData() {
     }, []);
 
     return (
-        <div className="bg-green-500 bg-opacity-70 rounded-box p-2 shadow-xl text-white duration-300 transition-all text-[8px] w-32 md:text-xs md:w-auto">
+        <div className="bg-green-500 bg-opacity-70 rounded-box p-2 shadow-xl text-white duration-300 transition-all text-[8px] w-24 md:text-xs md:w-auto">
             <span className="">
                 {isLoading ? (
                     <Player
