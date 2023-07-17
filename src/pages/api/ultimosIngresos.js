@@ -2,7 +2,7 @@ const Firebird = require("node-firebird");
 
 export default function handler(req, res) {
     const options = {
-        host: process.env.FIREBIRD_HOST || "localhost",
+        host: process.env.FIREBIRD_HOST || "rigelec.com.ar",
         port: process.env.FIREBIRD_PORT || 3050,
         database: process.env.FIREBIRD_DATABASE || "C:\\DATABASE.FDB",
         user: process.env.FIREBIRD_USER || "user",
