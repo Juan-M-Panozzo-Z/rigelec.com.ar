@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Marquee from "react-fast-marquee";
+import GrowattData from "./GrowattData";
 
 const links = [
     {
@@ -104,8 +105,9 @@ export default function Navbar() {
                     </span>
                 </a>
             </div>
+            
             <div
-                className={`navbar-end hidden lg:flex ${
+                className={`navbar-center hidden lg:flex ${
                     navbarBg == "bg-transparent"
                         ? "text-white"
                         : "text-gray-700"
@@ -125,6 +127,9 @@ export default function Navbar() {
                         </button>
                     ))}
                 </ul>
+            </div>
+            <div className="navbar-end">
+            <GrowattData />
             </div>
         </div>
         </div>
