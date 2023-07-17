@@ -99,7 +99,7 @@ export default function Navbar() {
                             navbarBg == "bg-transparent"
                                 ? "text-white"
                                 : "text-gray-700"
-                        } duration-200 transition-all`}
+                        } hidden md:block duration-200 transition-all`}
                     >
                         Rigelec
                     </span>
