@@ -34,7 +34,7 @@ export default function Card({ ...props }) {
                     </h3>
                     <p className="card-description text-[10px] md:text-xs">
                         Modelo
-                        <div className="badge badge-sm mx-2 badge-primary text-[10px] md:text-xs">
+                        <div className="badge badge-sm mx-2 badge-primary text-[8px] md:text-xs">
                             {props.description
                                 ? props.description.slice(0, 15) + " [...]"
                                 : ""}

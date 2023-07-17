@@ -23,14 +23,14 @@ export default function GrowattData() {
     }, []);
 
     return (
-        <div className="bg-green-500 bg-opacity-70 rounded-box p-2 shadow-xl text-white duration-300 transition-all text-xs">
+        <div className="bg-green-500 bg-opacity-70 rounded-box p-2 shadow-xl text-white duration-300 transition-all text-[8px] md:text-xs w-32">
             <span className="">
                 {isLoading ? (
                     <Player
                         autoplay
                         loop
                         src="/assets/lottiefiles/energy.json"
-                        style={{ width: "2rem" }}
+                        style={{ width: "1.3rem" }}
                     ></Player>
                 ) : (
                     <div className="flex items-center gap-1">
@@ -38,7 +38,7 @@ export default function GrowattData() {
                             autoplay
                             loop
                             src="/assets/lottiefiles/energy.json"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.3rem" }}
                         ></Player>
                         <span className="">
                             Energía generada:{" "}
