@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import axios from "axios";
+import Link from "next/link";
 
 export default function GrowattData() {
     const [growattData, setGrowattData] = useState([]);
@@ -23,29 +24,31 @@ export default function GrowattData() {
     }, []);
 
     return (
-        <div className="bg-green-500 bg-opacity-70 rounded-box p-2 shadow-xl text-white duration-300 transition-all text-[9px] w-28 md:text-xs md:w-auto">
+        <div className="bg-base-100 rounded-box p-1 duration-300 transition-all text-[9px] w-28 md:text-xs md:w-auto">
             <span className="">
-                {isLoading ? (
-                    <Player
-                        autoplay
-                        loop
-                        src="/assets/lottiefiles/energy.json"
-                        style={{ width: "1.3rem" }}
-                    ></Player>
-                ) : (
-                    <div className="flex items-center gap-1">
+                <Link href="/growatt">
+                    {isLoading ? (
                         <Player
                             autoplay
                             loop
-                            src="/assets/lottiefiles/energy.json"
-                            style={{ width: "1.3rem" }}
+                            src="/assets/lottiefiles/battery.json"
+                            style={{ width: "2rem" }}
                         ></Player>
-                        <span className="">
-                            Energía generada:{" "}
-                            <strong>{growattData?.data?.eMonth} Kwh</strong>
-                        </span>
-                    </div>
-                )}
+                    ) : (
+                        <div className="flex items-center gap-1">
+                            <Player
+                                autoplay
+                                loop
+                                src="/assets/lottiefiles/battery.json"
+                                style={{ width: "2rem" }}
+                            ></Player>
+                            <span className="">
+                                Energía que generamos:{" "}
+                                <strong>{growattData?.data?.eTotal} Kwh</strong>
+                            </span>
+                        </div>
+                    )}
+                </Link>
             </span>
         </div>
     );

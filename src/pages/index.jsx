@@ -11,6 +11,7 @@ import Card from "./components/Card";
 import axios from "axios";
 import SkeletonCard from "./components/Skeletons/Card";
 import ContactUs from "./components/ContactUs";
+import Hero from "./components/Hero";
 
 export default function Home() {
     const [articles, setArticles] = useState([]);
@@ -53,6 +54,7 @@ export default function Home() {
 
     return (
         <Layout title="Home">
+        <Hero/>
             <Section className={"px-8 md:px-12"}>
                 <SectionTitle title="Ultimos ingresos" />
                 <Slider
