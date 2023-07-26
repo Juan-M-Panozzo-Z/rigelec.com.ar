@@ -10,7 +10,6 @@ export default function GrowattData() {
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        setIsLoading(true);
         axios
             .get("/api/growattData")
             .then((response) => {
@@ -26,7 +25,7 @@ export default function GrowattData() {
     }, []);
 
     return (
-        <div className="bg-base-200 rounded-box p-2 duration-300 transition-all text-[9px] w-28 md:text-xs md:w-auto">
+        <div className="border-2 border-primary bg-base-100 rounded-box p-2 duration-300 transition-all text-[8px] md:text-xs w-28 md:w-auto">
             <span className="">
                 <Link href="/growatt">
                     {isLoading ? (
@@ -39,7 +38,7 @@ export default function GrowattData() {
                     ) : (
                         <span className="">
                             Energía que generamos:{" "}
-                            <strong>{growattData?.data?.eTotal} Kwh</strong>
+                            <strong>2600 Kwh</strong>
                         </span>
                     )}
                 </Link>

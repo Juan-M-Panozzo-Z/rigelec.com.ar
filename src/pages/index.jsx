@@ -55,15 +55,15 @@ export default function Home() {
     return (
         <Layout title="Home">
         <Hero/>
-            <Section className={"px-8 md:px-12"}>
+            <Section>
                 <SectionTitle title="Ultimos ingresos" />
                 <Slider
                     dots={true}
                     infinite={true}
                     speed={500}
-                    slidesToShow={isMedium ? 1 : 3}
-                    slidesToScroll={isMedium ? 1 : 3}
-                    className="w-full"
+                    slidesToShow={isMedium ? 1 : 4}
+                    slidesToScroll={isMedium ? 1 : 4}
+                    
                 >
                     {renderCards()}
                 </Slider>
