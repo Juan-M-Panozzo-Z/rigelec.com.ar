@@ -2,14 +2,15 @@ import IndexLayout from "./layouts/indexLayout";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Player } from "@lottiefiles/react-lottie-player";
-import GrowattData from "./components/GrowattData";
 
 export default function Growatt() {
-    const [growattData, setGrowattData] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const [growattData, setGrowattData] = useState({
+        eTotal: 0,
+        pac: 0,
+    });
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        // setIsLoading(true);
         axios
             .get("/api/growattData")
             .then(({ data }) => {
@@ -33,13 +34,15 @@ export default function Growatt() {
                         autoplay
                         loop
                         src={props.lottie}
-                        className="h-96"
+                        className="h-56 md:h-96"
                     />
                 </figure>
                 <div className="card-body rounded-box bg-base-200">
-                    <div className="flex items-center justify-between gap-2">
-                        <h2 className="card-title text-xl">{props.title}</h2>
-                        <div className="badge badge-primary p-4  font-semibold">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                        <h2 className="card-title text-sm md:text-xl">
+                            {props.title}
+                        </h2>
+                        <div className="badge badge-primary p-2 font-semibold">
                             {props.data}
                         </div>
                     </div>
@@ -69,14 +72,16 @@ export default function Growatt() {
                             />
                             <Card
                                 title="Reduccion de emisiones de CO2"
-                                data={`${(growattData.eTotal * 0.40).toFixed( 2 )} Kg`}
+                                data={`${(growattData.eTotal * 0.4).toFixed(
+                                    2
+                                )} Kg`}
                                 lottie="/assets/lottiefiles/tree.json"
                             />
-                            {/* <Card
-                                title="Potencia actual"
+                            <Card
+                                title="Potencia actual de paneles solares"
                                 data={`${growattData.pac}W`}
                                 lottie="/assets/lottiefiles/solar.json"
-                            /> */}
+                            />
                         </div>
                     </div>
                 )}

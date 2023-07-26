@@ -4,7 +4,9 @@ import axios from "axios";
 import Link from "next/link";
 
 export default function GrowattData() {
-    const [growattData, setGrowattData] = useState([]);
+    const [growattData, setGrowattData] = useState({
+        eTotal: 0
+    });
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
@@ -24,7 +26,7 @@ export default function GrowattData() {
     }, []);
 
     return (
-        <div className="bg-base-100 rounded-box p-1 duration-300 transition-all text-[9px] w-28 md:text-xs md:w-auto">
+        <div className="bg-base-100 rounded-box p-2 duration-300 transition-all text-[9px] w-28 md:text-xs md:w-auto">
             <span className="">
                 <Link href="/growatt">
                     {isLoading ? (
@@ -32,7 +34,7 @@ export default function GrowattData() {
                             autoplay
                             loop
                             src="/assets/lottiefiles/battery.json"
-                            style={{ width: "2rem" }}
+                            style={{ width: "1.8rem" }}
                         ></Player>
                     ) : (
                         <div className="flex items-center gap-1">
@@ -40,7 +42,7 @@ export default function GrowattData() {
                                 autoplay
                                 loop
                                 src="/assets/lottiefiles/battery.json"
-                                style={{ width: "2rem" }}
+                                style={{ width: "1.8rem" }}
                             ></Player>
                             <span className="">
                                 Energía que generamos:{" "}
