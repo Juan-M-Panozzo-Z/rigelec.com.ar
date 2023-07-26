@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function GrowattData() {
     const [growattData, setGrowattData] = useState({
-        eTotal: 0
+        eTotal: 0,
     });
     const [isLoading, setIsLoading] = useState(false);
 
@@ -37,18 +37,10 @@ export default function GrowattData() {
                             style={{ width: "1.8rem" }}
                         ></Player>
                     ) : (
-                        <div className="flex items-center gap-1">
-                            <Player
-                                autoplay
-                                loop
-                                src="/assets/lottiefiles/battery.json"
-                                style={{ width: "1.8rem" }}
-                            ></Player>
-                            <span className="">
-                                Energía que generamos:{" "}
-                                <strong>{growattData?.data?.eTotal} Kwh</strong>
-                            </span>
-                        </div>
+                        <span className="">
+                            Energía que generamos:{" "}
+                            <strong>{growattData?.data?.eTotal} Kwh</strong>
+                        </span>
                     )}
                 </Link>
             </span>
