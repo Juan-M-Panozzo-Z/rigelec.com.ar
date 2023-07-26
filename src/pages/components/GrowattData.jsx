@@ -26,7 +26,7 @@ export default function GrowattData() {
     }, []);
 
     return (
-        <div className="bg-base-100 rounded-box p-2 duration-300 transition-all text-[9px] w-28 md:text-xs md:w-auto">
+        <div className="bg-base-200 rounded-box p-2 duration-300 transition-all text-[9px] w-28 md:text-xs md:w-auto">
             <span className="">
                 <Link href="/growatt">
                     {isLoading ? (
