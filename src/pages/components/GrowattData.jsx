@@ -32,7 +32,7 @@ export default function GrowattData() {
                         <Player
                             autoplay
                             loop
-                            src="/assets/lottiefiles/lamp.json"
+                            src="/assets/lottiefiles/leaf.json"
                             style={{ width: "1.7rem" }}
                         ></Player>
                     ) : (
