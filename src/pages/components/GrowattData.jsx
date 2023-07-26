@@ -7,7 +7,7 @@ export default function GrowattData() {
     const [growattData, setGrowattData] = useState({
         eTotal: 0,
     });
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         axios
@@ -38,7 +38,7 @@ export default function GrowattData() {
                     ) : (
                         <span className="">
                             Energía que generamos:{" "}
-                            <strong>2600 Kwh</strong>
+                            <strong>{growattData?.data?.eTotal} Kwh</strong>
                         </span>
                     )}
                 </Link>
