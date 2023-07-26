@@ -25,15 +25,15 @@ export default function GrowattData() {
     }, []);
 
     return (
-        <div className="border-2 border-primary bg-base-100 rounded-box p-2 duration-300 transition-all text-[8px] md:text-xs w-28 md:w-auto">
+        <div className="bg-primary rounded-box p-2 duration-300 transition-all text-[9px] md:text-[11px] w-28 md:w-auto text-base-100">
             <span className="">
                 <Link href="/growatt">
                     {isLoading ? (
                         <Player
                             autoplay
                             loop
-                            src="/assets/lottiefiles/battery.json"
-                            style={{ width: "1.8rem" }}
+                            src="/assets/lottiefiles/lamp.json"
+                            style={{ width: "1.7rem" }}
                         ></Player>
                     ) : (
                         <span className="">
