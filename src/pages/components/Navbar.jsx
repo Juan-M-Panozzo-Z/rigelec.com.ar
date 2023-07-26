@@ -95,11 +95,7 @@ export default function Navbar() {
                         alt="logo"
                     />
                     <span
-                        className={`${
-                            navbarBg == "bg-transparent"
-                                ? "text-white"
-                                : "text-gray-700"
-                        }  md:block duration-200 transition-all`}
+                        className='text-gray-700 md:block duration-200 transition-all'
                     >
                         Rigelec
                     </span>
