@@ -87,7 +87,9 @@ export default function Navbar() {
                         ))}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">
+                <Link 
+                href={'/'}
+                className="btn btn-ghost normal-case text-xl">
                     <Image
                         src="/assets/logos/original.svg"
                         width={60}
@@ -99,7 +101,7 @@ export default function Navbar() {
                     >
                         Rigelec
                     </span>
-                </a>
+                </Link>
             </div>
             
             <div
