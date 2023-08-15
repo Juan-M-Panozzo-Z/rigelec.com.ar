@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import { Player, Controls } from "@lottiefiles/react-lottie-player";
 import axios from "axios";
+import Link from "next/link";
 
 export default function GrowattData() {
-    const [growattData, setGrowattData] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+    const [growattData, setGrowattData] = useState({
+        eTotal: 0,
+    });
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        setIsLoading(true);
         axios
             .get("/api/growattData")
             .then((response) => {
@@ -23,29 +25,23 @@ export default function GrowattData() {
     }, []);
 
     return (
-        <div className="bg-green-500 bg-opacity-70 rounded-box p-2 shadow-xl text-white duration-300 transition-all text-[9px] w-28 md:text-xs md:w-auto">
+        <div className="bg-primary rounded-box p-2 duration-300 transition-all text-[9px] md:text-[11px] w-28 md:w-auto text-base-100">
             <span className="">
-                {isLoading ? (
-                    <Player
-                        autoplay
-                        loop
-                        src="/assets/lottiefiles/energy.json"
-                        style={{ width: "1.3rem" }}
-                    ></Player>
-                ) : (
-                    <div className="flex items-center gap-1">
+                <Link href="/growatt">
+                    {isLoading ? (
                         <Player
                             autoplay
                             loop
-                            src="/assets/lottiefiles/energy.json"
-                            style={{ width: "1.3rem" }}
+                            src="/assets/lottiefiles/leaf.json"
+                            style={{ width: "1.7rem" }}
                         ></Player>
+                    ) : (
                         <span className="">
-                            Energía generada:{" "}
-                            <strong>{growattData?.data?.eMonth} Kwh</strong>
+                            Energía que generamos:{" "}
+                            <strong>{growattData?.data?.eTotal} Kwh</strong>
                         </span>
-                    </div>
-                )}
+                    )}
+                </Link>
             </span>
         </div>
     );

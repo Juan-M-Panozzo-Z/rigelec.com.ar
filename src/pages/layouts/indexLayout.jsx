@@ -1,25 +1,21 @@
-import Head from "next/head"
-import Header from "../components/Header"
-import Carousel from "../components/Carousel"
-import Footer from "../components/Footer"
+import Head from "next/head";
+import Carousel from "../components/Carousel";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 
 export default function IndexLayout({ children, ...props }) {
     return (
         <>
-              <Head>
+            <Head>
                 <title>{`${props.title} | Rigelec`}</title>
                 <meta name="description" content={props.description} />
-                </Head>
-            <Header />
-           <main>
-           {children}
-           </main>
-           <Carousel />
+            </Head>
+            <Navbar />
+            <main className={`min-h-screen ${props.className}`}>
+                {children}
+            </main>
+            <Carousel />
             <Footer />
-            {/* FloatComponents */}
-            {/* <div className="fixed bottom-4 right-4 z-20 "> */}
-            {/* <GrowattData /> */}
-            {/* </div> */}
         </>
-    )
+    );
 }

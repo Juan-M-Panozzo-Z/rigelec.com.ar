@@ -87,7 +87,9 @@ export default function Navbar() {
                         ))}
                     </ul>
                 </div>
-                <a className="btn btn-ghost normal-case text-xl">
+                <Link 
+                href={'/'}
+                className="btn btn-ghost normal-case text-xl">
                     <Image
                         src="/assets/logos/original.svg"
                         width={60}
@@ -95,15 +97,11 @@ export default function Navbar() {
                         alt="logo"
                     />
                     <span
-                        className={`${
-                            navbarBg == "bg-transparent"
-                                ? "text-white"
-                                : "text-gray-700"
-                        }  md:block duration-200 transition-all`}
+                        className='text-gray-700 md:block duration-200 transition-all'
                     >
                         Rigelec
                     </span>
-                </a>
+                </Link>
             </div>
             
             <div
