@@ -11,7 +11,7 @@ const links = [
     },
     {
         name: "Tienda",
-        url: "https://front-ecommerce-phi.vercel.app/",
+        url: "https://front-ecommerce-phi-inky.vercel.app/",
     },
     {
         name: "Soporte",
