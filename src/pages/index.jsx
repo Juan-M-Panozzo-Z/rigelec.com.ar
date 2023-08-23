@@ -58,7 +58,6 @@ export default function Home() {
             <Section>
                 <SectionTitle title="Ultimos ingresos" />
                 <Slider
-                    // dots={true}
                     infinite={true}
                     speed={500}
                     slidesToShow={isMedium ? 1 : 4}

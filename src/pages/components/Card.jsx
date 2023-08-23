@@ -17,11 +17,11 @@ export default function Card({ ...props }) {
                 />
                 {isLoading && (
                     <div className="absolute inset-0 flex justify-center items-center">
-                        <div className="loading loading-spinner text-base-300 h-24 w-24" />
+                        <div className="loading loading-spinner text-base-300 h-32 w-32" />
                     </div>
                 )}
             </figure>
-            <div className="flex flex-col justify-center gap-4 p-4 h-28">
+            <div className="flex flex-col justify-center gap-4 p-4 h-32">
                 <h2 className="font-semibold text-sm">
                     {props.title ? props.title.slice(0, 30) : ""}
                 </h2>
