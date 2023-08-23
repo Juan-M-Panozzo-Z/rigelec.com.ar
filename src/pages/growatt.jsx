@@ -59,7 +59,7 @@ export default function Growatt() {
                         <Player
                             autoplay
                             loop
-                            src="/assets/lottiefiles/battery.json"
+                            src="/assets/lottiefiles/loading.json"
                         />
                     </div>
                 ) : (
@@ -75,7 +75,7 @@ export default function Growatt() {
                                 data={`${(growattData.eTotal * 0.4).toFixed(
                                     2
                                 )} Kg`}
-                                lottie="/assets/lottiefiles/tree.json"
+                                lottie="/assets/lottiefiles/power.json"
                             />
                             <Card
                                 title="Potencia actual de paneles solares"

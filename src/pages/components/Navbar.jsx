@@ -9,10 +9,10 @@ const links = [
         name: "Home",
         url: "/",
     },
-    {
-        name: "Tienda",
-        url: "https://front-ecommerce-phi.vercel.app/",
-    },
+    // {
+    //     name: "Tienda",
+    //     url: "https://front-ecommerce-phi.vercel.app/",
+    // },
     {
         name: "Soporte",
         url: "https://rigelec.freshdesk.com/support/home",
@@ -50,86 +50,76 @@ export default function Navbar() {
 
     return (
         <div className="flex flex-col w-full fixed top-0 left-0 z-20">
-        <Marquee className="bg-gradient-to-r from-primary to-secondary text-white py-1" speed="50">
+            <Marquee className="bg-secondary text-white py-1" speed="50">
                 <div className="flex-1 px-2">
-                    Veniam velit irure aliquip officia reprehenderit do sunt excepteur quis eu dolore exercitation.
+                    Las Heras 331, Concordia - Entre Ríos
                 </div>
             </Marquee>
-        <div
-            className={`navbar md:px-20 rounded-b-box  ${navbarBg} transition-all duration-200`}
-        >
-            <div className="navbar-start">
-                <div className="dropdown">
-                    <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
+            <div
+                className={`navbar md:px-20 rounded-b-box  ${navbarBg} transition-all duration-200`}
+            >
+                <div className="navbar-start">
+                    <div className="dropdown">
+                        <label tabIndex={0} className="btn btn-ghost lg:hidden">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-5 w-5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth="2"
+                                    d="M4 6h16M4 12h8m-8 6h16"
+                                />
+                            </svg>
+                        </label>
+                        <ul
+                            tabIndex={0}
+                            className="menu menu-md dropdown-content mt-4 z-[1] p-2 shadow bg-base-100 rounded-box w-56"
                         >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M4 6h16M4 12h8m-8 6h16"
-                            />
-                        </svg>
-                    </label>
-                    <ul
-                        tabIndex={0}
-                        className="menu menu-md dropdown-content mt-4 z-[1] p-2 shadow bg-base-100 rounded-box w-56"
+                            {links.map((link) => (
+                                <li key={link.name}>
+                                    <Link href={link.url}>{link.name}</Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    <Link
+                        href={"/"}
+                        className="btn btn-ghost normal-case text-xl"
                     >
+                        <Image
+                            src="/assets/logos/original.svg"
+                            width={60}
+                            height={60}
+                            alt="logo"
+                        />
+                    </Link>
+                </div>
+
+                <div className="navbar-center hidden lg:flex duration-200 transition-all">
+                    <ul className="menu menu-horizontal px-1 space-x-2">
                         {links.map((link) => (
-                            <li key={link.name}>
+                            <button
+                                className={`btn btn-sm rounded-full ${
+                                    navbarBg == "bg-transparent"
+                                        ? "btn-primary text-white"
+                                        : "btn-ghost"
+                                }`}
+                                key={link.name}
+                            >
                                 <Link href={link.url}>{link.name}</Link>
-                            </li>
+                            </button>
                         ))}
                     </ul>
                 </div>
-                <Link 
-                href={'/'}
-                className="btn btn-ghost normal-case text-xl">
-                    <Image
-                        src="/assets/logos/original.svg"
-                        width={60}
-                        height={60}
-                        alt="logo"
-                    />
-                    <span
-                        className='text-gray-700 md:block duration-200 transition-all'
-                    >
-                        Rigelec
-                    </span>
-                </Link>
+                <div className="navbar-end">
+                    <GrowattData />
+                </div>
             </div>
-            
-            <div
-                className={`navbar-center hidden lg:flex ${
-                    navbarBg == "bg-transparent"
-                        ? "text-white"
-                        : "text-gray-700"
-                } duration-200 transition-all`}
-            >
-                <ul className="menu menu-horizontal px-1 space-x-2">
-                    {links.map((link) => (
-                        <button
-                            className={`btn btn-xs rounded-full ${
-                                navbarBg == "bg-transparent"
-                                    ? "btn-primary"
-                                    : "btn-ghost"
-                            }`}
-                            key={link.name}
-                        >
-                            <Link href={link.url}>{link.name}</Link>
-                        </button>
-                    ))}
-                </ul>
-            </div>
-            <div className="navbar-end">
-            <GrowattData />
-            </div>
-        </div>
         </div>
     );
 }

@@ -10,19 +10,13 @@ export default function Hero() {
                 height={1080}
                 alt="hero"
             />
-            <Image
-                className="hidden md:block z-10 absolute bottom-0"
-                src={"/assets/hero/header-shape.svg"}
-                width={1920}
-                height={1080}
-                alt="hero"
-            />
+            
             <div className="absolute -top-10 left-0 w-full h-full flex justify-center items-center">
-                <div className="text-center m-4 p-8 rounded-box text-white bg-black bg-opacity-20 backdrop-filter backdrop-blur-sm shadow-md flex flex-col gap-4">
-                    <h1 className="text-3xl md:text-6xl">
+                <div className="text-center m-4 p-8 rounded-box text-white flex flex-col gap-4">
+                    <h1 className="text-3xl md:text-8xl">
                         ¿Necesitas comprar algo?
                     </h1>
-                    <h3 className="md:text-xl">
+                    <h3 className="md:text-2xl">
                         No te preocupes, ingresa a nuestra tienda desde aquí
                     </h3>
                     <span className="md:text-3xl animate-bounce">👇</span>
@@ -30,6 +24,7 @@ export default function Hero() {
                         href="https://front-ecommerce-phi.vercel.app/"
                         target="_blank"
                         className="btn btn-primary mx-auto rounded-full text-white transition-all"
+                        disabled
                     >
                         Ir a la tienda
                     </a>
