@@ -21,24 +21,18 @@ export default function Card({ ...props }) {
                     </div>
                 )}
             </figure>
-            <div className="flex flex-col justify-center gap-4 p-4">
-                <h2 className="card-title text-[10px] md:text-xs">
+            <div className="flex flex-col justify-center gap-4 p-4 h-28">
+                <h2 className="font-semibold text-sm">
                     {props.title ? props.title.slice(0, 30) : ""}
                 </h2>
-                <h3 className="card-subtitle text-[10px] md:text-xs">
-                    Marca
-                    <div className="badge badge-sm mx-2 badge-primary text-[10px] md:text-xs text-white">
-                        {props.subtitle}
-                    </div>
-                </h3>
-                <p className="card-description text-[10px] md:text-xs">
-                    Modelo
-                    <div className="badge badge-sm mx-2 badge-primary text-[8px] md:text-xs text-white">
-                        {props.description
-                            ? props.description.slice(0, 15)
-                            : ""}
-                    </div>
-                </p>
+
+                <div className="badge badge-sm badge-primary text-xs text-white">
+                    {props.subtitle}
+                </div>
+
+                <div className="badge badge-sm badge-primary text-xs text-white">
+                    {props.description?.slice(0, 15)}
+                </div>
             </div>
         </div>
     );
