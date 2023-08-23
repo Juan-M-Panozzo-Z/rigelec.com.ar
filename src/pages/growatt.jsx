@@ -42,7 +42,7 @@ export default function Growatt() {
                         <h2 className="card-title text-sm md:text-xl">
                             {props.title}
                         </h2>
-                        <div className="badge badge-primary p-2 font-semibold">
+                        <div className="badge badge-primary p-4 font-semibold text-white">
                             {props.data}
                         </div>
                     </div>
