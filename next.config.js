@@ -6,6 +6,7 @@ const nextConfig = {
             "fastly.picsum.photos",
             "paljet.rigelec.com.ar",
             "webservice.rigelec.com.ar",
+            "rigelec.com.ar"
         ],
     },
     reactStrictMode: true,
