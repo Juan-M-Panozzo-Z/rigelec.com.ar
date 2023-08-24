@@ -23,7 +23,7 @@ export default function Footer() {
             </div>
             <div>
                 <div className="grid grid-flow-col gap-6">
-                    <a href="https://rigelec.com.ar/#">
+                    <a href="https://www.linkedin.com/company/rigelec-s-r-l/">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="30"
