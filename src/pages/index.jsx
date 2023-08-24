@@ -56,7 +56,7 @@ export default function Home() {
         <Layout title="Home">
         <Hero/>
             <Section>
-                <SectionTitle title="Ultimos ingresos" />
+                <SectionTitle title="Últimos ingresos" />
                 <Slider
                     infinite={true}
                     speed={500}
@@ -68,7 +68,7 @@ export default function Home() {
                 </Slider>
             </Section>
             <Section className={"p-8 md:px-12 bg-gray-100"}>
-                <SectionTitle title="Contactanos" />
+                <SectionTitle title="Contáctanos" />
                 <ContactUs />
             </Section>
             <SectionFluid>
