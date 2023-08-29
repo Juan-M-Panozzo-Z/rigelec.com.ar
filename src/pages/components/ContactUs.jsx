@@ -69,7 +69,7 @@ export default function ContactUs() {
                             value={codCountry}
                             onChange={(e) => setCodCountry(e.target.value)}
                             name="country"
-                            className="select select-bordered w-20 md:w-24"
+                            className="select select-bordered w-16 md:w-24"
                         >
                             <option value="54">🇦🇷</option>
                             <option value="598">🇺🇾</option>
@@ -80,14 +80,14 @@ export default function ContactUs() {
                             onChange={(e) => setCodArea(e.target.value)}
                             type="tel"
                             placeholder="Ej: 011"
-                            className="input input-bordered w-20 md:w-24"
+                            className="input input-bordered w-16 md:w-24"
                         />
                         <input
                             value={phone}
                             onChange={(e) => setPhone(e.target.value)}
                             type="tel"
                             placeholder="Ej: 12345678"
-                            className="input input-bordered flex-1"
+                            className="input input-bordered w-full"
                         />
                     </div>
                 </div>
