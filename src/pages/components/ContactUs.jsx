@@ -4,20 +4,20 @@ import { useState, useEffect } from "react";
 export default function ContactUs() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
-    const [codCountry, setCodCountry] = useState("");
-    const [codArea, setCodArea] = useState("");
-    const [phone, setPhone] = useState("");
+    const [codCountry, setCodCountry] = useState(54);
+    const [codArea, setCodArea] = useState(345);
+    const [phone, setPhone] = useState();
     const [message, setMessage] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setPhone(`+${codCountry}${codArea}${phone}`);
-
         if (name && email && phone && message) {
             await axios
                 .post("/api/sendEmail", {
                     name,
                     email,
+                    codCountry,
+                    codArea,
                     phone,
                     message,
                 })
@@ -27,6 +27,7 @@ export default function ContactUs() {
                     setEmail("");
                     setPhone("");
                     setMessage("");
+                    setCodArea("");
                 })
                 .catch((error) => {
                     console.log(error);

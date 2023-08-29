@@ -3,10 +3,10 @@ import nodemailer from "nodemailer";
 export default async function handler(req, res) {
     const { method } = req;
     if (method === "POST") {
-        const { name, email, phone, message } = req.body;
+        const { name, email, codCountry, codArea, phone, message } = req.body;
         const transporter = nodemailer.createTransport({
-            port: 465,
             host: "smtp.gmail.com",
+            port: 465,
             auth: {
                 user: process.env.EMAIL,
                 pass: process.env.PASSWORD,
@@ -29,7 +29,7 @@ export default async function handler(req, res) {
                     <div style="text-align: center; color: #000; margin-bottom: 20px; padding: 10px;">
                         <p style="margin: 0;">Nombre: ${name}</p>
                         <p style="margin: 0;">Email: ${email}</p>
-                        <p style="margin: 0;">Teléfono: ${phone}</p>
+                        <p style="margin: 0;">Teléfono: +${codCountry} (${codArea}) ${phone}</p>
                     </div>
 
                     <div style="text-align: center; color: #000;">
