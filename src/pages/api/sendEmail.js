@@ -42,10 +42,13 @@ export default async function handler(req, res) {
             `,
         };
         transporter.sendMail(mailData, function (err, info) {
-            if (err) console.log(err);
-            else console.log(info);
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(info);
+            }
         });
-        res.status(200).json({ status: "OK" });
+        res.status(200).json({ message: "Email sent successfully" });
     } else {
         res.setHeader("Allow", ["POST"]);
         res.status(405).json({ message: `Method ${method} not allowed` });
