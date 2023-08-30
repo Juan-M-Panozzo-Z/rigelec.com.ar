@@ -15,7 +15,7 @@ export default async function handler(req, res) {
         });
         const mailData = {
             from: `${name} <${email}>`,
-            to: "sistemas@rigelec.com.ar",
+            to: "jmpz.94@gmail.com",
             subject: `¡${name} quiere contactarse con nosotros!`,
             text: message,
             html: `
