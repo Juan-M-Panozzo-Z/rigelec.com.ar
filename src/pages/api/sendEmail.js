@@ -35,7 +35,7 @@ export default async function handler(req, res) {
                     <div style="text-align: center; color: #000;">
                         <img src="https://rigelec.com.ar/assets/images/logo.svg" alt="logo" style="width: 100px; height: 100px;">
 
-                        <p style="margin: 0;">Rigelec S.A.</p>
+                        <p style="margin: 0;">Rigelec S.R.L.</p>
                         <p style="margin: 0;">Las heras 331, Concordia - Entre Rios</p>
                         <p style="margin: 0;">Tel: (0345) 421-9940</p>
                     </div>
