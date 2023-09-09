@@ -37,12 +37,12 @@ export default function Growatt() {
                         className="h-56 md:h-96"
                     />
                 </figure>
-                <div className="card-body rounded-box bg-base-200">
+                <div className="card-body bg-base-200">
                     <div className="flex flex-wrap items-center justify-between gap-2">
-                        <h2 className="card-title text-sm md:text-xl">
+                        <h2 className="card-title md:text-2xl">
                             {props.title}
                         </h2>
-                        <div className="badge badge-primary p-4 font-semibold text-white">
+                        <div className="badge badge-primary badge-md shadow p-4 font-semibold text-white">
                             {props.data}
                         </div>
                     </div>
