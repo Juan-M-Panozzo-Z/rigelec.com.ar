@@ -11,8 +11,8 @@ export default function Card({ ...props }) {
                     src={props.image}
                     alt={props.title}
                     className="rounded-box aspect-square object-cover"
-                    width={400}
-                    height={400}
+                    width={600}
+                    height={600}
                     onLoad={() => setIsLoading(false)}
                 />
                 {isLoading && (
@@ -21,16 +21,16 @@ export default function Card({ ...props }) {
                     </div>
                 )}
             </figure>
-            <div className="flex flex-col justify-center gap-4 p-4 h-32">
+            <div className="flex flex-col justify-center gap-4 p-4 h-36">
                 <h2 className="font-semibold text-sm">
                     {props.title ? props.title.slice(0, 30) : ""}
                 </h2>
 
-                <div className="badge badge-sm badge-primary text-xs text-white">
+                <div className="badge badge-md shadow badge-primary text-xs text-white">
                     {props.subtitle}
                 </div>
 
-                <div className="badge badge-sm badge-primary text-xs text-white">
+                <div className="badge badge-md shadow badge-primary text-xs text-white">
                     {props.description?.slice(0, 15)}
                 </div>
             </div>
