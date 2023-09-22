@@ -22,8 +22,9 @@ export default function Home() {
         setIsLoading(true);
         axios
             .get("/api/ultimosIngresos")
-            .then((response) => {
-                setArticles(response.data);
+            .then(({ data }) => {
+                setArticles(data);
+                console.log(data);
             })
             .catch((error) => {
                 console.log(error);
@@ -40,21 +41,25 @@ export default function Home() {
                 .map((_, index) => <SkeletonCard key={index} />);
             return skeletonCards;
         } else {
-            return articles.map((article) => (
-                <Card
-                    key={article.Id}
-                    title={article.Descripcion}
-                    subtitle={article.Marca}
-                    description={`${article.Modelo} ${article.Medida}`}
-                    image={article.ImageUrl}
-                />
-            ));
+            return articles.map((article) => {
+                if (article.perfil !== "COMPRAS") {
+                    return (
+                        <Card
+                            key={article.id}
+                            title={article.descripcion}
+                            subtitle={article.marca.nombre}
+                            description={`${article.modelo} ${article.medida}`}
+                            image={`https://paljet.rigelec.com.ar/imagenes/articulos/${article.id}`}
+                        />
+                    );
+                }
+            });
         }
     };
 
     return (
         <Layout title="Home">
-        <Hero/>
+            <Hero />
             <Section>
                 <SectionTitle title="Últimos ingresos" />
                 <Slider
@@ -62,7 +67,6 @@ export default function Home() {
                     speed={500}
                     slidesToShow={isMedium ? 1 : 4}
                     slidesToScroll={isMedium ? 1 : 4}
-                    
                 >
                     {renderCards()}
                 </Slider>

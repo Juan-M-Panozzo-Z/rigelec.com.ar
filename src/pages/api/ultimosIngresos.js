@@ -1,4 +1,5 @@
-const Firebird = require("node-firebird");
+import Firebird from "node-firebird";
+import axios from "axios";
 
 export default function handler(req, res) {
     const options = {
@@ -8,8 +9,6 @@ export default function handler(req, res) {
         user: process.env.FIREBIRD_USER || "user",
         password: process.env.FIREBIRD_PASSWORD || "pass",
     };
-    console.log(options)
-
     const dateNow = new Date();
 
     const fechaInicio = new Date(dateNow.getTime() - 86400000)
@@ -19,11 +18,11 @@ export default function handler(req, res) {
         .toISOString()
         .substring(0, 10);
 
-    const sqlQuery = `SELECT CPRDET.ART_ID, CPRDET.MOD, CPRDET.MED, CPR.FEC_IMPUT, CPR.CPR_ID, CPRDET.CPR_ID, CPR.CPR_TIPO_ID, ARTICULOS.DESCRIPCION, ARTICULOS.COD_ART, ARTICULOS.MARCA_ID, MARCAS.MARCA
+    const sqlQuery = `
+    SELECT CPRDET.ART_ID, CPR.FEC_IMPUT, CPR.CPR_ID, CPRDET.CPR_ID, CPR.CPR_TIPO_ID, ARTICULOS.COD_ART
     FROM CPRDET
     INNER JOIN CPR ON CPR.CPR_ID=CPRDET.CPR_ID
     INNER JOIN ARTICULOS ON CPRDET.ART_ID=ARTICULOS.ART_ID
-    INNER JOIN MARCAS ON ARTICULOS.MARCA_ID=MARCAS.MARCA_ID
     WHERE CPR.CPR_TIPO_ID='RE' AND CPR.FEC_IMPUT BETWEEN '${fechaInicio}' AND '${fechaFin}'
     ORDER BY CPRDET.CPRDET_ID DESC`;
 
@@ -34,16 +33,35 @@ export default function handler(req, res) {
             if (err) throw err;
 
             const mappedResult = result.map((row) => ({
-                ID: row.ART_ID,
-                Descripcion: row.DESCRIPCION,
-                Marca: row.MARCA,
-                Modelo: row.MOD,
-                Medida: row.MED,
-                ImageUrl: `https://paljet.rigelec.com.ar/imagenes/articulos/${row.ART_ID}`,
+                artId: row.ART_ID,
             }));
 
-            res.status(200).json(mappedResult);
-            db.detach();
+            const promises = mappedResult.map((row) =>
+                axios.get(
+                    `https://webservice.rigelec.com.ar/articulos?&art_id=${row.artId}`,
+                    {
+                        headers: {
+                            authorization: "Basic QlRPQzpCVE9D",
+                            EmpID: "1",
+                        },
+                    }
+                )
+            );
+
+            Promise.all(promises)
+                .then((responses) => {
+                    const productos = responses.map(
+                        (response) => response.data.content[0]
+                    );
+
+                    res.status(200).json(productos);
+                    db.detach();
+                })
+                .catch((error) => {
+                    console.log(error);
+                    res.status(500).send("Error al obtener los productos.");
+                    db.detach();
+                });
         });
     });
 }
