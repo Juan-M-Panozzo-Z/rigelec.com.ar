@@ -9,10 +9,10 @@ const links = [
         name: "Home",
         url: "/",
     },
-    // {
-    //     name: "Tienda",
-    //     url: "https://front-ecommerce-phi.vercel.app/",
-    // },
+    {
+        name: "Sobre nosotros",
+        url: "/nosotros",
+    },
     {
         name: "Soporte",
         url: "https://rigelec.freshdesk.com/support/home",

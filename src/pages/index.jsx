@@ -24,7 +24,6 @@ export default function Home() {
             .get("/api/ultimosIngresos")
             .then(({ data }) => {
                 setArticles(data);
-                console.log(data);
             })
             .catch((error) => {
                 console.log(error);

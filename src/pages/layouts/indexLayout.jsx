@@ -2,6 +2,7 @@ import Head from "next/head";
 import Carousel from "../components/Carousel";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import WhatsappButton from "../components/WhatsappButton";
 
 export default function IndexLayout({ children, ...props }) {
     return (
@@ -16,6 +17,7 @@ export default function IndexLayout({ children, ...props }) {
             </main>
             <Carousel />
             <Footer />
+            <WhatsappButton />
         </>
     );
 }

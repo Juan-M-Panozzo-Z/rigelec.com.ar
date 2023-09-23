@@ -2,6 +2,7 @@ import IndexLayout from "./layouts/indexLayout";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Player } from "@lottiefiles/react-lottie-player";
+import Section from "./components/Section";
 
 export default function Growatt() {
     const [growattData, setGrowattData] = useState({
@@ -53,6 +54,7 @@ export default function Growatt() {
 
     return (
         <IndexLayout title="Green Energy" className="">
+            <Section>
             <div className="container mx-auto">
                 {isLoading ? (
                     <div className="flex justify-center items-center min-h-screen">
@@ -86,6 +88,7 @@ export default function Growatt() {
                     </div>
                 )}
             </div>
+            </Section>
         </IndexLayout>
     );
 }

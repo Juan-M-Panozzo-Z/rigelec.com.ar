@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
     return (
@@ -10,7 +11,7 @@ export default function Hero() {
                 height={1080}
                 alt="hero"
             />
-            
+
             <div className="absolute -top-0 left-0 w-full h-screen flex justify-center items-center bg-white/10">
                 <div className="text-center m-4 text-white flex flex-col gap-4">
                     <h1 className="text-3xl md:text-8xl">
@@ -20,14 +21,16 @@ export default function Hero() {
                         No te preocupes, ingresa a nuestra tienda desde aquí
                     </h3>
                     <span className="md:text-3xl animate-bounce">👇</span>
-                    <a
-                        href="https://front-ecommerce-phi.vercel.app/"
-                        target="_blank"
-                        className="btn btn-primary mx-auto rounded-full text-white transition-all"
-                        disabled
-                    >
-                        Ir a la tienda
-                    </a>
+                    <div className="tooltip tooltip-bottom" data-tip="¡Proximamente!">
+                        <Link
+                            // href="https://front-ecommerce-phi.vercel.app/"
+                            href="#"
+                            // target="_blank"
+                            className="btn btn-primary mx-auto rounded-full text-white transition-all"
+                        >
+                            Ir a la tienda
+                        </Link>
+                    </div>
                 </div>
             </div>
         </section>

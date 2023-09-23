@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Footer() {
     return (
-        <footer className="footer footer-center py-4 bg-base-200 text-primary-content">
+        <footer className="footer footer-center py-4 bg-base-200 text-primary-content rounded-box">
             <div>
                 <Image
                     src="/assets/logos/original.svg"

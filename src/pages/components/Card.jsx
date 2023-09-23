@@ -17,7 +17,7 @@ export default function Card({ ...props }) {
                 />
                 {isLoading && (
                     <div className="absolute inset-0 flex justify-center items-center">
-                        <div className="loading loading-spinner text-base-300 h-32 w-32" />
+                        <div className="bg-base-200 animate-pulse w-full h-full rounded-box" />
                     </div>
                 )}
             </figure>
