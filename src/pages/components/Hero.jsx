@@ -15,13 +15,11 @@ export default function Hero() {
 
             <div className="bg-gradient-to-b from-transparent from-70% via-transparent via-10% to-base-100 absolute -top-0 left-0 w-full h-screen flex justify-center items-center bg-white/10">
                 <div className="text-center m-4 text-white flex flex-col gap-4">
-                    <h1 className="text-4xl md:text-8xl">
-                        ¿Necesitas comprar algo?
+                    <h1 className="text-4xl md:text-8xl" style={styles}>
+                        ¿Necesitás comprar algo?
                     </h1>
-                    <h3 className="mt-4 text-xl md:text-3xl">
-                        {/* No te preocupes
-                        <br className="md:hidden" /> */}
-                        ingresa a nuestra tienda desde aquí
+                    <h3 className="mt-4 text-xl md:text-3xl" style={styles}>
+                        ingresá a nuestra tienda desde aquí
                     </h3>
                     <span className="md:text-3xl animate-bounce">👇</span>
                     <div
@@ -34,7 +32,7 @@ export default function Hero() {
                             // target="_blank"
                             className="btn btn-primary mx-auto rounded-full text-white transition-all"
                         >
-                            Ir a la tienda
+                            Ir a rigelec store
                         </Link>
                     </div>
                 </div>
@@ -42,3 +40,7 @@ export default function Hero() {
         </section>
     );
 }
+
+const styles = {
+    textShadow: "-1px 1px 10px rgba(0,0,0,0.4)",
+};

@@ -48,7 +48,7 @@ export default function Navbar() {
                 </div>
             </Marquee>
             <div
-                className={`navbar md:px-20 rounded-b-box  ${navbarBg} transition-all duration-200`}
+                className={`navbar md:px-20 rounded-b-box ${navbarBg} transition-all duration-200`}
             >
                 <div className="navbar-start">
                     <div className="dropdown">
