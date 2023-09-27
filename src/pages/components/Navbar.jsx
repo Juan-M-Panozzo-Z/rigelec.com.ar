@@ -3,6 +3,9 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import Marquee from "react-fast-marquee";
 import GrowattData from "./GrowattData";
+import { AiOutlineUser } from "react-icons/ai";
+import { CiMenuBurger } from "react-icons/ci";
+import LoginModal from "./LoginModal";
 
 const links = [
     {
@@ -20,7 +23,7 @@ const links = [
     {
         name: "Rigelec Cloud",
         url: "https://cloud.rigelec.com.ar/",
-    }
+    },
 ];
 
 export default function Navbar() {
@@ -53,20 +56,13 @@ export default function Navbar() {
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-5 w-5"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M4 6h16M4 12h8m-8 6h16"
-                                />
-                            </svg>
+                            <CiMenuBurger
+                                className={`w-6 h-6 ${
+                                    navbarBg == "bg-transparent"
+                                        ? "text-white"
+                                        : "text-secondary"
+                                }`}
+                            />
                         </label>
                         <ul
                             tabIndex={0}
@@ -108,8 +104,9 @@ export default function Navbar() {
                         ))}
                     </ul>
                 </div>
-                <div className="navbar-end">
+                <div className="navbar-end space-x-2">
                     <GrowattData />
+                    <LoginModal />
                 </div>
             </div>
         </div>

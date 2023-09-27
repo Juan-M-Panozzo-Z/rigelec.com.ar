@@ -16,7 +16,8 @@ import Hero from "./components/Hero";
 export default function Home() {
     const [articles, setArticles] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const isMedium = useMediaQuery("only screen and (max-width: 768px)");
+    const isSmall = useMediaQuery("only screen and (max-width: 768px)");
+    const isMedium = useMediaQuery("only screen and (max-width: 1024px)");
 
     useEffect(() => {
         setIsLoading(true);
@@ -64,8 +65,10 @@ export default function Home() {
                 <Slider
                     infinite={true}
                     speed={500}
-                    slidesToShow={isMedium ? 1 : 4}
-                    slidesToScroll={isMedium ? 1 : 4}
+                    slidesToShow={isSmall ? 1 : isMedium ? 2 : isMedium ? 3 : 4}
+                    slidesToScroll={
+                        isSmall ? 1 : isMedium ? 2 : isMedium ? 3 : 4
+                    }
                 >
                     {renderCards()}
                 </Slider>
