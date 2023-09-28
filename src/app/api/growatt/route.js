@@ -16,5 +16,5 @@ export async function GET() {
         );
     }
     await apiGrowatt.logout().catch(() => {});
-    return NextResponse.json({ error: "No data" });
+    return NextResponse.json({ error: "No disponible" });
 }

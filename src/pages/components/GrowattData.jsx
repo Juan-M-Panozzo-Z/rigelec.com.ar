@@ -12,8 +12,8 @@ export default function GrowattData() {
     useEffect(() => {
         axios
             .get("/api/growatt")
-            .then((response) => {
-                setGrowattData(response);
+            .then(({ data }) => {
+                setGrowattData(data);
             })
             .catch((error) => {
                 console.log(error);
@@ -35,12 +35,22 @@ export default function GrowattData() {
                             style={{ width: "1.1rem" }}
                         ></Player>
                     ) : (
-                        <span className="">
-                            <span className="hidden sm:inline">
-                                Energía que generamos:
-                            </span>{" "}
-                            <strong>{growattData?.data?.eTotal} Kwh</strong>
-                        </span>
+                        <>
+                            {growattData.error ? (
+                                <span className="capitalize">
+                                    no disponible
+                                </span>
+                            ) : (
+                                <>
+                                    <span className="hidden sm:inline">
+                                        Energía que generamos:
+                                    </span>{" "}
+                                    <strong>
+                                        {growattData?.data?.eTotal} Kwh
+                                    </strong>
+                                </>
+                            )}
+                        </>
                     )}
                 </Link>
             </span>
