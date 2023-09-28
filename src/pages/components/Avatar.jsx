@@ -10,22 +10,24 @@ const Avatar = () => {
             </summary>
             <ul
                 tabIndex={0}
-                className="mt-1 p-2 space-y-2 shadow menu  dropdown-content z-[1] bg-base-100 rounded-box md:w-36"
+                className="mt-1 p-2 space-y-2 shadow-lg menu dropdown-content z-[1] bg-base-100 rounded-box w-36 "
             >
-            <li>
-                <Link href={"/profile"} className="flex gap-1 justify-end items-center">
-                    <GoPerson className="" />
-                    <span className="text-[10px]">
-                        Mi perfil
-                    </span>
-                </Link>
-            </li>
                 <li>
-                    <button className="flex gap-1 justify-end items-center bg-error text-white" onClick={() => signOut()}>
+                    <Link
+                        href={"/profile"}
+                        className="flex gap-1 justify-end items-center"
+                    >
+                        <GoPerson className="" />
+                        <span className="text-[10px]">Mi perfil</span>
+                    </Link>
+                </li>
+                <li>
+                    <button
+                        className="flex gap-1 justify-end items-center bg-error text-white"
+                        onClick={() => signOut()}
+                    >
                         <GoMoveToEnd className="" />
-                        <span className="text-[10px]">
-                        Cerrar sesión
-                        </span>
+                        <span className="text-[10px]">Cerrar sesión</span>
                     </button>
                 </li>
             </ul>

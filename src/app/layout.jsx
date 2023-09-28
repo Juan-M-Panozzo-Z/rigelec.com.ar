@@ -16,7 +16,7 @@ const RootLayout = async ({ children }) => {
     return (
         <html lang="en">
             <NextAuthProvider>
-                <body>
+                <body className="bg-base-200">
                     <NoSession session={session}>
                         <Navbar />
                         <section className="min-h-screen">{children}</section>
