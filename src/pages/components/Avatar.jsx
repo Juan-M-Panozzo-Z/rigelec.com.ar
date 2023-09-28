@@ -1,5 +1,6 @@
 import { GoPerson, GoMoveToEnd } from "react-icons/go";
 import { signOut } from "next-auth/react";
+import Link from "next/link";
 
 const Avatar = () => {
     return (
@@ -12,17 +13,17 @@ const Avatar = () => {
                 className="mt-1 p-2 space-y-2 shadow menu  dropdown-content z-[1] bg-base-100 rounded-box md:w-36"
             >
             <li>
-                <button className="flex gap-1 justify-end items-center">
+                <Link href={"/profile"} className="flex gap-1 justify-end items-center">
                     <GoPerson className="" />
-                    <span className="hidden md:inline text-[10px]">
+                    <span className="text-[10px]">
                         Mi perfil
                     </span>
-                </button>
+                </Link>
             </li>
                 <li>
                     <button className="flex gap-1 justify-end items-center bg-error text-white" onClick={() => signOut()}>
                         <GoMoveToEnd className="" />
-                        <span className="hidden md:inline text-[10px]">
+                        <span className="text-[10px]">
                         Cerrar sesión
                         </span>
                     </button>

@@ -14,6 +14,7 @@ export default function GrowattData() {
             .get("/api/growatt")
             .then(({ data }) => {
                 setGrowattData(data);
+                console.log(data);
             })
             .catch((error) => {
                 console.log(error);
@@ -25,33 +26,29 @@ export default function GrowattData() {
 
     return (
         <div className="btn btn-sm btn-primary rounded-full text-[10px] text-white">
-            <span className="">
-                <Link href="/growatt">
-                    {isLoading ? (
-                        <Player
-                            autoplay
-                            loop
-                            src="/assets/lottiefiles/leaf.json"
-                            style={{ width: "1.2rem" }}
-                        ></Player>
-                    ) : (
-                        <>
-                            {growattData.error ? (
-                                <span>{growattData.error}</span>
-                            ) : (
-                                <>
-                                    <span className="hidden sm:inline">
-                                        Energía que generamos:
-                                    </span>{" "}
-                                    <strong>
-                                        {growattData?.data?.eTotal} Kwh
-                                    </strong>
-                                </>
-                            )}
-                        </>
-                    )}
-                </Link>
-            </span>
+            <Link href="/growatt">
+                {isLoading ? (
+                    <Player
+                        autoplay
+                        loop
+                        src="/assets/lottiefiles/leaf.json"
+                        style={{ width: "1.2rem" }}
+                    ></Player>
+                ) : (
+                    <>
+                        {growattData.error ? (
+                            <span>{growattData.error}</span>
+                        ) : (
+                            <>
+                                <span className="hidden sm:inline">
+                                    Energía que generamos:
+                                </span>{" "}
+                                <strong>{growattData?.eTotal} Kwh</strong>
+                            </>
+                        )}
+                    </>
+                )}
+            </Link>
         </div>
     );
 }

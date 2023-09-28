@@ -1,7 +1,9 @@
+import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { AiOutlineUser } from "react-icons/ai";
 import { useForm } from "react-hook-form";
 const LoginModal = () => {
+    const router = useRouter();
     const {
         register,
         handleSubmit,
@@ -13,6 +15,10 @@ const LoginModal = () => {
             email: data.email,
             password: data.password,
             redirect: false,
+        }).then((res) => {
+            if (!res.error) {
+                router.push("/profile");
+            }
         });
     };
 
