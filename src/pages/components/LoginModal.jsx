@@ -33,7 +33,7 @@ const LoginModal = () => {
                 <AiOutlineUser className="w-4 h-4 text-white" />
             </button>
             <dialog id="loginModal" className="modal sm:modal-middle">
-                <div className="modal-box md:w-3/4">
+                <div className="modal-box w-4/5">
                     <>
                         <div className="space-y-2">
                             <h3 className="font-bold text-lg">
