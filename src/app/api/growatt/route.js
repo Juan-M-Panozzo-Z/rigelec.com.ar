@@ -15,6 +15,6 @@ export async function GET() {
             getAllPlantData["2086609"].devices.QGHACE701F.deviceData
         );
     }
-
     await apiGrowatt.logout().catch(() => {});
+    return NextResponse.json({ error: "No data" });
 }
