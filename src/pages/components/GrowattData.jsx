@@ -14,7 +14,6 @@ export default function GrowattData() {
             .get("/api/growatt")
             .then((response) => {
                 setGrowattData(response);
-                console.log(response.data);
             })
             .catch((error) => {
                 console.log(error);
@@ -25,7 +24,7 @@ export default function GrowattData() {
     }, []);
 
     return (
-        <div className="bg-primary rounded-md p-2 duration-300 transition-all text-[8px] md:text-[11px] md:w-auto text-base-100">
+        <div className="bg-primary rounded-full p-2 duration-300 transition-all text-[8px] md:text-[11px] md:w-auto text-base-100">
             <span className="">
                 <Link href="/growatt">
                     {isLoading ? (
@@ -33,11 +32,13 @@ export default function GrowattData() {
                             autoplay
                             loop
                             src="/assets/lottiefiles/leaf.json"
-                            style={{ width: "1.7rem" }}
+                            style={{ width: "1.1rem" }}
                         ></Player>
                     ) : (
                         <span className="">
-                            Energía que generamos:{" "}
+                            <span className="hidden sm:inline">
+                                Energía que generamos:
+                            </span>{" "}
                             <strong>{growattData?.data?.eTotal} Kwh</strong>
                         </span>
                     )}
