@@ -24,7 +24,7 @@ export default function GrowattData() {
     }, []);
 
     return (
-        <div className="bg-primary rounded-full p-2 duration-300 transition-all text-[11px] md:w-auto text-base-100">
+        <div className="btn btn-sm btn-primary rounded-full text-[10px] text-white">
             <span className="">
                 <Link href="/growatt">
                     {isLoading ? (
@@ -32,14 +32,12 @@ export default function GrowattData() {
                             autoplay
                             loop
                             src="/assets/lottiefiles/leaf.json"
-                            style={{ width: "1.1rem" }}
+                            style={{ width: "1.2rem" }}
                         ></Player>
                     ) : (
                         <>
                             {growattData.error ? (
-                                <span className="capitalize">
-                                    no disponible
-                                </span>
+                                <span>{growattData.error}</span>
                             ) : (
                                 <>
                                     <span className="hidden sm:inline">

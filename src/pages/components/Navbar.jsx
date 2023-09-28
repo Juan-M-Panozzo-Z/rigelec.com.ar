@@ -106,7 +106,7 @@ export default function Navbar() {
                         ))}
                     </ul>
                 </div>
-                <div className="navbar-end space-x-2">
+                <div className="navbar-end space-x-2 min-w-max">
                     <GrowattData />
                     {status === "authenticated" ? (
                         <Avatar />

@@ -4,7 +4,7 @@ import { signOut } from "next-auth/react";
 const Avatar = () => {
     return (
         <details className="dropdown dropdown-bottom dropdown-end">
-            <summary className="btn btn-sm rounded-full btn-info text-white">
+            <summary className="btn btn-sm text-[10px] rounded-full btn-info text-white">
                 Mi perfil
             </summary>
             <ul
