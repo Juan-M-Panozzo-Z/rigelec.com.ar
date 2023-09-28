@@ -21,7 +21,6 @@ const RootLayout = async ({ children }) => {
                         <Navbar />
                         <section className="min-h-screen">{children}</section>
                         <Footer />
-                        <WhatsappButton />
                     </NoSession>
                 </body>
             </NextAuthProvider>
