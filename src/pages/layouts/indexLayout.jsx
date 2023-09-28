@@ -3,11 +3,10 @@ import Carousel from "../components/Carousel";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import WhatsappButton from "../components/WhatsappButton";
-import { SessionProvider } from "next-auth/react";
 
 export default function IndexLayout({ children, ...props }) {
     return (
-        <SessionProvider session={props.session}>
+        <>
             <Head>
                 <title>{`${props.title} | Rigelec`}</title>
                 <meta name="description" content={props.description} />
@@ -19,6 +18,6 @@ export default function IndexLayout({ children, ...props }) {
             <Carousel />
             <Footer />
             <WhatsappButton />
-        </SessionProvider>
+        </>
     );
 }

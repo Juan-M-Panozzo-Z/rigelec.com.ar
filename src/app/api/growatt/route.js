@@ -1,6 +1,7 @@
 import api from "growatt";
+import { NextResponse } from "next/server";
 
-export default async function handler(req, res) {
+export async function GET() {
     const user = process.env.GROWATT_USER || "user";
     const pass = process.env.GROWATT_PASSWORD || "pass";
     const options = {};
@@ -10,7 +11,7 @@ export default async function handler(req, res) {
         .getAllPlantData(options)
         .catch(() => {});
     if (getAllPlantData && getAllPlantData["2086609"]) {
-        res.status(200).json(
+        return NextResponse.json(
             getAllPlantData["2086609"].devices.QGHACE701F.deviceData
         );
     }

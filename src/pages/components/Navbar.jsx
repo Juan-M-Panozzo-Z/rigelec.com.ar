@@ -3,9 +3,8 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import Marquee from "react-fast-marquee";
 import GrowattData from "./GrowattData";
-import { AiOutlineUser } from "react-icons/ai";
 import { CiMenuBurger } from "react-icons/ci";
-import LoginModal from "./LoginModal";
+import LoginModal from "./LoginModal.jsx";
 
 const links = [
     {

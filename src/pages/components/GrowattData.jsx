@@ -11,7 +11,7 @@ export default function GrowattData() {
 
     useEffect(() => {
         axios
-            .get("/api/growattData")
+            .get("/api/growatt")
             .then((response) => {
                 setGrowattData(response);
                 console.log(response.data);
