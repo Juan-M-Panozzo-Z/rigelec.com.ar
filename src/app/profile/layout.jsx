@@ -13,8 +13,8 @@ const ProfileLayout = ({ children }) => (
             {children}
         </div>
         <div className="drawer-side">
-            <label htmlFor="my-drawer" className="drawer-overlay"></label>
-            <ul className="menu pt-32 p-4 w-56 min-h-full bg-base-200 text-base-content"></ul>
+            <label htmlFor="my-drawer" className="drawer-overlay"/>
+            <ul className="menu pt-24 p-4 w-56 min-h-full bg-base-200 text-base-content rounded-r-xl"></ul>
         </div>
     </div>
 );
