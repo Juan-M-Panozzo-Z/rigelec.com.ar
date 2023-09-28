@@ -12,13 +12,14 @@ const LoginModal = () => {
         signIn("credentials", {
             email: data.email,
             password: data.password,
+            redirect: false,
         });
     };
 
     return (
         <>
             <button
-                className="p-2 bg-secondary rounded-full w-8 h-8 flex items-center justify-center hover:bg-secondary-focus transition-all duration-200"
+                className="p-2 bg-info rounded-full w-8 h-8 flex items-center justify-center hover:bg-info-focus transition-all duration-200"
                 onClick={() =>
                     document.getElementById("loginModal").showModal()
                 }
