@@ -33,9 +33,18 @@ const LoginModal = () => {
                 <AiOutlineUser className="w-4 h-4 text-white" />
             </button>
             <dialog id="loginModal" className="modal sm:modal-middle">
-                <div className="modal-box w-3/4">
+                <div className="modal-box md:w-3/4">
                     <>
-                        <h3 className="font-bold text-lg">Iniciar sesión</h3>
+                        <div className="space-y-2">
+                            <h3 className="font-bold text-lg">
+                                ¿Sos instalador?
+                            </h3>
+                            <p className="text-sm">
+                                Inicia sesión para acceder a tu perfil, podrás
+                                publicitarte de manera gratuita en nuestro sitio
+                                web y llegar a más clientes.
+                            </p>
+                        </div>
                         <form
                             className="flex flex-col gap-2"
                             onSubmit={handleSubmit(onSubmit)}
