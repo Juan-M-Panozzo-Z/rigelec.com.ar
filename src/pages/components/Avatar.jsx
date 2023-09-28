@@ -1,12 +1,15 @@
+import { useSession } from "next-auth/react";
+import Link from "next/link";
 import { GoPerson, GoMoveToEnd } from "react-icons/go";
 import { signOut } from "next-auth/react";
-import Link from "next/link";
 
 const Avatar = () => {
+    const { data: session } = useSession();
+    console.log(session);
     return (
         <details className="dropdown dropdown-bottom dropdown-end">
-            <summary className="btn btn-sm text-[10px] rounded-full btn-info text-white">
-                Mi perfil
+            <summary className="btn btn-sm text-[10px] md:text-xs capitalize rounded-full btn-info shadow-xl text-white">
+                {session?.user?.name}
             </summary>
             <ul
                 tabIndex={0}
@@ -17,8 +20,10 @@ const Avatar = () => {
                         href={"/profile"}
                         className="flex gap-1 justify-end items-center"
                     >
-                        <GoPerson className="" />
-                        <span className="text-[10px]">Mi perfil</span>
+                        <GoPerson />
+                        <span className="text-[10px] md:text-xs">
+                            Mi perfil
+                        </span>
                     </Link>
                 </li>
                 <li>
@@ -26,8 +31,10 @@ const Avatar = () => {
                         className="flex gap-1 justify-end items-center bg-error text-white"
                         onClick={() => signOut()}
                     >
-                        <GoMoveToEnd className="" />
-                        <span className="text-[10px]">Cerrar sesión</span>
+                        <GoMoveToEnd />
+                        <span className="text-[10px] md:text-xs">
+                            Cerrar sesión
+                        </span>
                     </button>
                 </li>
             </ul>
