@@ -4,7 +4,6 @@ import { getServerSession } from "next-auth";
 import NoSession from "@/components/NoSession";
 import Footer from "@/pages/components/Footer";
 import Navbar from "@/pages/components/Navbar";
-import WhatsappButton from "@/pages/components/WhatsappButton";
 
 export const metadata = {
     title: "Perfil | Rigelec",
