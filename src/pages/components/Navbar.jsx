@@ -36,7 +36,7 @@ export default function Navbar() {
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 1) {
-                setNavbarBg("bg-base-100");
+                setNavbarBg("bg-base-100 shadow-md");
             } else {
                 setNavbarBg("bg-transparent");
             }
