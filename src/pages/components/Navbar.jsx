@@ -63,7 +63,7 @@ export default function Navbar() {
                             <CiMenuBurger
                                 className={`w-6 h-6 ${
                                     navbarBg == "bg-transparent"
-                                        ? "text-white"
+                                        ? "text-base-300"
                                         : "text-secondary"
                                 }`}
                             />
