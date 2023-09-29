@@ -98,7 +98,7 @@ export default function Navbar() {
                             <button
                                 className={`btn btn-sm rounded-full ${
                                     navbarBg == "bg-transparent"
-                                        ? "btn-primary text-white"
+                                        ? "btn-primary text-white shadow-xl"
                                         : "btn-ghost"
                                 }`}
                                 key={link.name}
@@ -110,11 +110,7 @@ export default function Navbar() {
                 </div>
                 <div className="navbar-end space-x-2 min-w-max">
                     <GrowattData />
-                    {status === "authenticated" ? (
-                        <Avatar />
-                    ) : (
-                        <LoginModal />
-                    )}
+                    {status === "authenticated" ? <Avatar /> : <LoginModal />}
                 </div>
             </div>
         </div>

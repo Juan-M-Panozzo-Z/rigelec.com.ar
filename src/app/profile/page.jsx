@@ -1,12 +1,26 @@
+import prisma from "../../../lib/prisma";
 import { getServerSession } from "next-auth";
+import UserForm from "./components/UserForm";
 
 const ProfilePage = async () => {
     const session = await getServerSession();
+    const user = await getUserData(session);
+    console.log(user);
+
     return (
-        <section className="pt-32 grid place-content-center">
-            <h1>{`Bienvenido ${session.user.name}!`}</h1>
+        <section className="mt-24 w-4/5 mx-auto border rounded-box">
+            <UserForm user={user} />
         </section>
     );
+};
+
+const getUserData = async (session) => {
+    const user = await prisma.user.findUnique({
+        where: {
+            email: session.user.email,
+        },
+    });
+    return user;
 };
 
 export default ProfilePage;
