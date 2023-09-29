@@ -7,7 +7,7 @@ const ProfilePage = async () => {
     return (
         session && (
             <section className="mt-24 w-4/5 mx-auto border rounded-box">
-                <UserForm user={session.user} />
+                <UserForm user={session} />
             </section>
         )
     );
