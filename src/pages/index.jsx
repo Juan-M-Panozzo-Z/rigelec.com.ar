@@ -41,14 +41,14 @@ export default function Home() {
             return skeletonCards;
         } else {
             return articles.map((article) => {
-                if (article.perfil !== "COMPRAS") {
+                if (article) {
                     return (
                         <Card
-                            key={article.id}
-                            title={article.descripcion}
-                            subtitle={article.marca.nombre}
-                            description={`${article.modelo} ${article.medida}`}
-                            image={`https://paljet.rigelec.com.ar/imagenes/articulos/${article.id}`}
+                            key={article?.id}
+                            title={article?.descripcion}
+                            subtitle={article?.marca.nombre}
+                            description={`${article?.modelo} ${article?.medida}`}
+                            image={`https://paljet.rigelec.com.ar/imagenes/articulos/${article?.id}`}
                         />
                     );
                 }
