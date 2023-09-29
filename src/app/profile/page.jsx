@@ -4,13 +4,12 @@ import UserForm from "./components/UserForm";
 
 const ProfilePage = async () => {
     const session = await getServerSession();
-    const user = await getUserData(session);
-    console.log(user);
-
     return (
-        <section className="mt-24 w-4/5 mx-auto border rounded-box">
-            <UserForm user={user} />
-        </section>
+        session && (
+            <section className="mt-24 w-4/5 mx-auto border rounded-box">
+                <UserForm user={session.user} />
+            </section>
+        )
     );
 };
 
