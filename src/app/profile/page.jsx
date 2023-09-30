@@ -7,7 +7,7 @@ const ProfilePage = async () => {
     const user = await getUserData(session);
     return (
         session && (
-            <section className="mt-24 w-4/5 mx-auto border rounded-box">
+            <section className="w-4/5 mx-auto border rounded-box">
                 <UserForm user={user} />
             </section>
         )

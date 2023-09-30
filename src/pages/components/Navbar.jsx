@@ -16,6 +16,10 @@ const links = [
         url: "/",
     },
     {
+        name: "Nosotros",
+        url: "/nosotros",
+    },
+    {
         name: "Distribuidores",
         url: "https://clientes.rigelec.com.ar/",
     },
