@@ -5,10 +5,11 @@ import UserForm from "./components/UserForm";
 const ProfilePage = async () => {
     const session = await getServerSession();
     const user = await getUserData(session);
+    const installers = await getInstallers();
     return (
         session && (
-            <section className="w-4/5 mx-auto border rounded-box">
-                <UserForm user={user} />
+            <section className="w-4/5 mx-auto">
+                <UserForm user={user} installers={installers} />
             </section>
         )
     );
@@ -18,9 +19,16 @@ const getUserData = async (session) => {
     const user = await prisma.user.findUnique({
         where: {
             email: session.user.email,
-        },
+        }, include: {
+            installer: true
+        }
     });
     return user;
 };
+
+const getInstallers = async () => {
+    const installers = await prisma.installer.findMany();
+    return installers;
+}
 
 export default ProfilePage;

@@ -9,15 +9,20 @@ export async function POST(req) {
                 email,
             },
             data: {
-                ...userUpdate,
-            },
+                installerId: userUpdate.installer.id,
+                name: userUpdate.name,
+                lastname: userUpdate.lastname,
+                phone: userUpdate.phone,
+            }
         });
         return NextResponse.json({
             message: "User updated",
+            user
         });
     } catch (error) {
         return NextResponse.json({
             message: "User not updated",
+            error
         });
     }
 }

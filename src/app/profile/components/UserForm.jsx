@@ -1,7 +1,26 @@
 "use client";
+import axios from "axios";
 import Image from "next/image";
+import { useState } from "react";
 
-const UserForm = ({ user }) => {
+const UserForm = ({ user, installers }) => {
+    const [userData, setUserData] = useState(user);
+    const [loading, setLoading] = useState(false);
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        setLoading(true);
+        axios
+            .post("/api/user/update", userData)
+            .then((res) => {
+                setLoading(false);
+            })
+            .catch((err) => {
+                console.log(err);
+                setLoading(false);
+            });
+    };
+
     return (
         <section className="p-4 grid grid-cols-3">
             <div
@@ -18,20 +37,68 @@ const UserForm = ({ user }) => {
                 />
             </div>
             <div className="col-span-2">
-                <h2 className="md:text-2xl">{`¡Bienvenid@ ${user?.name}!`}</h2>
-                <p className="text-[10px] md:text-sm text-gray-500">{`CUIT: ${user?.cuit}`}</p>
+                <h2 className="md:text-2xl">{`¡Bienvenid@ ${userData?.name}!`}</h2>
+                <p className="text-[10px] md:text-sm text-gray-500">{`CUIT: ${userData?.cuit}`}</p>
             </div>
             <div className="col-span-3 mt-4">
                 <h3 className="md:text-xl text-center">
                     Perfil del instalador
                 </h3>
-                <form className="md:grid md:grid-cols-2 gap-4">
+                <form className="flex flex-col gap-4">
+                    <div className="form-control w-full">
+                        <label className="label">
+                            <span className="label-text">
+                                Tipo de instalador
+                            </span>
+                        </label>
+                        <select
+                            className="select select-bordered w-full"
+                            value={userData?.installer?.id || ""}
+                            onChange={(e) =>
+                                setUserData({
+                                    ...userData,
+                                    installer: { id: e.target.value },
+                                })
+                            }
+                        >
+                            <option value="">Seleccionar</option>
+                            {installers.map((installer) => (
+                                <option key={installer.id} value={installer.id}>
+                                    {installer.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="form-control w-full">
+                        <label className="label">
+                            <span className="label-text">Email</span>
+                        </label>
+                        <input
+                            disabled
+                            value={userData?.email}
+                            onChange={(e) =>
+                                setUserData({
+                                    ...userData,
+                                    email: e.target.value,
+                                })
+                            }
+                            type="text"
+                            placeholder="Nombre"
+                            className="input input-bordered"
+                        />
+                    </div>
                     <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text">Nombre</span>
                         </label>
                         <input
-                            value={user?.name}
+                            value={userData?.name}
+                            onChange={(e) =>
+                                setUserData({
+                                    ...userData,
+                                    name: e.target.value,
+                                })
+                            }
                             type="text"
                             placeholder="Nombre"
                             className="input input-bordered"
@@ -42,7 +109,13 @@ const UserForm = ({ user }) => {
                             <span className="label-text">Apellido</span>
                         </label>
                         <input
-                            value={user?.lastname}
+                            value={userData?.lastname}
+                            onChange={(e) =>
+                                setUserData({
+                                    ...userData,
+                                    lastname: e.target.value,
+                                })
+                            }
                             type="text"
                             placeholder="Apellido"
                             className="input input-bordered"
@@ -53,7 +126,8 @@ const UserForm = ({ user }) => {
                             <span className="label-text">CUIT</span>
                         </label>
                         <input
-                            value={user?.cuit}
+                            value={userData?.cuit}
+                            disabled
                             type="number"
                             placeholder="cuit"
                             className="input input-bordered"
@@ -64,12 +138,29 @@ const UserForm = ({ user }) => {
                             <span className="label-text">Teléfono</span>
                         </label>
                         <input
-                            value={user?.phone}
+                            value={userData?.phone}
+                            onChange={(e) =>
+                                setUserData({
+                                    ...userData,
+                                    phone: e.target.value,
+                                })
+                            }
                             type="number"
                             placeholder="Teléfono"
                             className="input input-bordered"
                         />
                     </div>
+                    <button
+                        disabled={loading}
+                        onClick={handleFormSubmit}
+                        className="btn btn-primary text-white col-span-2"
+                    >
+                        {loading ? (
+                            <span className="loading loading-spinner loading-md"></span>
+                        ) : (
+                            "Guardar cambios"
+                        )}
+                    </button>
                 </form>
             </div>
         </section>
