@@ -12,9 +12,9 @@ const RootLayout = async ({ children }) => {
     return (
         <html lang="en">
             <NextAuthProvider>
-                <body>
+                <body className="bg-gradient-to-br from-primary/40 from-15% via-secondary/20 to-primary/40 to-85%">
                     <Navbar />
-                    <section className="mt-24 p-4 min-h-screen">
+                    <section className="pt-24 p-4 min-h-screen">
                         {children}
                     </section>
                     <Footer />
