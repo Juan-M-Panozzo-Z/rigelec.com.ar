@@ -27,19 +27,19 @@ const ProfileLayout = async ({ children }) => {
                     <label htmlFor="my-drawer" className="drawer-overlay" />
                     <ul className="menu pt-24 p-4 w-56 min-h-full bg-base-200 text-left">
                         <li>
-                            <Link href="profile">
+                            <Link href="/profile">
                                 <FaUser />
                                 <span className="ml-1">Tu perfil</span>
                             </Link>
                         </li>
                         <li>
-                            <Link href="profile/projects">
+                            <Link href="/profile/projects">
                                 <FaTools />
                                 <span className="ml-1">Tus proyectos</span>
                             </Link>
                         </li>
                         <li>
-                            <Link href="profile/contacts">
+                            <Link href="/profile/contacts">
                                 <FaPhoneAlt />
                                 <span className="ml-1">Metodos de contacto</span>
                             </Link>
