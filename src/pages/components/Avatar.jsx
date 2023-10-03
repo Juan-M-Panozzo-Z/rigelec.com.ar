@@ -5,7 +5,6 @@ import { signOut } from "next-auth/react";
 
 const Avatar = () => {
     const { data: session } = useSession();
-    console.log(session);
     return (
         <details className="dropdown dropdown-bottom dropdown-end">
             <summary className="btn btn-sm text-[10px] md:text-xs capitalize rounded-full btn-info shadow-xl text-white">
