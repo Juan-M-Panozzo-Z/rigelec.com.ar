@@ -13,6 +13,9 @@ const links = [
         name: "Distribuidores",
         url: "https://clientes.rigelec.com.ar/",
     },
+];
+
+const personalLinks = [
     {
         name: "Soporte",
         url: "https://rigelec.freshdesk.com/support/home",
@@ -20,7 +23,7 @@ const links = [
     {
         name: "Rigelec Cloud",
         url: "https://cloud.rigelec.com.ar/",
-    }
+    },
 ];
 
 export default function Navbar() {
@@ -77,6 +80,12 @@ export default function Navbar() {
                                     <Link href={link.url}>{link.name}</Link>
                                 </li>
                             ))}
+                            <div className="divider">Acceso para personal</div>
+                            {personalLinks.map((link) => (  
+                                <li key={link.name}>
+                                    <Link href={link.url}>{link.name}</Link>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                     <Link
@@ -106,6 +115,28 @@ export default function Navbar() {
                                 <Link href={link.url}>{link.name}</Link>
                             </button>
                         ))}
+                        <div className="dropdown">
+                            <button
+                                tabIndex={0}
+                                className={`btn btn-sm rounded-full ${
+                                    navbarBg == "bg-transparent"
+                                        ? "btn-primary text-white"
+                                        : "btn-ghost"
+                                }`}
+                            >
+                                Acceso para Personal
+                            </button>
+                            <ul
+                                tabIndex={0}
+                                className="menu menu-md dropdown-content mt-4 z-[1] p-2 shadow bg-base-100 rounded-box w-56"
+                            >
+                                {personalLinks.map((link) => (
+                                    <li key={link.name}>
+                                        <Link href={link.url}>{link.name}</Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </ul>
                 </div>
                 <div className="navbar-end">
