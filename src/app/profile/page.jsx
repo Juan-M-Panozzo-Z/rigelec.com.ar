@@ -8,7 +8,7 @@ const ProfilePage = async () => {
     const installers = await getInstallers();
     return (
         session && (
-            <section className="px-4 md:px-0 md:w-4/5 mx-auto">
+            <section className="p-4 md:w-4/5 mx-auto">
                 <UserForm user={user} installers={installers} />
             </section>
         )
