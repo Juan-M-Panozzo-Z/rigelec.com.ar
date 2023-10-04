@@ -22,7 +22,7 @@ const UserForm = ({ user, installers }) => {
     };
 
     return (
-        <section className="p-8 grid grid-cols-3 bg-white/50 rounded-box">
+        <section className="p-8 grid grid-cols-3 bg-white/30 backdrop-filter backdrop-blur-md rounded-box">
             <div
                 className="col-span-1 flex items-center tooltip"
                 data-tip="Cambiar avatar"
@@ -36,7 +36,7 @@ const UserForm = ({ user, installers }) => {
                     className="hover:opacity-75 ease-in-out duration-200 rounded-full"
                 />
             </div>
-            <div className="col-span-2 w-full">
+            <div className="col-span-2 w-full text-right">
                 <h2 className="md:text-4xl">{`¡Bienvenid@ ${userData?.name}!`}</h2>
                 <p className="text-[10px] md:text-base text-gray-500">{`CUIT: ${userData?.cuit}`}</p>
             </div>
