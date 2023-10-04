@@ -17,15 +17,15 @@ const ProfileLayout = async ({ children }) => {
                 <div className="drawer-content">
                     <label
                         htmlFor="my-drawer"
-                        className="fixed left-2 inset-y-1/2 drawer-overlay btn btn-ghost text-primary wiggle-animation"
+                        className="fixed left-2 inset-y-1/2 drawer-overlay btn btn-ghost text-primary wiggle-animation z-10"
                     >
                         <FaChevronRight />
                     </label>
                     {children}
                 </div>
-                <div className="drawer-side">
+                <div className="drawer-side z-10">
                     <label htmlFor="my-drawer" className="drawer-overlay" />
-                    <ul className="menu pt-24 p-4 w-56 min-h-full bg-base-200 text-left">
+                    <ul className="menu pt-24 p-4 w-44 min-h-full bg-white text-left">
                         <li>
                             <Link href="/profile">
                                 <FaUser />
