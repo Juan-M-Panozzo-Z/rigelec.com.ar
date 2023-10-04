@@ -66,6 +66,24 @@ const UserForm = ({ user, installers }) => {
                     </div>
                     <div className="form-control w-full">
                         <label className="label">
+                            <span className="label-text">Matricula</span>
+                        </label>
+                        <input
+                            disabled
+                            value={userData?.matricula}
+                            onChange={(e) =>
+                                setUserData({
+                                    ...userData,
+                                    matricula: e.target.value,
+                                })
+                            }
+                            type="text"
+                            placeholder="Matricula"
+                            className="input input-bordered"
+                        />
+                    </div>
+                    <div className="form-control w-full">
+                        <label className="label">
                             <span className="label-text">Email</span>
                         </label>
                         <input
@@ -78,7 +96,7 @@ const UserForm = ({ user, installers }) => {
                                 })
                             }
                             type="text"
-                            placeholder="Nombre"
+                            placeholder="Email"
                             className="input input-bordered"
                         />
                     </div>
