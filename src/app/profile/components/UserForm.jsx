@@ -22,7 +22,7 @@ const UserForm = ({ user, installers }) => {
     };
 
     return (
-        <section className="p-8 grid grid-cols-3 bg-white/30 backdrop-filter backdrop-blur-md rounded-box">
+        <section className="p-8 grid grid-cols-3 bg-white/30 rounded-box">
             <div
                 className="col-span-1 flex items-center tooltip"
                 data-tip="Cambiar avatar"
