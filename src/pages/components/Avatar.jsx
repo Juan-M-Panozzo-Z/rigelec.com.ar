@@ -8,8 +8,13 @@ const Avatar = () => {
     const router = useRouter();
 
     const handleSignOut = () => {
-        signOut();
-        router.push("/");
+        signOut()
+            .then(() => {
+                router.push("/");
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     }
 
     const { data: session } = useSession();

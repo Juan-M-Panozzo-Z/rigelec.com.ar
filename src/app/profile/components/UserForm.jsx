@@ -23,20 +23,16 @@ const UserForm = ({ user, installers }) => {
 
     return (
         <section className="grid grid-cols-3 bg-white/30 rounded-box">
-            <div className="p-8 rounded-box col-span-3 flex flex-col md:flex-row gap-4 items-center justify-between bg-white/40">
+            <div style={style} className="p-8 rounded-box col-span-3">
                 <div className="tooltip" data-tip="Cambiar avatar">
                     <Image
                         onClick={() => console.log("click")}
                         src={"/assets/rigelec-app/samples/instalador.jpg"}
                         alt="Avatar"
-                        width={150}
-                        height={150}
-                        className="hover:opacity-75 ease-in-out duration-200 rounded-full aspect-square object-cover h-24 w-24"
+                        width={200}
+                        height={200}
+                        className="border-4 border-white shadow-lg rounded-full object-cover w-20 h-20 translate-y-20 md:h-32 md:w-32"
                     />
-                </div>
-                <div className="text-right">
-                    <h2 className="md:text-4xl">{`¡Bienvenid@ ${userData?.name}!`}</h2>
-                    <p className="text-[10px] md:text-base text-gray-500">{`CUIT: ${userData?.cuit}`}</p>
                 </div>
             </div>
             <div className="p-8 col-span-3 mt-4">
@@ -164,6 +160,13 @@ const UserForm = ({ user, installers }) => {
             </div>
         </section>
     );
+};
+
+const style = {
+    backgroundImage: "url('/assets/rigelec-app/samples/portada.jpg')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
 };
 
 export default UserForm;

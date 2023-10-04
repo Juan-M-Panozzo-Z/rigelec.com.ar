@@ -25,3 +25,19 @@
         animation: none;
     }
 }
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: calc(480 / 1080 * 100%); /* Calcula la proporción de aspecto de la imagen (480/1080) y establece el padding-bottom en función de esa proporción */
+  }
+
+  .image-container img[alt="portada"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
