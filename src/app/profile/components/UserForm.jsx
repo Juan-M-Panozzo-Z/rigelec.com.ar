@@ -31,7 +31,7 @@ const UserForm = ({ user, installers }) => {
                         alt="Avatar"
                         width={200}
                         height={200}
-                        className="border-4 border-white shadow-lg rounded-full object-cover w-20 h-20 translate-y-20 md:h-32 md:w-32"
+                        className="outline outline-2 outline-base-200 rounded-full object-cover w-20 h-20 translate-y-20 md:h-32 md:w-32"
                     />
                 </div>
             </div>
