@@ -25,7 +25,7 @@ const ProfileLayout = async ({ children }) => {
                 </div>
                 <div className="drawer-side z-10">
                     <label htmlFor="my-drawer" className="drawer-overlay" />
-                    <ul className="menu pt-24 p-4 w-56 min-h-full bg-white/40 backdrop-filter backdrop-blur-xl text-left">
+                    <ul className="menu pt-28 p-4 w-56 min-h-full bg-white rounded-r-xl backdrop-filter backdrop-blur-xl text-left">
                         <li>
                             <Link href="/profile">
                                 <FaUser />

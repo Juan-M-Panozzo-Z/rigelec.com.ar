@@ -22,25 +22,24 @@ const UserForm = ({ user, installers }) => {
     };
 
     return (
-        <section className="p-8 grid grid-cols-3 bg-white/30 rounded-box">
-            <div
-                className="col-span-1 flex items-center tooltip"
-                data-tip="Cambiar avatar"
-            >
-                <Image
-                    onClick={() => console.log("click")}
-                    src={"assets/logos/original.svg"}
-                    alt="Rigelec logo"
-                    width={200}
-                    height={200}
-                    className="hover:opacity-75 ease-in-out duration-200 rounded-full"
-                />
+        <section className="grid grid-cols-3 bg-white/30 rounded-box">
+            <div className="p-8 rounded-box col-span-3 flex flex-col md:flex-row gap-4 items-center justify-between bg-white/40">
+                <div className="tooltip" data-tip="Cambiar avatar">
+                    <Image
+                        onClick={() => console.log("click")}
+                        src={"/assets/rigelec-app/samples/instalador.jpg"}
+                        alt="Avatar"
+                        width={150}
+                        height={150}
+                        className="hover:opacity-75 ease-in-out duration-200 rounded-full aspect-square object-cover h-24 w-24"
+                    />
+                </div>
+                <div className="text-right">
+                    <h2 className="md:text-4xl">{`¡Bienvenid@ ${userData?.name}!`}</h2>
+                    <p className="text-[10px] md:text-base text-gray-500">{`CUIT: ${userData?.cuit}`}</p>
+                </div>
             </div>
-            <div className="col-span-2 w-full text-right">
-                <h2 className="md:text-4xl">{`¡Bienvenid@ ${userData?.name}!`}</h2>
-                <p className="text-[10px] md:text-base text-gray-500">{`CUIT: ${userData?.cuit}`}</p>
-            </div>
-            <div className="col-span-3 mt-4">
+            <div className="p-8 col-span-3 mt-4">
                 <h3 className="md:text-xl text-center">
                     Perfil del instalador
                 </h3>
