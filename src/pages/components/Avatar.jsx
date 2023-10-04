@@ -2,8 +2,16 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { GoPerson, GoMoveToEnd } from "react-icons/go";
 import { signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const Avatar = () => {
+    const router = useRouter();
+
+    const handleSignOut = () => {
+        signOut();
+        router.push("/");
+    }
+
     const { data: session } = useSession();
     return (
         <details className="dropdown dropdown-bottom dropdown-end">
@@ -28,7 +36,7 @@ const Avatar = () => {
                 <li>
                     <button
                         className="flex gap-1 justify-end items-center bg-error text-white"
-                        onClick={() => signOut()}
+                        onClick={handleSignOut}
                     >
                         <GoMoveToEnd />
                         <span className="text-[10px] md:text-xs">
