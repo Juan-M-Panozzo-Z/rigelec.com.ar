@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Footer() {
     return (
-        <footer className="footer p-10 bg-white/30 items-center justify-around rounded-box">
+        <footer className="footer border-t p-10 bg-white/30 items-center justify-around rounded-box">
             <aside>
                 <Image
                     src="/assets/logos/original.svg"
