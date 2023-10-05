@@ -2,27 +2,10 @@ import Image from "next/image";
 
 const ItemTimeLine = ({ image, date, text, align }) => {
     return (
-        <div className={align == "left" ? " self-start" : "self-end"}>
-            <div className="relative p-4 max-w-lg">
-                <div>
-                    <span
-                        id="fecha"
-                        className={`bg-secondary-content p-4 w-36 h-auto rounded-box shadow-lg text-3xl font-semibold text-secondary-focus text-center uppercase absolute transform top-[100px] ${
-                            align === "left" ? "-right-[50px]" : "-left-[50px]"
-                        }`}
-                    >
-                        {date || "1988"}
-                    </span>
-                    <div
-                        className={`hidden xl:block absolute divider divider-vertical -z-10 transform top-[120px] ${
-                            align === "left"
-                                ? "2xl:-right-[200px]"
-                                : "2xl:-left-[200px]"
-                        } h-px w-full bg-secondary-content`}
-                    ></div>
-                </div>
+            <div className={`mx-auto ${align == "left" ? " self-start" : "self-end"}`}>
+            <div className="flex flex-row gap-4">
                 <Image
-                    className="w-full rounded-box shadow-2xl"
+                    className="w-1/2 rounded-box shadow-2xl m-4"
                     src={
                         image ||
                         "https://fastly.picsum.photos/id/560/536/354.jpg?hmac=TI8joEROYkgTwHMV_Wza2YJSQ1jS2sMNq-BcpFVxoMM"
@@ -31,10 +14,15 @@ const ItemTimeLine = ({ image, date, text, align }) => {
                     width={536}
                     height={354}
                 />
+                <div className="space-y-2 p-4 border-l-2">
+                <h3 className="text-3xl font-bold text-gray-700">
+                    {date || "2023"}
+                    </h3>
                 <p className="mt-4 text-secondary-focus">
                     {text ||
                         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum."}
                 </p>
+                </div>
             </div>
         </div>
     );

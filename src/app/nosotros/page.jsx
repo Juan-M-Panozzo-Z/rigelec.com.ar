@@ -6,8 +6,7 @@ const NosotrosPage = () => {
     return (
         <Section>
             <SectionTitle title="Nosotros" />
-            <div className="flex flex-col relative">
-                <div className="hidden xl:block absolute divider divider-horizontal left-1/2 transform -translate-x-1/2 top-0 w-px h-full bg-secondary-content mx-auto"></div>
+            <div className="border-l">
                 <ItemTimeline align={"left"} />
                 <ItemTimeline align={"right"} />
                 <ItemTimeline align={"left"} />
