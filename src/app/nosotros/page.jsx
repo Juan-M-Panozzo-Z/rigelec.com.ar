@@ -6,7 +6,7 @@ const NosotrosPage = () => {
     return (
         <Section>
             <SectionTitle title="Nosotros" />
-            <div className="border-l">
+            <div>
                 <ItemTimeline align={"left"} />
                 <ItemTimeline align={"right"} />
                 <ItemTimeline align={"left"} />
