@@ -28,7 +28,7 @@ const paragraphs = [
 const Items = ({ paragraphs }) =>
     paragraphs.map((paragraph, index) => (
         <div key={index} className="">
-            <h3 className="text-2xl py-2 px-4 bg-base-200 rounded-box">{paragraph.title}</h3>
+            <h3 className="text-2xl py-2 px-4 bg-base-200/30 rounded-box">{paragraph.title}</h3>
             <p className="indent-4 p-4">{paragraph.text}</p>
         </div>
     ));
