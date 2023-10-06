@@ -21,7 +21,7 @@ const links = [
     },
     {
         name: "Distribuidores",
-        url: "https://clientes.rigelec.com.ar/",
+        url: "/distribuidores",
     },
 ];
 
