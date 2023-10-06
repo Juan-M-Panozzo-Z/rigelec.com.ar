@@ -24,14 +24,20 @@ const paragraphs = [
     },
 ];
 
-
-const Items = ({ paragraphs }) =>
-    paragraphs.map((paragraph, index) => (
-        <div key={index} className="">
-            <h3 className="text-2xl py-2 px-4 bg-base-200/30 rounded-box">{paragraph.title}</h3>
-            <p className="indent-4 p-4">{paragraph.text}</p>
+const Items = ({ paragraphs }) => {
+    return (
+        <div className="grid md:grid-cols-2 gap-4">
+            {paragraphs.map((paragraph, index) => (
+                <div key={index} className="">
+                    <h3 className="text-2xl py-2 px-4 bg-base-200/30 rounded-box">
+                        {paragraph.title}
+                    </h3>
+                    <p className="indent-4 p-4">{paragraph.text}</p>
+                </div>
+            ))}
         </div>
-    ));
+    );
+};
 
 const NosotrosPage = () => {
     return (
@@ -39,7 +45,9 @@ const NosotrosPage = () => {
             <div className="container mx-auto space-y-8">
                 <Items paragraphs={paragraphs} />
                 <div className="space-y-2">
-                    <h3 className="text-2xl py-2 px-4 bg-base-200 rounded-box">Nuestra historia</h3>
+                    <h3 className="text-2xl py-2 px-4 bg-base-200/30 rounded-box">
+                        Nuestra historia
+                    </h3>
                     <ItemTimeline
                         date={"1988"}
                         text={
