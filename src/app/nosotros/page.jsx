@@ -1,4 +1,4 @@
-import Section from "@/pages/components/Section";
+import Section from "@/components/Section";
 import ItemTimeline from "./components/ItemTimeline";
 
 const paragraphs = [
@@ -42,7 +42,7 @@ const Items = ({ paragraphs }) => {
 const NosotrosPage = () => {
     return (
         <Section>
-            <div className="container mx-auto space-y-8">
+            <div className="container mx-auto space-y-8 mt-32">
                 <Items paragraphs={paragraphs} />
                 <div className="space-y-2">
                     <h3 className="text-2xl py-2 px-4 bg-base-200/30 rounded-box">

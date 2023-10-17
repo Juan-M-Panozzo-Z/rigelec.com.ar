@@ -1,8 +1,10 @@
-import IndexLayout from "./layouts/indexLayout";
+'use client'
+
+import IndexLayout from "../layout";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Player } from "@lottiefiles/react-lottie-player";
-import Section from "./components/Section";
+import Section from "@/components/Section";
 
 export default function Growatt() {
     const [growattData, setGrowattData] = useState({

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Player, Controls } from "@lottiefiles/react-lottie-player";
+import { Player } from "@lottiefiles/react-lottie-player";
 import axios from "axios";
 import Link from "next/link";
 
@@ -14,7 +14,6 @@ export default function GrowattData() {
             .get("/api/growatt")
             .then(({ data }) => {
                 setGrowattData(data);
-                console.log(data);
             })
             .catch((error) => {
                 console.log(error);

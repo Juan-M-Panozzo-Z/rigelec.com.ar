@@ -1,3 +1,4 @@
+'use client'
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { GoPerson, GoMoveToEnd } from "react-icons/go";
@@ -10,9 +11,11 @@ const Avatar = () => {
     const handleSignOut = () => {
         signOut()
             .then(() => {
+                console.log("Sesión cerrada")
                 router.push("/");
             })
             .catch((err) => {
+                console.log("Error al cerrar sesión")
                 console.log(err);
             });
     }

@@ -1,20 +1,15 @@
-import "../styles/globals.css";
+import "@/styles/globals.css";
 import { NextAuthProvider } from "@/components/Provider";
-import Footer from "@/pages/components/Footer";
-import Navbar from "@/pages/components/Navbar";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 
-export const metadata = {
-    title: "Rigelec profile",
-    description: "Rigelec S.R.L.",
-};
-
-const RootLayout = async ({ children }) => {
+const RootLayout = ({ children }) => {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
             <NextAuthProvider>
-                <body >
+                <body>
                     <Navbar />
-                    <section className="pt-24 p-4 min-h-screen">
+                    <section className="min-h-screen">
                         {children}
                     </section>
                     <Footer />
