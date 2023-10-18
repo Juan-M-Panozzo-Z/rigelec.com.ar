@@ -17,7 +17,7 @@ const ProfileLayout = async ({ children }) => {
           >
             <FaChevronRight />
           </label>
-          <section className="mt-24">{children}</section>
+          <section className="mt-24 p-4 md:p-0">{children}</section>
         </div>
         <div className="drawer-side z-10">
           <label htmlFor="my-drawer" className="drawer-overlay" />
