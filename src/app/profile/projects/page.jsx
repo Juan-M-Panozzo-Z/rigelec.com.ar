@@ -57,17 +57,15 @@ const ProjectsPage = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {projects?.map((project) => (
                             <div className="card shadow-lg" key={project?.id}>
-                                <div className="card-body">
-                                    <h3 className="font-bold text-xl">
-                                        {project?.name}
-                                    </h3>
-                                    <p className="text-sm text-gray-500">
-                                        {project?.date.toLocaleString({
-                                            day: "numeric",
-                                            month: "long",
-                                            year: "numeric",
-                                        }) || "Sin fecha"}
-                                    </p>
+                                <div className="card-body space-y-2">
+                                    <div className="flex flex-col gap-1">
+                                        <h3 className="font-bold text-xl">
+                                            {project?.name}
+                                        </h3>
+                                        <p className="text-sm text-gray-500">
+                                            {project?.date.split("T")[0]}
+                                        </p>
+                                    </div>
                                     <p className="text-sm text-gray-500">
                                         {project?.description}
                                     </p>
@@ -95,7 +93,7 @@ const ProjectsPage = () => {
                             <input
                                 type="text"
                                 placeholder="proyecto 1"
-                                className="input input-bordered"
+                                className="input input-bordered w-full"
                                 {...register("name", {
                                     required: true,
                                     minLength: 3,
@@ -110,7 +108,7 @@ const ProjectsPage = () => {
                             <input
                                 type="date"
                                 placeholder={new Date()}
-                                className="input input-bordered"
+                                className="input input-bordered w-full"
                                 {...register("date", {
                                     required: true,
                                 })}
@@ -135,7 +133,7 @@ const ProjectsPage = () => {
                             <input
                                 type="text"
                                 placeholder="URL de la Imagen"
-                                className="input input-bordered"
+                                className="input input-bordered w-full"
                                 {...register("image", {
                                     pattern: {
                                         value: /https?:\/\/.*\.(?:png|jpg)/i,
@@ -158,7 +156,7 @@ const ProjectsPage = () => {
                                         .getElementById("createProyect")
                                         .close()
                                 }
-                                className="btn btn-secondary"
+                                className="btn btn-secondary text-white"
                             >
                                 Cerrar
                             </button>
