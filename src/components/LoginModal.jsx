@@ -8,6 +8,7 @@ import { AiOutlineUser } from "react-icons/ai";
 import { useState, useRef } from "react";
 
 const LoginModal = () => {
+    const windowSize = window.innerWidth;
     const recaptchaRef = useRef();
     const router = useRouter();
     const [loading, setLoading] = useState(false);
@@ -38,6 +39,14 @@ const LoginModal = () => {
                 .finally(() => {
                     setLoading(false);
                 });
+        }
+    };
+
+    const sizeRECaptcha = () => {
+        if (windowSize < 640) {
+            return "compact";
+        } else {
+            return "normal";
         }
     };
 
@@ -99,13 +108,15 @@ const LoginModal = () => {
                                     </span>
                                 )}
                             </div>
+
                             <ReCAPTCHA
                                 ref={recaptchaRef}
                                 sitekey={
                                     process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY
                                 }
-                                size="normal"
+                                size={sizeRECaptcha()}
                             />
+
                             <div className="modal-action">
                                 <button
                                     type="submit"
