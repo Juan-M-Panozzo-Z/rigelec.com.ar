@@ -8,7 +8,7 @@ import { AiOutlineUser } from "react-icons/ai";
 import { useState, useRef } from "react";
 
 const LoginModal = () => {
-    const windowSize = window.innerWidth;
+    const windowSize = window?.innerWidth;
     const recaptchaRef = useRef();
     const router = useRouter();
     const [loading, setLoading] = useState(false);
