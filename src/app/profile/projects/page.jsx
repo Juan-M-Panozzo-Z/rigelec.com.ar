@@ -33,17 +33,8 @@ const ProjectsPage = () => {
             ...values,
             userId: user.id,
         });
-        refreshProjects();
         document.getElementById("createProyect").close();
     };
-
-    const refreshProjects = () => {
-        setLoading(true);
-        fetchProjects(user).then(({ data }) => {
-            setProjects(data);
-            setLoading(false);
-        });
-    }
 
     return (
         <>
