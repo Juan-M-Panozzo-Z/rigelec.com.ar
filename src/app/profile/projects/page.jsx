@@ -33,9 +33,17 @@ const ProjectsPage = () => {
             ...values,
             userId: user.id,
         });
+        refreshProjects();
         document.getElementById("createProyect").close();
-        router.refresh();
     };
+
+    const refreshProjects = () => {
+        setLoading(true);
+        fetchProjects(user).then(({ data }) => {
+            setProjects(data);
+            setLoading(false);
+        });
+    }
 
     return (
         <>
