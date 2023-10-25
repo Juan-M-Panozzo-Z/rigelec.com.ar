@@ -15,6 +15,8 @@ export async function GET(req) {
             lastname: true,
             password: false,
         },
+        
+        
     });
 
     return NextResponse.json(user);

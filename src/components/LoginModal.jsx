@@ -1,16 +1,17 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import ReCAPTCHA from "react-google-recaptcha";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { AiOutlineUser } from "react-icons/ai";
-import { useState, useRef } from "react";
+import { useState } from "react";
+import { HiLockClosed, HiLockOpen } from "react-icons/hi";
 
 const LoginModal = () => {
-    const recaptchaRef = useRef();
     const router = useRouter();
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const {
         register,
@@ -19,26 +20,26 @@ const LoginModal = () => {
     } = useForm();
 
     const onSubmit = (data) => {
-        if (recaptchaRef.current.getValue()) {
-            setLoading(true);
-            signIn("credentials", {
-                email: data.email,
-                password: data.password,
-                redirect: false,
+        setLoading(true);
+        signIn("credentials", {
+            email: data.email,
+            password: data.password,
+            redirect: false,
+        })
+            .then((res) => {
+                if (!res.error) {
+                    recaptchaRef.current.reset();
+                    router.push("/profile");
+                } else {
+                    setError(true);
+                }
             })
-                .then((res) => {
-                    if (!res.error) {
-                        recaptchaRef.current.reset();
-                        router.push("/profile");
-                    }
-                })
-                .catch((err) => {
-                    console.log(err);
-                })
-                .finally(() => {
-                    setLoading(false);
-                });
-        }
+            .catch(() => {
+                setError(true);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
     };
 
     return (
@@ -68,12 +69,14 @@ const LoginModal = () => {
                             className="flex flex-col gap-2"
                             onSubmit={handleSubmit(onSubmit)}
                         >
-                            <div className="form-control w-full">
+                            <div className="form-control">
                                 <label className="label">
                                     Correo electrónico
                                 </label>
                                 <input
-                                    className="input input-bordered"
+                                    className={`input input-bordered w-full ${
+                                        error ? "input-error" : ""
+                                    }`}
                                     {...register("email", {
                                         required: true,
                                     })}
@@ -84,15 +87,34 @@ const LoginModal = () => {
                                     </span>
                                 )}
                             </div>
-                            <div className="form-control w-full">
+                            <div className="form-control">
                                 <label className="label">Contraseña</label>
-                                <input
-                                    className="input input-bordered"
-                                    type="password"
-                                    {...register("password", {
-                                        required: true,
-                                    })}
-                                />
+                                <div className="relative">
+                                    <input
+                                        className={`input input-bordered w-full ${
+                                            error ? "input-error" : ""
+                                        }`}
+                                        type={
+                                            showPassword ? "text" : "password"
+                                        }
+                                        {...register("password", {
+                                            required: true,
+                                        })}
+                                    />
+                                    <button
+                                        type="button"
+                                        className="absolute btn btn-ghost right-0"
+                                        onClick={() =>
+                                            setShowPassword(!showPassword)
+                                        }
+                                    >
+                                        {showPassword ? (
+                                            <HiLockOpen className="w-5 h-5" />
+                                        ) : (
+                                            <HiLockClosed className="w-5 h-5" />
+                                        )}
+                                    </button>
+                                </div>
                                 {errors.password && (
                                     <span className="text-red-500">
                                         Este campo es requerido
@@ -100,24 +122,16 @@ const LoginModal = () => {
                                 )}
                             </div>
 
-                            <ReCAPTCHA
-                                ref={recaptchaRef}
-                                sitekey={
-                                    process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY
-                                }
-                                size="invisible"
-                            />
-
                             <div className="modal-action">
                                 <button
+                                    disabled={loading}
                                     type="submit"
                                     className="btn btn-xs sm:btn-sm md:btn-md btn-primary text-white"
                                 >
-                                    {loading ? (
+                                    {loading && (
                                         <span className="loading loading-spinner" />
-                                    ) : (
-                                        <span>Iniciar sesión</span>
                                     )}
+                                    <span>Iniciar sesión</span>
                                 </button>
                                 <button
                                     className="btn btn-xs sm:btn-sm md:btn-md btn-neutral text-white"

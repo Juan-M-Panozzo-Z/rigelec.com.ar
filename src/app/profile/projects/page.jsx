@@ -1,33 +1,32 @@
 "use client";
 
-import { getSession, getUserData } from "next-auth/react";
+import { getSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { HiPlus } from "react-icons/hi";
 
-import { useState, useEffect } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
 
 const ProjectsPage = () => {
-    const [session, setSession] = useState(null);
-    const [user, setUser] = useState(null);
-    const [projects, setProjects] = useState(null);
+    const router = useRouter();
     const { register, handleSubmit } = useForm();
+    const [user, setUser] = useState({});
+    const [projects, setProjects] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchSession = async () => {
-            const session = await getSession();
-            setSession(session);
-            const user = await axios.get(`/api/user/${session?.user?.email}`);
-            setUser(user.data);
-        };
-        fetchSession();
+        fetchUser().then((data) => {
+            setUser(data);
+        });
+    }, []);
 
-        const fetchProjects = async () => {
-            const projects = await axios.get(`/api/projects/user/${user?.id}`);
-            setProjects(projects.data);
-        };
-        fetchProjects();
-    }, [user, projects]);
+    useEffect(() => {
+        fetchProjects(user).then(({ data }) => {
+            setProjects(data);
+            setLoading(false);
+        });
+    }, [user]);
 
     const onSubmit = (values) => {
         axios.post("/api/projects/create", {
@@ -35,6 +34,7 @@ const ProjectsPage = () => {
             userId: user.id,
         });
         document.getElementById("createProyect").close();
+        router.refresh();
     };
 
     return (
@@ -55,23 +55,54 @@ const ProjectsPage = () => {
                         </button>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {projects?.map((project) => (
-                            <div className="card shadow-lg" key={project?.id}>
+                        {loading ? (
+                            Array.from({ length: 6 }, (_, i) => (
+                                <div
+                                    key={i}
+                                    className="card transition animate-pulse bg-base-200 h-24"
+                                ></div>
+                            ))
+                        ) : projects ? (
+                            projects?.map((project) => (
+                                <div
+                                    className="card shadow-lg"
+                                    key={project?.id}
+                                >
+                                    <div className="card-body space-y-2">
+                                        <div className="flex flex-col gap-1">
+                                            <h3 className="font-bold text-2xl">
+                                                {project?.name}
+                                            </h3>
+                                            <p className="text-sm text-gray-500">
+                                                {project?.date.split("T")[0]}
+                                            </p>
+                                        </div>
+                                        <p className="text-sm text-gray-500">
+                                            {project?.description ||
+                                                "Sin descripcion"}
+                                        </p>
+                                        <div className="card-actions">
+                                            <button
+                                                type="button"
+                                                className="btn btn-primary text-white shadow-lg"
+                                            >
+                                                Mas detalles
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))
+                        ) : (
+                            <div className="card shadow-lg">
                                 <div className="card-body space-y-2">
                                     <div className="flex flex-col gap-1">
                                         <h3 className="font-bold text-xl">
-                                            {project?.name}
+                                            No tienes proyectos
                                         </h3>
-                                        <p className="text-sm text-gray-500">
-                                            {project?.date.split("T")[0]}
-                                        </p>
                                     </div>
-                                    <p className="text-sm text-gray-500">
-                                        {project?.description}
-                                    </p>
                                 </div>
                             </div>
-                        ))}
+                        )}
                     </div>
                 </div>
             </section>
@@ -166,6 +197,17 @@ const ProjectsPage = () => {
             </dialog>
         </>
     );
+};
+
+const fetchUser = async () => {
+    const session = await getSession();
+    const { data } = await axios.get(`/api/user/${session.user.email}`);
+    return data;
+};
+
+const fetchProjects = async (user) => {
+    const projects = await axios.get(`/api/projects/user/${user.id}`);
+    return projects;
 };
 
 export default ProjectsPage;

@@ -4,6 +4,7 @@ import UserForm from "./components/UserForm";
 
 const ProfilePage = async () => {
     const session = await getServerSession();
+    console.log(session)
     const user = await getUserData(session);
     const installers = await getInstallers();
     return (
