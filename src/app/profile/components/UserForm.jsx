@@ -10,20 +10,15 @@ const UserForm = ({ user, installers }) => {
     const handleFormSubmit = (e) => {
         e.preventDefault();
         setLoading(true);
-        axios
-            .post("/api/user/update", userData)
-            .then((res) => {
-                setLoading(false);
-            })
-            .catch((err) => {
-                console.log(err);
-                setLoading(false);
-            });
+        axios.post("/api/user/update", userData).catch((err) => {
+            console.log(err);
+            setLoading(false);
+        });
     };
 
     return (
         <section className="grid grid-cols-3 bg-white/30 rounded-box">
-            <div style={style} className="p-8 rounded-box col-span-3">
+            {/* <div style={style} className="p-8 rounded-box col-span-3">
                 <div className="tooltip" data-tip="Cambiar avatar">
                     <Image
                         onClick={() => console.log("click")}
@@ -34,72 +29,12 @@ const UserForm = ({ user, installers }) => {
                         className="outline outline-2 outline-base-200 rounded-full object-cover w-20 h-20 translate-y-20 md:h-32 md:w-32"
                     />
                 </div>
-            </div>
+            </div> */}
             <div className="p-8 col-span-3 mt-4">
                 <h3 className="md:text-xl text-center">
                     Perfil del instalador
                 </h3>
                 <form className="flex flex-col gap-4">
-                    <div className="form-control w-full">
-                        <label className="label">
-                            <span className="label-text">
-                                Tipo de instalador
-                            </span>
-                        </label>
-                        <select
-                            className="select select-bordered w-full"
-                            value={userData?.installer?.id || ""}
-                            onChange={(e) =>
-                                setUserData({
-                                    ...userData,
-                                    installer: { id: e.target.value },
-                                })
-                            }
-                        >
-                            <option value="">Seleccionar</option>
-                            {installers.map((installer) => (
-                                <option key={installer.id} value={installer.id}>
-                                    {installer.name}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                    <div className="form-control w-full">
-                        <label className="label">
-                            <span className="label-text">Matricula</span>
-                        </label>
-                        <input
-                            disabled
-                            value={userData?.matricula}
-                            onChange={(e) =>
-                                setUserData({
-                                    ...userData,
-                                    matricula: e.target.value,
-                                })
-                            }
-                            type="text"
-                            placeholder="Matricula"
-                            className="input input-bordered"
-                        />
-                    </div>
-                    <div className="form-control w-full">
-                        <label className="label">
-                            <span className="label-text">Email</span>
-                        </label>
-                        <input
-                            disabled
-                            value={userData?.email}
-                            onChange={(e) =>
-                                setUserData({
-                                    ...userData,
-                                    email: e.target.value,
-                                })
-                            }
-                            type="text"
-                            placeholder="Email"
-                            className="input input-bordered"
-                        />
-                    </div>
                     <div className="form-control w-full">
                         <label className="label">
                             <span className="label-text">Nombre</span>
@@ -143,6 +78,66 @@ const UserForm = ({ user, installers }) => {
                             disabled
                             type="number"
                             placeholder="cuit"
+                            className="input input-bordered"
+                        />
+                    </div>
+                    <div className="form-control w-full">
+                        <label className="label">
+                            <span className="label-text">Matricula</span>
+                        </label>
+                        <input
+                            disabled
+                            value={userData?.matricula}
+                            onChange={(e) =>
+                                setUserData({
+                                    ...userData,
+                                    matricula: e.target.value,
+                                })
+                            }
+                            type="text"
+                            placeholder="Matricula"
+                            className="input input-bordered"
+                        />
+                    </div>
+                    <div className="form-control w-full">
+                        <label className="label">
+                            <span className="label-text">
+                                Tipo de instalador
+                            </span>
+                        </label>
+                        <select
+                            className="select select-bordered w-full"
+                            value={userData?.installer?.id || ""}
+                            onChange={(e) =>
+                                setUserData({
+                                    ...userData,
+                                    installer: { id: e.target.value },
+                                })
+                            }
+                        >
+                            <option value="">Seleccionar</option>
+                            {installers.map((installer) => (
+                                <option key={installer.id} value={installer.id}>
+                                    {installer.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className="form-control w-full">
+                        <label className="label">
+                            <span className="label-text">Email</span>
+                        </label>
+                        <input
+                            disabled
+                            value={userData?.email}
+                            onChange={(e) =>
+                                setUserData({
+                                    ...userData,
+                                    email: e.target.value,
+                                })
+                            }
+                            type="text"
+                            placeholder="Email"
                             className="input input-bordered"
                         />
                     </div>
