@@ -82,6 +82,11 @@ const ProjectsPage = () => {
                                         </p>
                                         <div className="card-actions">
                                             <button
+                                                onClick={() =>
+                                                    router.push(
+                                                        `/profile/projects/${project?.id}`
+                                                    )
+                                                }
                                                 type="button"
                                                 className="btn btn-primary text-white shadow-lg"
                                             >
