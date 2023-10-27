@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Section from "@/components/Section";
 import ItemTimeline from "./components/ItemTimeline";
 
@@ -44,6 +45,26 @@ const NosotrosPage = () => {
         <Section>
             <div className="container mx-auto space-y-8 mt-32">
                 <Items paragraphs={paragraphs} />
+                <div>
+                    <h3 className="col-span-1 text-2xl py-2 px-4 bg-base-200/30 rounded-box">
+                        Nuestro logo
+                    </h3>
+                    <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between w-2/3 mx-auto p-4">
+                        <Image
+                            src="/assets/logos/rigelecOld.svg"
+                            width={400}
+                            height={400}
+                            alt="Rigelec logo anterior"
+                        />
+                        <div className=" border border-dashed h-12 w-0 mx-auto md:h-0 md:w-full" />
+                        <Image
+                            src="/assets/logos/rigelecNew.svg"
+                            width={400}
+                            height={400}
+                            alt="Rigelec logo actual"
+                        />
+                    </div>
+                </div>
                 <div className="space-y-2">
                     <h3 className="text-2xl py-2 px-4 bg-base-200/30 rounded-box">
                         Nuestra historia
