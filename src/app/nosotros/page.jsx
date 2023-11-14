@@ -30,10 +30,10 @@ const Items = ({ paragraphs }) => {
         <div className="grid md:grid-cols-2 gap-4">
             {paragraphs.map((paragraph, index) => (
                 <div key={index} className="">
-                    <h3 className="text-2xl py-2 px-4 bg-base-200/30 rounded-box">
+                    <h3 className="text-xl py-2 px-4 bg-base-200/60 uppercase rounded-box">
                         {paragraph.title}
                     </h3>
-                    <p className="indent-4 p-4">{paragraph.text}</p>
+                    <p className="p-4">{paragraph.text}</p>
                 </div>
             ))}
         </div>
@@ -46,7 +46,7 @@ const NosotrosPage = () => {
             <div className="container mx-auto space-y-8 mt-32">
                 <Items paragraphs={paragraphs} />
                 <div>
-                    <h3 className="col-span-1 text-2xl py-2 px-4 bg-base-200/30 rounded-box">
+                    <h3 className="col-span-1 text-xl py-2 px-4 bg-base-200/60 rounded-box uppercase">
                         Nuestro logo
                     </h3>
                     <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between w-2/3 mx-auto p-4">
@@ -66,7 +66,7 @@ const NosotrosPage = () => {
                     </div>
                 </div>
                 <div className="space-y-2">
-                    <h3 className="text-2xl py-2 px-4 bg-base-200/30 rounded-box">
+                    <h3 className="text-xl py-2 px-4 bg-base-200/60 rounded-box uppercase">
                         Nuestra historia
                     </h3>
                     <ItemTimeline
@@ -74,7 +74,7 @@ const NosotrosPage = () => {
                         text={
                             'Esta historia comienza con el abuelo, Abdón (Don Yiye), acompañando a Ricardo a abrir un taller de reparación de electrodomésticos. A medida que el negocio crece, surgen nuevos desafíos debido a la aparición de electrodomésticos considerados "descartables". Ante esta situación, se toma la decisión de incorporar materiales eléctricos de manera gradual.'
                         }
-                        image={""}
+                        image={"/assets/timeline/1988.png"}
                     />
                     <ItemTimeline
                         date={"1998"}
@@ -93,16 +93,16 @@ const NosotrosPage = () => {
                     <ItemTimeline
                         date={"2008"}
                         text={
-                            "Lo que comenzó como un galpón se convirtió en una construcción de 3 pisos que se completó en 2008. A lo largo de los años, Rigelec ha experimentado altibajos y desafíos, pero ha logrado desarrollar su marca comercial."
+                            "Lo que comenzó como un galpón se convirtió en una construcción de 3 pisos que se completó en 2008. A lo largo de los años, Rigelec ha experimentado altibajos y desafíos, pero ha logrado desarrollar su marca comercial. Comprometidos en ofrecer un gran servicio a sus clientes, fomentar la innovación y contribuir al bienestar de la comunidad."
                         }
-                        image={""}
+                        image={"/assets/timeline/2008.png"}
                     />
                     <ItemTimeline
                         date={"2023"}
                         text={
                             "Con una nueva generación que se suma a nuestra historia, nos enfrentamos al doble desafío de preservarla y hacerla crecer, trabajando en conjunto con nuestros padres. En 35 años de trayectoria, es difícil resumir todo lo vivido, pero queremos agradecer a todos los que formaron parte de nuestro camino hasta hoy. Seguiremos creciendo, superando obstáculos y adaptándonos al cambio, comprometidos en brindar lo mejor de nosotros sin importar las circunstancias."
                         }
-                        image={""}
+                        video={"/assets/timeline/2023.mp4"}
                     />
                 </div>
             </div>
