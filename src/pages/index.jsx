@@ -46,7 +46,7 @@ export default function Home() {
                         <Card
                             key={article?.id}
                             title={article?.descripcion}
-                            subtitle={article?.marca.nombre}
+                            subtitle={article?.marca?.nombre}
                             description={`${article?.modelo} ${article?.medida}`}
                             image={`https://paljet.rigelec.com.ar/imagenes/articulos/${article?.id}`}
                         />
