@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Player } from "@lottiefiles/react-lottie-player";
 import Section from "@/components/Section";
-import SectionGrowatt from "@/components/builder.io/SectionGrowatt";
 
 export default function Growatt() {
     const [growattData, setGrowattData] = useState({
