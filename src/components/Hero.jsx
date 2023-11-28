@@ -27,9 +27,7 @@ export default function Hero() {
                         data-tip="¡Proximamente!"
                     >
                         <Link
-                            // href="https://front-ecommerce-phi.vercel.app/"
-                            href="#"
-                            // target="_blank"
+                            href="https://store.rigelec.com.ar/"
                             className="btn btn-primary mx-auto rounded-full text-white transition-all"
                         >
                             Ir a rigelec store
