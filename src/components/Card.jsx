@@ -1,13 +1,15 @@
 import Image from "next/image";
 
+export const dynamic = 'force-dynamic'
+
 export default function Card({ ...props }) {
 
     return (
         <div className="m-8 card shadow-xl shadow-base-200 transition-all duration-200">
             <figure className="relative flex justify-center items-center">
                 <Image
-                    src={props.image}
-                    alt={props.title}
+                    src={props?.image}
+                    alt={props?.image}
                     className="rounded-box aspect-square object-cover"
                     width={600}
                     height={600}
