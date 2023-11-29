@@ -3,19 +3,18 @@
 import { useState, useEffect } from "react";
 import { getGrowatt } from "@/actions/growatt";
 import Section from "@/components/Section";
-import Card from "@/components/Card";
+import Card from './components/Card';
 
 export default function Growatt() {
-    const [growattData, setGrowattData] = useState(null);
+    const [growattData, setGrowattData] = useState({});
 
     useEffect(() => {
         const getData = async () => {
             const data = await getGrowatt();
             setGrowattData(data);
-            console.log(data)
         };
         getData();
-    } , []);
+    }, []);
 
     const cards = [
         {
@@ -36,21 +35,21 @@ export default function Growatt() {
     ]
 
     return (
-            <Section>
-                <div className="container mx-auto">
-                    {(
-                        <div className="pt-32">
-                            <div className="grid lg:grid-cols-3 px-4 gap-4">
-                                {
-                                    cards.map((card, index) => (
-                                        <Card key={index} card={card} />
-                                    ))
-                                }
-                            </div>
+        <Section>
+            <div className="container mx-auto">
+                {(
+                    <div className="pt-32">
+                        <div className="grid lg:grid-cols-3 px-4 gap-4">
+                            {
+                                cards.map((card, index) => (
+                                    <Card key={index} card={card} />
+                                ))
+                            }
                         </div>
-                    )}
-                </div>
-            </Section>
+                    </div>
+                )}
+            </div>
+        </Section>
     );
 }
 

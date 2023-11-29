@@ -1,6 +1,6 @@
 import { Player } from "@lottiefiles/react-lottie-player";
 
-export default function Card(card) {
+export default function Card({card}) {
 
 return (
     <div className="card bg-base-100 shadow-xl">

@@ -1,5 +1,3 @@
-'use client'
-
 import Image from "next/image";
 import { useState } from "react";
 
@@ -13,8 +11,8 @@ export default function Card({ ...props }) {
                     src={props.image}
                     alt={props.title}
                     className="rounded-box aspect-square object-cover"
-                    width={400}
-                    height={400}
+                    width={600}
+                    height={600}
                     onLoad={() => setIsLoading(false)}
                 />
                 {isLoading && (
