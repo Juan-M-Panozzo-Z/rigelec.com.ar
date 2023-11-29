@@ -4,7 +4,7 @@ import { supabase } from "@/lib/supabase/server";
 export const login = async (formData) => {
     const email = formData.get('email');
     const password = formData.get('password');
-    const { error } = await supabase.auth.signInWithPassword({
+    const { error, data } = await supabase.auth.signInWithPassword({
         email,
         password,
     });
@@ -12,7 +12,8 @@ export const login = async (formData) => {
     if (error) {
         throw error;
     }
-    console.log('login success');
+    console.log(data);
+    return data;
 };
 
 export const signup = async (formData) => {
@@ -30,9 +31,10 @@ export const signup = async (formData) => {
 };
 
 export const logout = async () => {
-    const { error } = await supabase.auth.signOut();
+    const { error, data } = await supabase.auth.signOut()
 
     if (error) {
         throw error;
     }
+    console.log('logout success');
 };

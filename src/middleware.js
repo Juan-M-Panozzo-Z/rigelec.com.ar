@@ -44,11 +44,10 @@ export async function middleware(request) {
         }
     )
 
-    const session = await supabase.auth.getSession()
-    const isDashboardPath = request.nextUrl.pathname.includes("dashboard")
+    const { session } = (await supabase.auth.getSession()).data
+    const isDashboardPath = request.nextUrl.pathname.includes("/dashboard")
     if (isDashboardPath && !session) {
-        return NextResponse.redirect("/login")
+        return NextResponse.redirect(`${request.nextUrl.origin}`)
     }
-
     return response
 }
