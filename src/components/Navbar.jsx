@@ -3,12 +3,9 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
 import Marquee from "react-fast-marquee";
 import GrowattData from "./GrowattData";
 import { CiMenuBurger } from "react-icons/ci";
-import LoginModal from "./LoginModal.jsx";
-import Avatar from "./Avatar";
 
 const links = [
     {
@@ -37,7 +34,6 @@ const personalLinks = [
 ];
 
 export default function Navbar() {
-    const { status } = useSession();
     const [navbarBg, setNavbarBg] = useState("bg-transparent");
 
     useEffect(() => {
@@ -144,7 +140,6 @@ export default function Navbar() {
                 </div>
                 <div className="navbar-end space-x-2 min-w-max">
                     <GrowattData />
-                    {status === "authenticated" ? <Avatar /> : <LoginModal />}
                 </div>
             </div>
         </div>
