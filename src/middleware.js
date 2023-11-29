@@ -10,7 +10,7 @@ export async function middleware(req) {
     } = await supabase.auth.getUser()
 
     // if (!user && req.nextUrl.pathname.includes('/dashboard')) {
-    //     return NextResponse.redirect(new URL('/', req.url))
+    //     return NextResponse.redirect(new URL('/auth/login', req.url))
     // }
 
     return res
