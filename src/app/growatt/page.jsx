@@ -40,7 +40,7 @@ export default function Growatt() {
                 <div className="container mx-auto">
                     {(
                         <div className="pt-32">
-                            <div className="grid md:grid-cols-3 px-4 gap-4">
+                            <div className="grid lg:grid-cols-3 px-4 gap-4">
                                 {
                                     cards.map((card, index) => (
                                         <Card key={index} card={card} />

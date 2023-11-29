@@ -13,8 +13,8 @@ export default function Card({ ...props }) {
                     src={props.image}
                     alt={props.title}
                     className="rounded-box aspect-square object-cover"
-                    width={600}
-                    height={600}
+                    width={400}
+                    height={400}
                     onLoad={() => setIsLoading(false)}
                 />
                 {isLoading && (
