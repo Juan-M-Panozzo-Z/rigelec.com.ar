@@ -1,24 +1,24 @@
+'use server'
 import nodemailer from "nodemailer";
 
-export default async function handler(req, res) {
-    const { method } = req;
-    if (method === "POST") {
-        const { name, email, codCountry, codArea, phone, message } = req.body;
-        const transporter = nodemailer.createTransport({
-            host: "smtp.gmail.com",
-            port: 465,
-            auth: {
-                user: process.env.EMAIL,
-                pass: process.env.PASSWORD,
-            },
-            secure: true,
-        });
-        const mailData = {
-            from: `${name} <${email}>`,
-            to: "jmpz.94@gmail.com",
-            subject: `¡${name} quiere contactarse con nosotros!`,
-            text: message,
-            html: `
+export const send = async (data) => {
+
+    const { name, email, codCountry, codArea, phone, message } = data;
+    const transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 465,
+        auth: {
+            user: process.env.EMAIL,
+            pass: process.env.PASSWORD,
+        },
+        secure: true,
+    });
+    const mailData = {
+        from: `${name} <${email}>`,
+        to: "sistemas@rigelec.com.ar",
+        subject: `¡${name} quiere contactarse con nosotros!`,
+        text: message,
+        html: `
             
             <div style="background-color: #f5f5f5; padding: 20px;">
                 <div style="background-color: #fff; padding: 20px; border-radius: 10px;">
@@ -40,14 +40,10 @@ export default async function handler(req, res) {
                         <p style="margin: 0;">Tel: (0345) 421-9940</p>
                     </div>
             `,
-        };
-        transporter.sendMail(mailData, function (err, info) {
-            if (err) console.log(err);
-            else console.log(info);
-        });
-        res.status(200).json({ status: "OK" });
-    } else {
-        res.setHeader("Allow", ["POST"]);
-        res.status(405).json({ message: `Method ${method} not allowed` });
-    }
+    };
+    transporter.sendMail(mailData, function (err, info) {
+        if (err) console.log(err);
+        else console.log(info);
+    });
+    return { status: "OK" };
 }

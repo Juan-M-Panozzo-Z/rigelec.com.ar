@@ -1,6 +1,5 @@
 "use client";
-
-import axios from "axios";
+import { send } from "@/actions/email";
 import { useState } from "react";
 import Section from "./Section";
 import SectionTitle from "./SectionTitle";
@@ -15,29 +14,23 @@ const ContactUs = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (name && email && phone && message) {
-      await axios
-        .post("/api/sendEmail", {
-          name,
-          email,
-          codCountry,
-          codArea,
-          phone,
-          message,
-        })
-        .then(() => {
-          alert("Gracias por contactarnos");
+    try {
+      send({
+        name,
+        email,
+        phone,
+        codCountry,
+        codArea,
+        message,
+      });
+      alert("Gracias por contactarnos");
           setName("");
           setEmail("");
           setPhone("");
           setMessage("");
           setCodArea("");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else {
-      alert("Por favor, completa todos los campos");
+    } catch (error) {
+      alert("Ocurrió un error");
     }
   };
 

@@ -124,7 +124,7 @@ const LoginModal = () => {
 
                             <div className="modal-action">
                                 <button
-                                    disabled={loading}
+                                    disabled
                                     type="submit"
                                     className="btn btn-xs sm:btn-sm md:btn-md btn-primary text-white"
                                 >
