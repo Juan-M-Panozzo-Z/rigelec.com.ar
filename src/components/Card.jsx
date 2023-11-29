@@ -1,8 +1,6 @@
 import Image from "next/image";
-import { useState } from "react";
 
 export default function Card({ ...props }) {
-    const [isLoading, setIsLoading] = useState(true);
 
     return (
         <div className="m-8 card shadow-xl shadow-base-200 transition-all duration-200">
@@ -13,9 +11,8 @@ export default function Card({ ...props }) {
                     className="rounded-box aspect-square object-cover"
                     width={600}
                     height={600}
-                    onLoad={() => setIsLoading(false)}
                 />
-                {isLoading && (
+                {!props && (
                     <div className="absolute inset-0 flex justify-center items-center">
                         <div className="bg-base-200 animate-pulse w-full h-full rounded-box" />
                     </div>

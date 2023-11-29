@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+.btn-primary {
+    color: #fff;
+}
+
+.btn-secondary {
+    color: #fff;
+}
+
 @keyframes wiggle {
     0% {
         transform: translateX(0px);
@@ -30,14 +38,15 @@
     position: relative;
     width: 100%;
     height: 0;
-    padding-bottom: calc(480 / 1080 * 100%); /* Calcula la proporción de aspecto de la imagen (480/1080) y establece el padding-bottom en función de esa proporción */
-  }
+    padding-bottom: calc(480 / 1080 * 100%);
+    /* Calcula la proporción de aspecto de la imagen (480/1080) y establece el padding-bottom en función de esa proporción */
+}
 
-  .image-container img[alt="portada"] {
+.image-container img[alt="portada"] {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
+}
