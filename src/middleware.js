@@ -44,13 +44,8 @@ export async function middleware(request) {
         }
     )
 
-    // Obtener el usuario actual
     const user = await supabase.auth.getSession()
-
-    // Obtener el path actual
     const path = request.nextUrl.pathname
-
-    // Si el usuario no está autenticado o el path incluye /dashboard, redirigir a /auth/login
     if (!user || path.includes('/dashboard')) {
         response = NextResponse.redirect(new URL('/auth/login', request.url))
     }
