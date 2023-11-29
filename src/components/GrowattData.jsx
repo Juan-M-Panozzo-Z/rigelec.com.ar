@@ -1,32 +1,23 @@
 import { useState, useEffect } from "react";
+import { getGrowatt } from "@/actions/growatt";
 import { Player } from "@lottiefiles/react-lottie-player";
-import axios from "axios";
 import Link from "next/link";
 
 export default function GrowattData() {
-    const [growattData, setGrowattData] = useState({
-        eTotal: 0,
-    });
-    const [isLoading, setIsLoading] = useState(true);
+    const [growattData, setGrowattData] = useState(null);
 
     useEffect(() => {
-        axios
-            .get("/api/growatt")
-            .then(({ data }) => {
-                setGrowattData(data);
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-            .finally(() => {
-                setIsLoading(false);
-            });
+        const getData = async () => {
+            const data = await getGrowatt();
+            setGrowattData(data);
+        };
+        getData();
     }, []);
 
     return (
         <div className="btn btn-sm btn-primary rounded-full text-[10px] md:text-xs shadow-xl text-white">
             <Link href="/growatt">
-                {isLoading ? (
+                {!growattData ? (
                     <Player
                         autoplay
                         loop
