@@ -44,10 +44,10 @@ export async function middleware(request) {
         }
     )
 
-    const user = await supabase.auth.getSession()
-    const path = request.nextUrl.pathname
-    if (!user || path.includes('/dashboard')) {
-        response = NextResponse.redirect(new URL('/auth/login', request.url))
+    const session = await supabase.auth.getSession()
+    const isDashboardPath = request.nextUrl.pathname.includes("dashboard")
+    if (isDashboardPath && !session) {
+        return NextResponse.redirect("/login")
     }
 
     return response

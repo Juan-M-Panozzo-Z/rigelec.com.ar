@@ -8,7 +8,6 @@ export const getGrowatt = async () => {
     try {
         await apiGrowatt?.login(user, pass);
         const getAllPlantData = await apiGrowatt.getAllPlantData();
-        console.log(getAllPlantData)
         if (getAllPlantData && getAllPlantData["2086609"]) {
             return getAllPlantData["2086609"].devices.QGHACE701F.deviceData;
         }
