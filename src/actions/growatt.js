@@ -14,6 +14,6 @@ export const getGrowatt = async () => {
         }
     } catch (error) {
         await apiGrowatt.logout();
-        return { error: 'Los datos no estan disponibles en este momento' }
+        return { error: 'datos no disponibles' }
     }
 }
