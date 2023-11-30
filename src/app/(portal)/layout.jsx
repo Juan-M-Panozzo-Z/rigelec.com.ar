@@ -1,9 +1,10 @@
 import fs from "fs";
 import Link from "next/link";
+import Logout from "./dashboard/components/Logout";
 
 export default function Layout({ children }) {
-    const dashboardLinks = fs.readdirSync("src/app/(portal)/dashboard").filter((dir) => {
-        return fs.statSync(`src/app/(portal)/dashboard/${dir}`).isDirectory()
+    const dashboardLinks = fs.readdirSync("src/app/(portal)/dashboard/").filter((dir) => {
+        return fs.statSync(`src/app/(portal)/dashboard/${dir}`).isDirectory() && dir !== "components";
     });
 
 
@@ -14,7 +15,7 @@ export default function Layout({ children }) {
                     <Link href="/dashboard">
                         <span>
                             <button className="btn btn-xs btn-secondary">
-                                Dashboard
+                                dashboard
                             </button>
                         </span>
                     </Link>
@@ -31,8 +32,9 @@ export default function Layout({ children }) {
                     }
                 </div>
             </div>
-            <div className="pt-36">
+            <div className="pt-36 px-6">
                 {children}
+                <Logout />
             </div>
         </main>
     )

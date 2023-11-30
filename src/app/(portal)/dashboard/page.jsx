@@ -1,11 +1,12 @@
-import { logout } from "@/actions/supabase/auth"
+import Section from "./components/Section";
+
 export default async function Dashboard() {
 
     return (
-        <div>
-            <form action={logout}>
-                <button type="submit">Logout</button>
-            </form>
+        <Section title="Dashboard">
+        <div className="p-4">
+            
         </div>
+        </Section>
     )
 }

@@ -4,10 +4,9 @@ import createSupabaseServerClient from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { z } from 'zod';
 
-export const login = async (formData) => {
+export const login = async ({ email, password }) => {
     const supabase = await createSupabaseServerClient();
-    const email = formData.get('email');
-    const password = formData.get('password');
+
     const schema = z.object({
         email: z.string().email(),
         password: z.string().min(6),
@@ -21,15 +20,13 @@ export const login = async (formData) => {
     });
 
     if (error) {
-        throw error;
+        return JSON.stringify(error.message);
     } else {
         return redirect('/dashboard');
     }
 };
 
-export const signup = async (formData) => {
-    const email = formData.get('email');
-    const password = formData.get('password');
+export const signup = async ({ email, password }) => {
     const { error } = await supabase.auth.signUp({
         email,
         password
