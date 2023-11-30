@@ -2,6 +2,7 @@ import SectionFluid from "@/components/SectionFluid";
 import ContactUs from "@/components/ContactUs";
 import Hero from "@/components/Hero";
 import UltimosMovimientos from "@/components/UltimosMovimientos";
+
 export default async function Home() {
   return (
     <main>

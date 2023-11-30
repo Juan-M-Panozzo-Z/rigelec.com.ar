@@ -1,22 +1,30 @@
 'use server'
-import createSupabaseServerClient from "@/lib/supabase/server";
 
+import createSupabaseServerClient from "@/lib/supabase/server";
+import { redirect } from "next/navigation";
+import { z } from 'zod';
 
 export const login = async (formData) => {
     const supabase = await createSupabaseServerClient();
     const email = formData.get('email');
     const password = formData.get('password');
-    console.log(email, password)
-    const res = await supabase.auth.signInWithPassword({
+    const schema = z.object({
+        email: z.string().email(),
+        password: z.string().min(6),
+    });
+    const zod = schema.safeParse({ email, password });
+    if (zod.error) { throw zod.error }
+
+    const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
     });
 
-    if (res.error) {
-        return res.error;
+    if (error) {
+        throw error;
+    } else {
+        return redirect('/dashboard');
     }
-    console.log(res)
-    return;
 };
 
 export const signup = async (formData) => {
@@ -36,5 +44,5 @@ export const signup = async (formData) => {
 export const logout = async () => {
     const supabase = await createSupabaseServerClient();
     await supabase.auth.signOut();
-    return;
+    return redirect('/');
 }
