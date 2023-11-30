@@ -1,59 +1,23 @@
-import { createServerClient } from '@supabase/ssr'
 import { NextResponse } from 'next/server'
+import { createClient } from './lib/supabase/middleware'
 
 export async function middleware(request) {
-    let response = NextResponse.next({
-        request: {
-            headers: request.headers,
-        },
-    })
-
-    const supabase = createServerClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-        {
-            cookies: {
-                get(name) {
-                    return request.cookies.get(name)?.value
-                },
-                set(name, value, options) {
-                    request.cookies.set({
-                        name,
-                        value,
-                        ...options,
-                    })
-                    response = NextResponse.next({
-                        request: {
-                            headers: request.headers,
-                        },
-                    })
-                },
-                remove(name, options) {
-                    request.cookies.set({
-                        name,
-                        value: '',
-                        ...options,
-                    })
-                    response = NextResponse.next({
-                        request: {
-                            headers: request.headers,
-                        },
-                    })
-                },
-            },
-        }
-    )
-
-    // Obtener el usuario actual
-    const user = await supabase.auth.getSession()
-
-    // Obtener el path actual
-    const path = request.nextUrl.pathname
-
-    // Si el usuario no está autenticado o el path incluye /dashboard, redirigir a /auth/login
-    if (!user || path.includes('/dashboard')) {
-        response = NextResponse.redirect(new URL('/auth/login', request.url))
+  try {
+    const { supabase, response } = createClient(request)
+    const { data: { session } } = await supabase.auth.getSession()
+    const url = request.nextUrl.pathname
+    if (!session && url.includes('/dashboard')) {
+      return NextResponse.redirect(new URL('/login', request.url))
     }
-
+    if (session && url.includes('/login')) {
+      return NextResponse.redirect(new URL('/dashboard', request.url))
+    }
     return response
+  } catch (e) {
+    return NextResponse.next({
+      request: {
+        headers: request.headers,
+      },
+    })
+  }
 }

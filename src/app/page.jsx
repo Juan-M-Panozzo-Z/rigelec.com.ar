@@ -3,7 +3,7 @@ import ContactUs from "@/components/ContactUs";
 import Hero from "@/components/Hero";
 import UltimosMovimientos from "@/components/UltimosMovimientos";
 
-export default function Home() {
+export default async function Home() {
   return (
     <main>
       <Hero />

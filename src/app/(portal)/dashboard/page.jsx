@@ -1,8 +1,12 @@
-export default function Dashboard() {
+import Section from "./components/Section";
+
+export default async function Dashboard() {
+
     return (
-        <div>
-            <h1>Dashboard</h1>
-            <p>Only logged in users can see this page.</p>
+        <Section title="Dashboard">
+        <div className="p-4">
+            
         </div>
+        </Section>
     )
 }

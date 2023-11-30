@@ -64,11 +64,10 @@ export default function Navbar() {
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
                             <CiMenuBurger
-                                className={`w-6 h-6 ${
-                                    navbarBg == "bg-transparent"
-                                        ? "text-base-300"
-                                        : "text-secondary"
-                                }`}
+                                className={`w-6 h-6 ${navbarBg == "bg-transparent"
+                                    ? "text-base-300"
+                                    : "text-secondary"
+                                    }`}
                             />
                         </label>
                         <ul
@@ -104,11 +103,10 @@ export default function Navbar() {
                     <ul className="menu menu-horizontal px-1 space-x-2">
                         {links.map((link) => (
                             <button
-                                className={`btn btn-sm rounded-full ${
-                                    navbarBg == "bg-transparent"
-                                        ? "btn-primary text-white shadow-xl"
-                                        : "btn-ghost"
-                                }`}
+                                className={`btn btn-sm rounded-full ${navbarBg == "bg-transparent"
+                                    ? "btn-primary text-white shadow-xl"
+                                    : "btn-ghost"
+                                    }`}
                                 key={link.name}
                             >
                                 <Link href={link.url}>{link.name}</Link>
@@ -117,11 +115,10 @@ export default function Navbar() {
                         <div className="dropdown">
                             <button
                                 tabIndex={0}
-                                className={`btn btn-sm rounded-full ${
-                                    navbarBg == "bg-transparent"
-                                        ? "btn-primary text-white"
-                                        : "btn-ghost"
-                                }`}
+                                className={`btn btn-sm rounded-full ${navbarBg == "bg-transparent"
+                                    ? "btn-primary text-white"
+                                    : "btn-ghost"
+                                    }`}
                             >
                                 Acceso para Personal
                             </button>
@@ -140,6 +137,11 @@ export default function Navbar() {
                 </div>
                 <div className="navbar-end space-x-2 min-w-max">
                     <GrowattData />
+                    <Link href="/login">
+                        <button className="btn btn-sm btn-info rounded-full text-white shadow-xl">
+                            Mi portal
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>
