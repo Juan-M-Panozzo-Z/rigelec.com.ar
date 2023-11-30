@@ -1,4 +1,5 @@
 'use client'
+
 import { signup } from '@/actions/supabase/auth';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';

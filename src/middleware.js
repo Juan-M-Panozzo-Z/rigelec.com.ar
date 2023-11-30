@@ -12,7 +12,7 @@ export async function middleware(request) {
     if (session && url.includes('/login')) {
       return NextResponse.redirect(new URL('/dashboard', request.url))
     }
-    return response
+    // return response
   } catch (e) {
     return NextResponse.next({
       request: {
