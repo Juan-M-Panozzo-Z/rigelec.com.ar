@@ -2,12 +2,7 @@ import SectionFluid from "@/components/SectionFluid";
 import ContactUs from "@/components/ContactUs";
 import Hero from "@/components/Hero";
 import UltimosMovimientos from "@/components/UltimosMovimientos";
-import { login, logout } from "@/actions/supabase/auth";
-import { getSession } from "@/actions/supabase/user";
-
 export default async function Home() {
-  const user = await getSession();
-  console.log(user);
   return (
     <main>
       <Hero />
@@ -20,14 +15,6 @@ export default async function Home() {
           className="w-full h-96 rounded-box"
         ></iframe>
       </SectionFluid>
-      <form action={login}>
-        <input name="email" defaultValue={"jmpz.94@gmail.com"} type="email" placeholder="email" />
-        <input name="password" defaultValue={"123456"} type="password" placeholder="password" />
-        <button type="submit">Login</button>
-      </form>
-      <form action={logout}>
-        <button >Logout</button>
-      </form>
     </main>
   );
 }

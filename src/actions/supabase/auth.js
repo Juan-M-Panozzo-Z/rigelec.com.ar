@@ -1,19 +1,22 @@
 'use server'
-import { supabase } from "@/lib/supabase/server";
+import createSupabaseServerClient from "@/lib/supabase/server";
+
 
 export const login = async (formData) => {
+    const supabase = await createSupabaseServerClient();
     const email = formData.get('email');
     const password = formData.get('password');
-    const { error, data } = await supabase.auth.signInWithPassword({
+    console.log(email, password)
+    const res = await supabase.auth.signInWithPassword({
         email,
         password,
     });
 
-    if (error) {
-        throw error;
+    if (res.error) {
+        return res.error;
     }
-    console.log(data);
-    return data;
+    console.log(res)
+    return;
 };
 
 export const signup = async (formData) => {
@@ -31,10 +34,7 @@ export const signup = async (formData) => {
 };
 
 export const logout = async () => {
-    const { error, data } = await supabase.auth.signOut()
-
-    if (error) {
-        throw error;
-    }
-    console.log('logout success');
-};
+    const supabase = await createSupabaseServerClient();
+    await supabase.auth.signOut();
+    return;
+}
