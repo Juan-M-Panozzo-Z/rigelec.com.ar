@@ -3,13 +3,12 @@ const nextConfig = {
     // url images
     images: {
         domains: [
-            "fastly.picsum.photos",
             "paljet.rigelec.com.ar",
             "webservice.rigelec.com.ar",
             "rigelec.com.ar"
         ],
     },
-    reactStrictMode: true,
+    staticPageGenerationTimeout: 300,
 };
 
 module.exports = nextConfig;
