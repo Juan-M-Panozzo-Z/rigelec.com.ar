@@ -137,11 +137,6 @@ export default function Navbar() {
                 </div>
                 <div className="navbar-end space-x-2 min-w-max">
                     <GrowattData />
-                    <Link href="/login">
-                        <button className="btn btn-sm btn-info rounded-full text-white shadow-xl">
-                            Mi portal
-                        </button>
-                    </Link>
                 </div>
             </div>
         </div>

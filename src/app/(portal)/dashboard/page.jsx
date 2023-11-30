@@ -1,12 +1,12 @@
-import Section from "./components/Section";
+import PortalSection from "../components/PortalSection";
+import DataForm from "./components/DataForm";
 
-export default async function Dashboard() {
-
+export default function Dashboard() {
     return (
-        <Section title="Dashboard">
-        <div className="p-4">
-            
-        </div>
-        </Section>
+        <section>
+            <PortalSection title="tus datos">
+                <DataForm />
+            </PortalSection>
+        </section>
     )
 }
