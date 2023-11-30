@@ -13,7 +13,7 @@ export default function EditPerfil() {
     return (
         <Section title="Editar Perfil">
             <div className="p-4">
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 max-w-md w-full">
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 max-w-md mx-auto">
                     <div className="input-group w-full">
                         <label className="label" htmlFor="cuit">CUIT</label>
                         <input className="input input-bordered w-full" type="cuit" {...register("cuit")} />

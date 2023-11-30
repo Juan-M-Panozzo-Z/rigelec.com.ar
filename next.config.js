@@ -8,7 +8,7 @@ const nextConfig = {
             "rigelec.com.ar"
         ],
     },
-    staticPageGenerationTimeout: 300,
+    reactStrictMode: true
 };
 
 module.exports = nextConfig;
