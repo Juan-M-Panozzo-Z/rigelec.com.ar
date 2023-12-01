@@ -19,17 +19,17 @@ export default function Growatt() {
     const cards = [
         {
             title: "Potencia total que generamos",
-            data: `${growattData?.eTotal} Kwh`,
+            data: `${growattData?.eTotal || 'cargando...'} Kwh`,
             lottie: "/assets/lottiefiles/energy.json",
         },
         {
             title: "Reduccion de emisiones de CO2",
-            data: `${(growattData?.eTotal * 0.4).toFixed(2)} Kg`,
+            data: `${(growattData?.eTotal * 0.4) || 'cargando...'} Kg`,
             lottie: "/assets/lottiefiles/power.json",
         },
         {
             title: "Potencia actual de paneles solares",
-            data: `${growattData?.pac}W`,
+            data: `${growattData?.pac || 'cargando...'} W`,
             lottie: "/assets/lottiefiles/solar.json",
         },
     ]
