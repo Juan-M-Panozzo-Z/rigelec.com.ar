@@ -4,13 +4,23 @@ import ItemDataForm from './ItemDataForm'
 import { setProfile } from '@/actions/supabase/user'
 
 
-export default function DataForm() {
-    const { register, handleSubmit } = useForm()
+export default function DataForm({ metadata }) {
+    const { register, handleSubmit } = useForm(
+        {
+            defaultValues: {
+                cuit: metadata?.cuit,
+                name: metadata?.name,
+                type: metadata?.type,
+                address: metadata?.address,
+                locality: metadata?.locality,
+                province: metadata?.province
 
+            }
+        }
+    )
 
     const onSubmit = async (data) => {
         const response = await setProfile(data)
-        console.log(response)
     }
 
     const items = [
