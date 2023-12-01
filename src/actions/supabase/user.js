@@ -19,5 +19,14 @@ export const getUser = async () => {
     if (error) {
         throw error;
     }
-    return data;
+    return data.user
 };
+
+export const setProfile = async (profile) => {
+    const supabase = await createSupabaseServerClient();
+    const { error, data } = await supabase.auth.updateUser({ data: profile });
+    if (error) {
+        throw error;
+    }
+    return data;
+}
