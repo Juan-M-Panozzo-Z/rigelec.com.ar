@@ -1,4 +1,5 @@
 import createSupabaseClient from "@/lib/supabase/client";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from 'zod';
 
@@ -62,5 +63,5 @@ export const signup = async ({ email, password }) => {
 export const logout = async () => {
     const supabase = await createSupabaseClient();
     await supabase.auth.signOut();
-    return redirect('/');
+    revalidatePath('/');
 }
