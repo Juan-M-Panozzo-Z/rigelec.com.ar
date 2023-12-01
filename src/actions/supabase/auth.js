@@ -4,7 +4,7 @@ import createSupabaseServerClient from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { z } from 'zod';
 
-export const loginFromCli = async (email, password) => {
+export const loginFromCli = async ( email, password ) => {
     console.log('loginFromCli', email, password)
     const supabase = await createSupabaseServerClient();
     const schema = z.object({
@@ -64,4 +64,5 @@ export const signup = async ({ email, password }) => {
 export const logout = async () => {
     const supabase = await createSupabaseServerClient();
     await supabase.auth.signOut();
+    return redirect('/');
 }
