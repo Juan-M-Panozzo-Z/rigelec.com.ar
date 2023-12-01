@@ -1,10 +1,8 @@
 import createSupabaseClient from "@/lib/supabase/client";
-import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from 'zod';
 
 export const loginFromCli = async ( email, password ) => {
-    console.log('loginFromCli', email, password)
     const supabase = await createSupabaseClient();
     const schema = z.object({
         email: z.string().email(),
@@ -63,5 +61,5 @@ export const signup = async ({ email, password }) => {
 export const logout = async () => {
     const supabase = await createSupabaseClient();
     await supabase.auth.signOut();
-    revalidatePath('/');
+    window.location.reload();
 }
