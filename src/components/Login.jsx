@@ -4,6 +4,7 @@ import { FaUser } from "react-icons/fa";
 import { getUser } from "@/actions/supabase/client/user";
 import { logout } from "@/actions/supabase/client/auth";
 import Link from "next/link";
+import { FaArrowRightFromBracket, FaHouse } from "react-icons/fa6";
 
 export default function Login() {
     const [email, setEmail] = useState('')
@@ -20,8 +21,11 @@ export default function Login() {
 
     const onSubmit = async (e) => {
         e.preventDefault()
-        closeModal()
-        const response = await loginFromCli(email, password)
+        const res = await loginFromCli(email, password)
+        if (!res) {
+            window.location.replace('/dashboard')
+            closeModal()
+        }
     }
 
     const closeModal = () => {
@@ -65,11 +69,14 @@ export default function Login() {
                     <ul tabIndex={0} className="dropdown-content mt-1 z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                         <li>
                             <Link href="/dashboard">
-                                <button className="btn btn-sm btn-ghost">Dashboard</button>
+                                <FaHouse className="mr-2" />
+                                Mi perfil
                             </Link>
                         </li>
                         <li>
-                            <button onClick={logout} className="btn btn-sm btn-ghost">Cerrar sesión</button>
+                            <span onClick={logout}>
+                                <FaArrowRightFromBracket className="mr-2" />
+                                Cerrar sesión</span>
                         </li>
                     </ul>
                 </div>
