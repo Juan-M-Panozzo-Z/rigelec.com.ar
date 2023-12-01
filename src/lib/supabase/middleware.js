@@ -16,7 +16,7 @@ export const createClient = (request) => {
             cookies: {
                 get(name) {
                     return request.cookies.get(name)?.value
-                },
+                }
             },
         }
     )

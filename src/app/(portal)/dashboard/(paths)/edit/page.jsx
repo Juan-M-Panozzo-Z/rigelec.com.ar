@@ -1,4 +1,4 @@
-import PortalSection from "../../components/PortalSection";
+import PortalSection from "@/app/(portal)/components/PortalSection";
 import DataForm from "./components/DataForm";
 
 export default async function EditProfile() {
