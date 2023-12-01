@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { loginFromCli } from "@/actions/supabase/auth";
 import { FaUser } from "react-icons/fa";
 import { getUser } from "@/actions/supabase/client/user";
+import { logout } from "@/actions/supabase/client/auth";
+import Link from "next/link";
 
 export default function Login() {
     const [email, setEmail] = useState('')
@@ -55,7 +57,23 @@ export default function Login() {
                         </div>
                     </dialog>
                 </>
-            ) : (<></>)
+            ) : (<>
+                <div className="dropdown dropdown-end">
+                    <div tabIndex={0} role="button" className="btn btn-sm btn-circle btn-info shadow-lg">
+                        <FaUser />
+                    </div>
+                    <ul tabIndex={0} className="dropdown-content mt-1 z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                        <li>
+                            <Link href="/dashboard">
+                                <button className="btn btn-sm btn-ghost">Dashboard</button>
+                            </Link>
+                        </li>
+                        <li>
+                            <button onClick={logout} className="btn btn-sm btn-ghost">Cerrar sesión</button>
+                        </li>
+                    </ul>
+                </div>
+            </>)
             }
         </>
     )
