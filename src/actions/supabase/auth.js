@@ -4,9 +4,9 @@ import createSupabaseServerClient from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { z } from 'zod';
 
-export const loginFromCli = async ({ email, password }) => {
+export const loginFromCli = async ( email, password ) => {
+    console.log('loginFromCli', email, password)
     const supabase = await createSupabaseServerClient();
-
     const schema = z.object({
         email: z.string().email(),
         password: z.string().min(6),

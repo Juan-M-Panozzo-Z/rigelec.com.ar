@@ -6,6 +6,7 @@ import Link from "next/link";
 import Marquee from "react-fast-marquee";
 import GrowattData from "./GrowattData";
 import { CiMenuBurger } from "react-icons/ci";
+import Login from "./Login";
 
 const links = [
     {
@@ -137,6 +138,7 @@ export default function Navbar() {
                 </div>
                 <div className="navbar-end space-x-2 min-w-max">
                     <GrowattData />
+                    <Login />
                 </div>
             </div>
         </div>
