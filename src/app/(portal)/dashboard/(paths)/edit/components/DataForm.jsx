@@ -1,26 +1,48 @@
 'use client'
 import { useForm } from 'react-hook-form'
 import ItemDataForm from './ItemDataForm'
-import { setProfile } from '@/actions/supabase/user'
+import { getProfile, setProfile } from '@/actions/supabase/user'
+import { getTypes } from '@/actions/supabase/installer_types'
+import { useRouter } from 'next/navigation'
+import { useState, useEffect } from 'react'
 
+export default function DataForm({ profile }) {
+    const [types, setTypes] = useState([])
+    const [loading, setLoading] = useState(false)
+    const router = useRouter()
 
-export default function DataForm({ metadata }) {
-    const { register, handleSubmit } = useForm(
-        {
-            defaultValues: {
-                cuit: metadata?.cuit,
-                name: metadata?.name,
-                type: metadata?.type,
-                address: metadata?.address,
-                locality: metadata?.locality,
-                province: metadata?.province
+    const { register, handleSubmit } = useForm({
+        defaultValues: {
+            cuit: profile?.cuit,
+            name: profile?.name,
+            typeId: profile?.typeId,
+            address: profile?.address,
+            locality: profile?.locality,
+            province: profile?.province
+        }
+    })
 
+    useEffect(() => {
+        const fetchTypes = async () => {
+            const res = await getTypes()
+            if (res.error) {
+                return alert(res.error.message)
+            } else {
+                setTypes(res)
             }
         }
-    )
+        fetchTypes()
+    }, [])
 
-    const onSubmit = async (data) => {
-        const response = await setProfile(data)
+    const onSubmit = async (form) => {
+        setLoading(true)
+        const { err } = await setProfile(form)
+        if (err) {
+            setLoading(false)
+            return alert(err)
+        } else {
+            router.push('/dashboard')
+        }
     }
 
     const items = [
@@ -37,13 +59,6 @@ export default function DataForm({ metadata }) {
             name: "name",
             type: "text",
             placeholder: "Empresa S.A.",
-            required: true
-        },
-        {
-            label: "Tipo de instalador",
-            name: "type",
-            type: "text",
-            placeholder: "Paneles fotovoltaicos, etc.",
             required: true
         },
         {
@@ -70,6 +85,16 @@ export default function DataForm({ metadata }) {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <div className="grid md:grid-cols-2 gap-4">
+                <ItemDataForm label="Tipo de instalador">
+                    <select
+                        defaultValue={profile?.typeId}
+                        className='select select-bordered w-full bg-white' {...register('typeId', { required: true })}>
+                        <option disabled selected value="">Seleccionar tipo de instalador</option>
+                        {types.map((type, index) => (
+                            <option key={index} value={type.id}>{type.name}</option>
+                        ))}
+                    </select>
+                </ItemDataForm>
                 {items.map((item, index) => (
                     <ItemDataForm key={index} {...item}>
                         <input
@@ -82,7 +107,12 @@ export default function DataForm({ metadata }) {
                 ))}
             </div>
             <div className="mt-4">
-                <button className="btn btn-primary">Guardar</button>
+                <button
+                    disabled={loading}
+                    className="btn btn-primary rounded-full">
+                    {loading && <span className='loading loading-spinner me-2'></span>}
+                    Guardar cambios
+                </button>
             </div>
         </form>
     )

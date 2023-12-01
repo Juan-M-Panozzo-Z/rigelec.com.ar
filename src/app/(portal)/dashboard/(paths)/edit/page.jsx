@@ -1,15 +1,15 @@
 import PortalSection from "@/app/(portal)/components/PortalSection";
 import DataForm from "./components/DataForm";
-import { getUser } from "@/actions/supabase/user";
+import { getProfile } from "@/actions/supabase/user";
 
 export default async function EditProfile() {
-    const {user_metadata: metadata} = await getUser()
-    console.log(metadata)
+    const profile = await getProfile()
+
 
     return (
         <section>
             <PortalSection title="Editar mi perfil">
-                <DataForm metadata={metadata} />
+                <DataForm  profile={profile} />
             </PortalSection>
         </section>
     )

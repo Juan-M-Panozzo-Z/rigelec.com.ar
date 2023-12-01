@@ -10,6 +10,7 @@ export default function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [aud, setAud] = useState('')
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -21,15 +22,22 @@ export default function Login() {
 
     const onSubmit = async (e) => {
         e.preventDefault()
+        setLoading(true)
         const res = await loginFromCli(email, password)
         if (!res) {
             window.location.replace('/dashboard')
             closeModal()
+            setLoading(false)
         }
     }
 
     const closeModal = () => {
         document.getElementById('my_modal_1').close()
+    }
+
+    const handleLogout = async () => {
+        setLoading(true)
+        await logout()
     }
 
     return (
@@ -47,7 +55,10 @@ export default function Login() {
                                 <input type="password" className="input input-bordered w-full mt-4" placeholder="Contraseña" onChange={(e) => setPassword(e.target.value)} />
 
                                 <div className="modal-action">
-                                    <button className="btn btn-sm btn-primary" type="submit">
+                                    <button
+                                        disabled={loading}
+                                        className="btn btn-sm btn-primary" type="submit">
+                                        {loading && <span className="loading loading-spinner loading-xs"></span>}
                                         Iniciar sesión
                                     </button>
                                     <button
@@ -74,8 +85,12 @@ export default function Login() {
                             </Link>
                         </li>
                         <li>
-                            <span onClick={logout}>
-                                <FaArrowRightFromBracket className="mr-2" />
+                            <span
+                             onClick={handleLogout}>
+                                {loading
+                                    ? <span className="loading loading-spinner loading-xs"></span>
+                                    : <FaArrowRightFromBracket className="mr-2" />
+                                }
                                 Cerrar sesión</span>
                         </li>
                     </ul>

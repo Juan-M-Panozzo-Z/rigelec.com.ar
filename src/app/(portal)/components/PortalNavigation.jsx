@@ -8,10 +8,6 @@ export default function Navigation() {
             url: "/"
         },
         {
-            name: "editar mi perfil",
-            url: "/edit"
-        },
-        {
             name: "mis proyectos",
             url: "/projects"
         }

@@ -22,17 +22,13 @@ export default function Hero() {
                         ingresá a nuestra tienda desde aquí
                     </h3>
                     <span className="md:text-3xl animate-bounce">👇</span>
-                    <div
-                        className="tooltip tooltip-bottom"
-                        data-tip="¡Proximamente!"
+
+                    <Link
+                        href="https://store.rigelec.com.ar/"
+                        className="btn btn-primary mx-auto rounded-full text-white transition-all"
                     >
-                        <Link
-                            href="https://store.rigelec.com.ar/"
-                            className="btn btn-primary mx-auto rounded-full text-white transition-all"
-                        >
-                            Ir a rigelec store
-                        </Link>
-                    </div>
+                        Ir a rigelec store
+                    </Link>
                 </div>
             </div>
         </section>
