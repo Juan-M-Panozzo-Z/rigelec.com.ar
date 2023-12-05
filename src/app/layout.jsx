@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import "@/styles/globals.css";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
@@ -11,6 +12,7 @@ const RootLayout = ({ children }) => {
           <section className="min-h-screen">{children}</section>
           <WhatsappButton />
           <Footer />
+          <Analytics />
         </body>
     </html>
   );
