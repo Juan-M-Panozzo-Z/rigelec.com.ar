@@ -25,9 +25,9 @@ export default function Hero() {
 
                     <Link
                         href="https://store.rigelec.com.ar/"
-                        className="btn btn-primary mx-auto rounded-full text-white transition-all"
+                        className="btn btn-primary mx-auto rounded-full text-white transition-all shadow-lg"
                     >
-                        Ir a rigelec store
+                        Tienda Rigelec
                     </Link>
                 </div>
             </div>
