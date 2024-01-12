@@ -5,16 +5,7 @@ export default async function ProfilePage() {
     console.log(types)
     return (
         <div className="container mx-auto p-4">
-            <div className='max-w-md mx<figure class="text-start">
-                <blockquote class="blockquote">
-                    <p>A well-known quote, contained in a blockquote element.</p>
-                </blockquote>
-                <figcaption class="blockquote-footer">
-                    Someone famous in
-                    <cite title="Source Title">Source Title</cite>
-                </figcaption>
-            </figure>
-            '>
+            <div className='max-w-md mx-auto'>
                 <form className="flex flex-col gap-4 w-full">
                     <select className='select select-bordered'>
                         {types.map((type) => (
