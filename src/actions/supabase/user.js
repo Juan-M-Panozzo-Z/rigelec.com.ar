@@ -28,9 +28,9 @@ export const getProfile = async () => {
     const userId = user?.user?.id
     const { data, error } = await supabase.from('installer_profiles').select('*').eq('userId', userId).single()
     if (error) {
-        throw error
+        return { error }
     }
-    return data
+    return { data }
 }
 
 export const setProfile = async (profile) => {

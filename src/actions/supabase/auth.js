@@ -48,16 +48,19 @@ export const loginFromSsr = async (formData) => {
     }
 };
 
-export const signup = async ({ email, password }) => {
+export const signup = async (formData) => {
+    const supabase = await createSupabaseServerClient();
+    const email = formData.get('email');
+    const password = formData.get('password');
     const { error } = await supabase.auth.signUp({
         email,
         password
     });
 
     if (error) {
-        throw error;
+        return error;
     }
-    console.log('signup success');
+    redirect('/');
 };
 
 export const logout = async () => {

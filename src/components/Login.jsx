@@ -61,13 +61,16 @@ export default function Login() {
                                         {loading && <span className="loading loading-spinner loading-xs"></span>}
                                         Iniciar sesión
                                     </button>
-                                    <button
-                                        onClick={closeModal}
+                                    <Link
+                                        href="/signup"
                                         type="button"
                                         className="btn btn-sm">
-                                        Cancelar
-                                    </button>
+                                        Registrarse
+                                    </Link>
                                 </div>
+                            </form>
+                            <form method="dialog">
+                                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                             </form>
                         </div>
                     </dialog>
@@ -86,7 +89,7 @@ export default function Login() {
                         </li>
                         <li>
                             <span
-                             onClick={handleLogout}>
+                                onClick={handleLogout}>
                                 {loading
                                     ? <span className="loading loading-spinner loading-xs"></span>
                                     : <FaArrowRightFromBracket className="mr-2" />

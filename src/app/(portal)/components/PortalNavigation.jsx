@@ -7,10 +7,10 @@ export default function Navigation() {
             name: "Dashboard",
             url: "/"
         },
-        {
-            name: "mis proyectos",
-            url: "/projects"
-        }
+        // {
+        //     name: "mis proyectos",
+        //     url: "/projects"
+        // }
     ]
     return (
         <div className='pb-4'>
