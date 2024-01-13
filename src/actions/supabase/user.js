@@ -1,5 +1,7 @@
 'use server'
 import createSupabaseServerClient from "@/lib/supabase/server";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export const getSession = async () => {
     const supabase = await createSupabaseServerClient();
@@ -33,10 +35,20 @@ export const getProfile = async () => {
     return { data }
 }
 
-export const setProfile = async (profile) => {
+export const setProfile = async (form) => {
+
     const supabase = await createSupabaseServerClient();
     const { data: user } = await supabase.auth.getUser()
     const userId = user?.user?.id
+    const profile = {
+        userId,
+        typeId: form.get('type'),
+        cuit: form.get('cuit'),
+        name: form.get('name'),
+        address: form.get('address'),
+        locality: form.get('locality'),
+        province: form.get('province'),
+    }
     const getProfile = await supabase.from('installer_profiles').select('*').eq('userId', userId).single()
     if (getProfile.data) {
         const { error } = await supabase.from('installer_profiles').update({
@@ -44,14 +56,19 @@ export const setProfile = async (profile) => {
             updated_at: new Date()
         }).eq('userId', userId)
         if (error) {
-            throw error
+            return error
         }
-        return true
+
+        revalidatePath('/dashboard')
+        return redirect('/dashboard')
+
     } else {
         const { error } = await supabase.from('installer_profiles').insert(profile)
         if (error) {
-            throw error
+            return error
         }
-        return true
+
+        revalidatePath('/dashboard')
+        return redirect('/dashboard')
     }
 }

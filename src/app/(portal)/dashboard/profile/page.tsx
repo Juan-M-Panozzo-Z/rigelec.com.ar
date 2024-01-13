@@ -1,13 +1,15 @@
 import { getTypes } from '../../../../actions/supabase/installer_types'
-
+import { setProfile } from '../../../../actions/supabase/user'
 export default async function ProfilePage() {
     const types = await getTypes()
-    console.log(types)
+
     return (
         <div className="container mx-auto p-4">
             <div className='max-w-md mx-auto'>
-                <form className="flex flex-col gap-4 w-full">
-                    <select className='select select-bordered'>
+                <form action={setProfile} className="flex flex-col gap-4 w-full">
+                    <select
+                        name='type'
+                        className='select select-bordered'>
                         {types.map((type) => (
                             <option
                                 key={type.id}

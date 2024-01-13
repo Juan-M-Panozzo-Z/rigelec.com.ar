@@ -1,10 +1,13 @@
 import PortalSection from "../components/PortalSection";
 import { getProfile } from "@/actions/supabase/user";
+import { getTypeById } from "@/actions/supabase/installer_types";
 import Link from "next/link";
 import { HiEye } from "react-icons/hi";
 
 export default async function Dashboard() {
     const { error, data } = await getProfile()
+    const type = await getTypeById(data.typeId)
+
     return (
         <section>
             <PortalSection title="mi perfil">
@@ -12,8 +15,9 @@ export default async function Dashboard() {
                     <>
                         <div className="flex flex-row items-center">
                             <div className="flex flex-col">
-                                <h3 className="text-lg uppercase text-neutral-700 tracking-tight">{data.name}</h3>
-                                <p className="text-neutral-500">{data.email}</p>
+                                <h3 className="text-xl uppercase text-neutral-700 tracking-tight">{data.name} - {type.name}</h3>
+                                <p className="text-neutral-600">{data.cuit}</p>
+                                <p className="text-lg">{data.address} - {data.locality}</p>
                             </div>
                         </div>
                     </>
