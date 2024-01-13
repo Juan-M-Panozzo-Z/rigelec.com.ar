@@ -1,4 +1,4 @@
-import createSupabaseClient from "@/lib/supabase/client";
+import createSupabaseClient from "../../../lib/supabase/client";
 import { redirect } from "next/navigation";
 import { z } from 'zod';
 

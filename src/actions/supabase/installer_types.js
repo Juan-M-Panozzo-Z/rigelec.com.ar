@@ -1,6 +1,6 @@
 'use server';
 
-import createSupabaseServerClient from "@/lib/supabase/server";
+import createSupabaseServerClient from "../../lib/supabase/server";
 
 export const getTypes = async () => {
     const supabase = await createSupabaseServerClient();

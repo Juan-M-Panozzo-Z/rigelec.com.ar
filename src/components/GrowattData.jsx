@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getGrowatt } from "@/actions/growatt";
+import { getGrowatt } from "../actions/growatt";
 import { Player } from "@lottiefiles/react-lottie-player";
 import Link from "next/link";
 

@@ -1,5 +1,5 @@
 "use client";
-import { send } from "@/actions/email";
+import { send } from "../actions/email";
 import { useState } from "react";
 import Section from "./Section";
 import SectionTitle from "./SectionTitle";

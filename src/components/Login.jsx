@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { loginFromCli } from "@/actions/supabase/auth";
+import { loginFromCli } from "../actions/supabase/auth";
 import { FaUser } from "react-icons/fa";
-import { getUser } from "@/actions/supabase/client/user";
-import { logout } from "@/actions/supabase/client/auth";
+import { getUser } from "../actions/supabase/client/user";
+import { logout } from "../actions/supabase/client/auth";
 import Link from "next/link";
 import { FaArrowRightFromBracket, FaHouse } from "react-icons/fa6";
 

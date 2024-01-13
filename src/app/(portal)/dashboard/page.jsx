@@ -1,6 +1,6 @@
 import PortalSection from "../components/PortalSection";
-import { getProfile } from "@/actions/supabase/user";
-import { getTypeById } from "@/actions/supabase/installer_types";
+import { getProfile } from "../../../actions/supabase/user";
+import { getTypeById } from "../../../actions/supabase/installer_types";
 import Link from "next/link";
 import { HiEye } from "react-icons/hi";
 

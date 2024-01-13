@@ -1,9 +1,9 @@
 import { Analytics } from '@vercel/analytics/react';
 import "@/styles/globals.css";
 import { Lato } from "next/font/google";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
-import WhatsappButton from "@/components/WhatsappButton";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
+import WhatsappButton from "../components/WhatsappButton";
 
 const lato = Lato({
   subsets: ["latin"],

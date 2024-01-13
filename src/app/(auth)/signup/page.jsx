@@ -1,5 +1,5 @@
 'use server';
-import { signup } from "@/actions/supabase/auth";
+import { signup } from "../../../actions/supabase/auth";
 
 export default async function Signup() {
 

@@ -1,4 +1,4 @@
-import { lastArticles } from "@/actions/paljet/articles";
+import { lastArticles } from "../actions/paljet/articles";
 import Section from "./Section";
 import SectionTitle from "./SectionTitle";
 import Slide from "./Slide";

@@ -4,8 +4,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useMediaQuery } from "@react-hook/media-query";
-import Card from "@/components/Card";
-import SkeletonCard from "@/components/Skeletons/Card";
+import Card from "../components/Card";
+import SkeletonCard from "../components/Skeletons/Card";
 
 export default function Slide({ articles }) {
   const isSmall = useMediaQuery("only screen and (max-width: 768px)");

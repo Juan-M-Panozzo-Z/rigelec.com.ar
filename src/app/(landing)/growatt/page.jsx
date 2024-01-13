@@ -1,8 +1,8 @@
 'use client'
 
 import { useState, useEffect } from "react";
-import { getGrowatt } from "@/actions/growatt";
-import Section from "@/components/Section";
+import { getGrowatt } from "../../../actions/growatt";
+import Section from "../../../components/Section";
 import Card from './components/Card';
 
 export default function Growatt() {
