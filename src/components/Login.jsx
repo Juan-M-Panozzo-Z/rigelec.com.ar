@@ -88,8 +88,8 @@ export default function Login() {
                 </>
             ) : (<>
                 <div className="dropdown dropdown-end">
-                    <div tabIndex={0} role="button" className="btn btn-sm btn-circle btn-info shadow-lg">
-                    {avatar ? <Image src={avatar} width={30} height={30} className="rounded-full" /> : <FaUser />}
+                    <div tabIndex={0} role="button" className="btn btn-sm btn-circle btn-info shadow-lg grid place-content-center">
+                    {avatar ? <Image src={avatar} width={32} height={32} className="rounded-full" /> : <FaUser />}
                     </div>
                     <ul tabIndex={0} className="dropdown-content mt-1 z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                         <li>
