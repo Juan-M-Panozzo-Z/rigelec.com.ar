@@ -24,6 +24,17 @@ export const getUser = async () => {
     return data.user
 };
 
+export const getAvatar = async () => {
+    const supabase = await createSupabaseServerClient();
+    const { data: user } = await supabase.auth.getUser()
+    const userId = user?.user?.id
+    const { data, error } = await supabase.storage.from('installer_profiles_avatars').getPublicUrl(`${userId}/avatar`)
+    if (error) {
+        return error
+    }
+    return data.publicUrl
+}
+
 export const getProfile = async () => {
     const supabase = await createSupabaseServerClient();
     const { data: user } = await supabase.auth.getUser()
@@ -40,6 +51,7 @@ export const setProfile = async (form) => {
     const supabase = await createSupabaseServerClient();
     const { data: user } = await supabase.auth.getUser()
     const userId = user?.user?.id
+    const avatar = form.get('avatar')
     const profile = {
         userId,
         typeId: form.get('type'),
@@ -49,26 +61,32 @@ export const setProfile = async (form) => {
         locality: form.get('locality'),
         province: form.get('province'),
     }
-    const getProfile = await supabase.from('installer_profiles').select('*').eq('userId', userId).single()
-    if (getProfile.data) {
-        const { error } = await supabase.from('installer_profiles').update({
-            ...profile,
-            updated_at: new Date()
-        }).eq('userId', userId)
-        if (error) {
-            return error
-        }
-
-        revalidatePath('/dashboard')
-        return redirect('/dashboard')
-
+    const { error } = await supabase.storage.from('installer_profiles_avatars').upload(`${userId}/avatar`, avatar, {upsert: true})
+    
+    if (error) {
+        return error
     } else {
-        const { error } = await supabase.from('installer_profiles').insert(profile)
-        if (error) {
-            return error
-        }
+        const getProfile = await supabase.from('installer_profiles').select('*').eq('userId', userId).single()
+        if (getProfile.data) {
+            const { error } = await supabase.from('installer_profiles').update({
+                ...profile,
+                updated_at: new Date()
+            }).eq('userId', userId)
+            if (error) {
+                return error
+            }
 
-        revalidatePath('/dashboard')
-        return redirect('/dashboard')
+            revalidatePath('/dashboard')
+            return redirect('/dashboard')
+
+        } else {
+            const { error } = await supabase.from('installer_profiles').insert(profile)
+            if (error) {
+                return error
+            }
+
+            revalidatePath('/dashboard')
+            return redirect('/dashboard')
+        }
     }
 }

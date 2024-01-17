@@ -5,7 +5,8 @@ const nextConfig = {
         domains: [
             "paljet.rigelec.com.ar",
             "webservice.rigelec.com.ar",
-            "rigelec.com.ar"
+            "rigelec.com.ar",
+            "rcsydjoozxbjtwasoxvu.supabase.co"
         ],
     },
     reactStrictMode: true
