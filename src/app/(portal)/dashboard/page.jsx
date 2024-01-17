@@ -6,6 +6,8 @@ import { HiEye } from "react-icons/hi";
 import { FaPencil } from "react-icons/fa6";
 import Image from "next/image";
 
+export const dynamic = 'force-dynamic'
+
 export default async function Dashboard() {
     const { error, data } = await getProfile()
     const avatar = await getAvatar()
