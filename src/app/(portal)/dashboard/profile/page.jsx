@@ -51,7 +51,7 @@ export default async function ProfilePage() {
                         defaultValue={profile.name}
                         name='name'
                         type='text'
-                        placeholder='Nombre'
+                        placeholder='Nombre completo'
                         className='input input-bordered'
                     />
                     <input
