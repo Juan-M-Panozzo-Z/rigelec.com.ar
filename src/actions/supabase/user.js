@@ -55,14 +55,17 @@ export const setProfile = async (form) => {
     const profile = {
         userId,
         typeId: form.get('type'),
-        cuit: form.get('cuit'),
         name: form.get('name'),
         address: form.get('address'),
         locality: form.get('locality'),
         province: form.get('province'),
     }
-    const { error } = await supabase.storage.from('installer_profiles_avatars').upload(`${userId}/avatar`, avatar, {upsert: true})
-    
+    const cuit = form.get('cuit')
+    if (cuit) {
+        profile.cuit = cuit
+    }
+    const { error } = await supabase.storage.from('installer_profiles_avatars').upload(`${userId}/avatar`, avatar, { upsert: true })
+
     if (error) {
         return error
     } else {

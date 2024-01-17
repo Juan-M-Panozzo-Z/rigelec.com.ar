@@ -41,7 +41,7 @@ export default async function ProfilePage() {
                     </select>
                     <input
                         defaultValue={profile.cuit}
-                        disabled
+                        disabled={profile.cuit ? true : false}
                         name='cuit'
                         type='text'
                         placeholder='Cuit'
