@@ -21,6 +21,17 @@ export const getUser = async () => {
     return data.user
 };
 
+export const getAvatar = async () => {
+    const supabase = await createSupabaseClient();
+    const user = await getUser()
+    const userId = user?.id
+    const { data, error } =  supabase.storage.from('installer_profiles_avatars').getPublicUrl(`${userId}/avatar`)
+    if (error) {
+        return error
+    }
+    return data.publicUrl
+}
+
 export const setProfile = async (profile) => {
     const supabase = await createSupabaseClient();
     const { error, data } = await supabase.auth.updateUser({ data: profile });

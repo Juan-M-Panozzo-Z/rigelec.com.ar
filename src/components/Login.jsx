@@ -5,11 +5,14 @@ import { getUser } from "../actions/supabase/client/user";
 import { logout } from "../actions/supabase/client/auth";
 import Link from "next/link";
 import { FaArrowRightFromBracket, FaHouse } from "react-icons/fa6";
+import { getAvatar } from "../actions/supabase/client/user";
+import Image from "next/image";
 
 export default function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [aud, setAud] = useState('')
+    const [avatar, setAvatar] = useState('')
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
@@ -18,6 +21,14 @@ export default function Login() {
             setAud(user.aud);
         };
         fetchUser();
+    }, []);
+
+    useEffect(() => {
+        const fetchAvatar = async () => {
+            const resp = await getAvatar();
+            setAvatar(resp);
+        };
+        fetchAvatar();
     }, []);
 
     const onSubmit = async (e) => {
@@ -78,7 +89,7 @@ export default function Login() {
             ) : (<>
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn btn-sm btn-circle btn-info shadow-lg">
-                        <FaUser />
+                    {avatar ? <Image src={avatar} width={30} height={30} className="rounded-full" /> : <FaUser />}
                     </div>
                     <ul tabIndex={0} className="dropdown-content mt-1 z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                         <li>

@@ -9,7 +9,7 @@ import Image from "next/image";
 export const dynamic = 'force-dynamic'
 
 export default async function Dashboard() {
-    const { error, data } = await getProfile()
+    const { data } = await getProfile()
     const avatar = await getAvatar()
     const type = await getTypeById(data.typeId)
 
