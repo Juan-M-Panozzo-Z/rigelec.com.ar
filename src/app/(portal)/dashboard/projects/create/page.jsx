@@ -36,7 +36,14 @@ export default function CreateProject() {
                         <label className="label" htmlFor="image">
                             <span className="label-text">Elije una imagen</span>
                         </label>
-                        <input id="image" name="image" type="file" className="file-input file-input-bordered w-full" placeholder="Imagen" />
+                        <input
+                            accept="image/png, image/jpeg"
+                            id="image"
+                            name="image"
+                            type="file"
+                            className="file-input file-input-bordered w-full"
+                            placeholder="Imagen"
+                        />
                     </div>
                     <div className="flex justify-end gap-4">
                         <button className="btn btn-sm btn-primary">Cargar proyecto</button>
