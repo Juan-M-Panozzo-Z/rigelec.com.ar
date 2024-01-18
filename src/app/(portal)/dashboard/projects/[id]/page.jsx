@@ -11,8 +11,8 @@ export default async function Project({ params }) {
 
     return (
         <PortalSection
+        className={"mb-4"}
             title={project.name}
-            link={false}
         >
             <div className="grid md:grid-cols-3 gap-4">
                 {
@@ -22,16 +22,18 @@ export default async function Project({ params }) {
                         </div>
                     ))
                 }
-                <div className="md:col-span-2 space-y-4">
-                    <h2 className="uppercase text-3xl">
-                        {project.name}
-                    </h2>
-                    <span className="text-neutral-500">
-                        {project.date}
-                    </span>
-                    <p>
-                        {project.description}
-                    </p>
+                <div className="md:col-span-2 flex flex-col justify-between">
+                    <div className="space-y-4">
+                        <h2 className="uppercase text-3xl">
+                            {project.name}
+                        </h2>
+                        <span className="text-neutral-500">
+                            {project.date}
+                        </span>
+                        <p>
+                            {project.description}
+                        </p>
+                    </div>
                     <div className="flex justify-end gap-4">
                         <Link
                             className="btn btn-sm btn-secondary"

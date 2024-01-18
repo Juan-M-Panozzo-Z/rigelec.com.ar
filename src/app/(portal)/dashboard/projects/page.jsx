@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { getSelfProjects, setProject } from "../../../../actions/supabase/installer_projects"
 import PortalSection from "../../components/PortalSection";
-import { FaPlus } from "react-icons/fa";
+import { FaEyeSlash, FaPlus } from "react-icons/fa";
 
 export default async function Projects() {
     const { data: projects } = await getSelfProjects()
 
     return (
         <PortalSection
-        className={"shadow-none border-none"}
+            className={"shadow-none border-none"}
             title="mis proyectos"
             link={true}
             linkHref="projects/create"
@@ -40,7 +40,12 @@ export default async function Projects() {
                             ))}
                         </div>
                     )
-                    : (null)
+                    : (
+                        <div className="flex flex-col justify-center items-center min-h-[400px] gap-4">
+                            <FaEyeSlash className="mx-auto text-3xl md:text-7xl text-neutral-300" />
+                            <h3 className="text-center md:text-xl text-neutral-500">No hay proyectos</h3>
+                        </div>
+                    )
             }
         </PortalSection>
     )
