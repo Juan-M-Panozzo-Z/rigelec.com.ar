@@ -67,7 +67,6 @@ export const setProject = async (project) => {
             return { error: 'Error uploading image' }
         }
     }
-    console.log('redirecting')
     redirect(`/dashboard/projects/`)
 
 
