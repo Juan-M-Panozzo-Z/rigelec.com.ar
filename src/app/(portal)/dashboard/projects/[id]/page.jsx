@@ -22,9 +22,9 @@ export default async function Project({ params }) {
                         </div>
                     ))
                 }
-                <div className="md:col-span-2 flex flex-col justify-between">
+                <div className="md:col-span-2 flex flex-col justify-between gap-4">
                     <div className="space-y-4">
-                        <h2 className="uppercase text-3xl">
+                        <h2 className="uppercase text-xl md:text-3xl">
                             {project.name}
                         </h2>
                         <span className="text-neutral-500">
