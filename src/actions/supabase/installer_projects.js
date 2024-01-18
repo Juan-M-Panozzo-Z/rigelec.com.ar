@@ -18,6 +18,21 @@ export const getSelfProjects = async () => {
     }
 }
 
+
+export const getProject = async (projectId) => {
+    const supabase = await createSupabaseServerClient();
+    const { id } = await getUser()
+    try {
+        const { data, error } = await supabase.from('installer_projects').select('*').eq('id', projectId).eq('userId', id).single()
+        if (error) {
+            return { error }
+        }
+        return { data }
+    } catch {
+        return { error: 'Error fetching project' }
+    }
+}
+
 export const setProject = async (project) => {
     const supabase = await createSupabaseServerClient();
     const bucket = supabase.storage.from('installer_projects')
