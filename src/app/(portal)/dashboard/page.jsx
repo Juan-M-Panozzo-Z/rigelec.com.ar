@@ -2,9 +2,9 @@ import PortalSection from "../components/PortalSection";
 import { getAvatar, getProfile } from "../../../actions/supabase/user";
 import { getTypeById } from "../../../actions/supabase/installer_types";
 import Link from "next/link";
-import { HiEye } from "react-icons/hi";
 import { FaPencil } from "react-icons/fa6";
 import Image from "next/image";
+import { FaEyeSlash } from "react-icons/fa";
 
 export const dynamic = 'force-dynamic'
 
@@ -40,13 +40,13 @@ export default async function Dashboard() {
                     </>
                 ) : (
                     <div className="flex flex-row items-center">
-                        <div className="flex flex-col items-center mx-auto">
-                            <HiEye className="text-8xl text-neutral-500" />
-                            <h3 className="text-lg uppercase text-neutral-700 tracking-tight">
+                        <div className="flex flex-col mx-auto gap-2 items-center text-center">
+                            <FaEyeSlash className="text-3xl md:text-7xl text-neutral-300" />
+                            <h3 className="text-xl uppercase font-semibold text-neutral-700 tracking-tight">
                                 No tenemos información de tu perfil
                             </h3>
-                            <p>
-                                Te invitamos a llenes nuestro <Link className="link link-primary" href="/dashboard/profile">
+                            <p className="text-sm">
+                                Te invitamos a llenes este <Link className="btn btn-xs btn-primary" href="/dashboard/profile">
                                     formulario
                                 </Link> para poder publicitarte en nuestra plataforma.
                             </p>
