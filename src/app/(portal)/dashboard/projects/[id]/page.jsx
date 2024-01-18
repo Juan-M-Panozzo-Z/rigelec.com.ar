@@ -2,6 +2,7 @@ import { getProject } from "../../../../../actions/supabase/installer_projects"
 import PortalSection from "../../../components/PortalSection"
 import { getProjectImages } from "../../../../../actions/supabase/installer_projects_images"
 import Link from "next/link"
+import { FaPencil } from "react-icons/fa6"
 
 export default async function Project({ params }) {
     const { id } = params
@@ -31,17 +32,18 @@ export default async function Project({ params }) {
                     <p>
                         {project.description}
                     </p>
-                    <div className="flex justify-end">
+                    <div className="flex justify-end gap-4">
                         <Link
-                            className="btn btn-sm btn-secondary"
+                            className="btn btn-sm btn-primary"
                             href={`/dashboard/projects`}
                         >
                             Volver
                         </Link>
                         <Link
-                            className="btn btn-sm btn-ghost"
+                            className="btn btn-sm btn-secondary btn-outline"
                             href={`/dashboard/projects/${project.id}/edit`}
                         >
+                        <FaPencil className="mr-2 inline-block" />
                             Editar
                         </Link>
                     </div>

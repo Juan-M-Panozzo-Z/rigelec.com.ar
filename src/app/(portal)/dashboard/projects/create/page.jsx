@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { setProject } from "../../../../../actions/supabase/installer_projects"
 import PortalSection from "../../../components/PortalSection";
 
@@ -37,8 +38,14 @@ export default function CreateProject() {
                         </label>
                         <input id="image" name="image" type="file" className="file-input file-input-bordered w-full" placeholder="Imagen" />
                     </div>
-                    <div className="flex justify-end">
-                        <button className="btn btn-primary">Cargar proyecto</button>
+                    <div className="flex justify-end gap-4">
+                        <button className="btn btn-sm btn-primary">Cargar proyecto</button>
+                        <Link
+                            className="btn btn-sm btn-secondary"
+                            href="/dashboard/projects"
+                        >
+                            Volver
+                        </Link>
                     </div>
                 </form>
             </div>

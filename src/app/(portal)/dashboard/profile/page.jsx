@@ -75,11 +75,13 @@ export default async function ProfilePage() {
                         placeholder='Provincia'
                         className='input input-bordered'
                     />
-                    <div className="grid md:grid-cols-2 gap-4">
-                        <Link href='/dashboard' className='btn'>
+                    <div className="flex justify-end gap-4">
+                        <button className='btn btn-sm btn-primary'>
+                            Guardar
+                        </button>
+                        <Link href='/dashboard' className='btn btn-sm btn-secondary'>
                             Volver
                         </Link>
-                        <button className='btn btn-primary'>Guardar</button>
                     </div>
                 </form>
             </div>

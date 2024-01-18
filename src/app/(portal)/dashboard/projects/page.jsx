@@ -11,6 +11,7 @@ export default async function Projects() {
 
     return (
         <PortalSection
+        className={"shadow-none border-none"}
             title="mis proyectos"
             link={true}
             linkHref="projects/create"
@@ -27,7 +28,7 @@ export default async function Projects() {
                     ? (
                         <div className="grid md:grid-cols-3 gap-4">
                             {projects.map(project => (
-                                <div key={project.id} className="p-4 flex flex-col gap-2 border rounded-box shadow">
+                                <div key={project.id} className="p-4 flex flex-col gap-2 border rounded-xl shadow">
                                     <h3 className="text-xl uppercase text-neutral-700 tracking-tight">{project.name}</h3>
                                     <h4 className="text text-neutral-600">{project.date}</h4>
                                     <div className="flex justify-end">
