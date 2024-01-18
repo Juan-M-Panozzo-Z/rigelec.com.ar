@@ -4,13 +4,13 @@ export default function Navigation() {
 
     const paths = [
         {
-            name: "Dashboard",
+            name: "panel principal",
             url: "/"
         },
-        // {
-        //     name: "mis proyectos",
-        //     url: "/projects"
-        // }
+        {
+            name: "mis proyectos",
+            url: "/projects"
+        }
     ]
     return (
         <div className='pb-4'>

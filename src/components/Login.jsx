@@ -4,7 +4,7 @@ import { FaUser } from "react-icons/fa";
 import { getUser } from "../actions/supabase/client/user";
 import { logout } from "../actions/supabase/client/auth";
 import Link from "next/link";
-import { FaArrowRightFromBracket, FaHouse } from "react-icons/fa6";
+import { FaArrowRightFromBracket, FaHouse, FaXmark } from "react-icons/fa6";
 import { getAvatar } from "../actions/supabase/client/user";
 import Image from "next/image";
 
@@ -69,7 +69,10 @@ export default function Login() {
                                     <button
                                         disabled={loading}
                                         className="btn btn-sm btn-primary" type="submit">
-                                        {loading && <span className="loading loading-spinner loading-xs"></span>}
+                                        {
+                                            loading &&
+                                            <span className="loading loading-spinner loading-xs" />
+                                        }
                                         Iniciar sesión
                                     </button>
                                     <Link
@@ -81,7 +84,9 @@ export default function Login() {
                                 </div>
                             </form>
                             <form method="dialog">
-                                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
+                                    <FaXmark />
+                                </button>
                             </form>
                         </div>
                     </dialog>
@@ -89,7 +94,11 @@ export default function Login() {
             ) : (<>
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn btn-sm btn-circle btn-info shadow-lg grid place-content-center">
-                    {avatar ? <Image src={avatar} width={32} height={32} className="rounded-full" /> : <FaUser />}
+                        {
+                            avatar
+                                ? <Image src={avatar} width={32} height={32} className="rounded-full" />
+                                : <FaUser />
+                        }
                     </div>
                     <ul tabIndex={0} className="dropdown-content mt-1 z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
                         <li>
@@ -102,10 +111,11 @@ export default function Login() {
                             <span
                                 onClick={handleLogout}>
                                 {loading
-                                    ? <span className="loading loading-spinner loading-xs"></span>
+                                    ? <span className="loading loading-spinner loading-xs" />
                                     : <FaArrowRightFromBracket className="mr-2" />
                                 }
-                                Cerrar sesión</span>
+                                Cerrar sesión
+                            </span>
                         </li>
                     </ul>
                 </div>
