@@ -11,7 +11,7 @@ export const dynamic = 'force-dynamic'
 export default async function Dashboard() {
     const { data } = await getProfile()
     const avatar = await getAvatar()
-    const type = await getTypeById(data.typeId)
+    const type = await getTypeById(data?.typeId)
 
     return (
         <section>
@@ -22,12 +22,12 @@ export default async function Dashboard() {
                     <>
                         <div className="flex flex-col gap-4">
                             <div className="flex justify-between items-center gap-4">
-                                {avatar ? <Image src={avatar} width={80} height={80} className="rounded-full border shadow" /> : <span className="w-[80px] h-[80px] aspect-square rounded-full grid place-content-center border shadow text-4xl text-neutral-500">{data.name.charAt(0)}</span>}
+                                {avatar ? <Image src={avatar} width={80} height={80} className="rounded-full border shadow" /> : <span className="w-[80px] h-[80px] aspect-square rounded-full grid place-content-center border shadow text-4xl text-neutral-500">{data?.name.charAt(0)}</span>}
                                 <div className="flex flex-col w-full">
-                                    <h3 className="text-xl uppercase text-neutral-700 tracking-tight">{data.name}</h3>
-                                    <p className="text-neutral-500">{data.cuit}</p>
-                                    <h4 className="text text-neutral-600">{type.name}</h4>
-                                    <p className="">{data.address} - {data.locality}</p>
+                                    <h3 className="text-xl uppercase text-neutral-700 tracking-tight">{data?.name}</h3>
+                                    <p className="text-neutral-500">{data?.cuit}</p>
+                                    <h4 className="text text-neutral-600">{type?.name}</h4>
+                                    <p className="">{data?.address} - {data?.locality}</p>
                                 </div>
                             </div>
                             <div className="self-end">
