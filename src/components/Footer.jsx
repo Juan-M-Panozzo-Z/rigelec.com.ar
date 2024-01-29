@@ -50,7 +50,7 @@ export default function Footer() {
                             />
                         </svg>
                     </Link>
-                    <Link href="https://www.facebook.com/rigelec.rigelec">
+                    <Link href="https://www.facebook.com/rigelec.srl">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="30"
