@@ -16,8 +16,14 @@ export default function Signup() {
                     <form
                         action={formAction}
                         className="space-y-4">
-                        <input name="email" type="email" className="input input-bordered w-full" placeholder="Email" />
-                        <input name="password" type="password" className="input input-bordered w-full mt-4" placeholder="contraseña" />
+                        <Box>
+                            <label htmlFor="email" className="label">Correo electrónico</label>
+                            <input id='email' name="email" type="email" className="input input-primary w-full" required />
+                        </Box>
+                        <Box>
+                            <label htmlFor="password" className="label">Contraseña</label>
+                            <input id='password' name="password" type="password" className="input input-primary w-full" required />
+                        </Box>
                         <Box className="flex justify-end gap-2 items-center">
                             <Submit />
                             <Link href="/" className="btn btn-sm btn-ghost" >
