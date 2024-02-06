@@ -56,29 +56,21 @@ export const setProfile = async (prevState, formData) => {
     const formRaw = Object.fromEntries(formData)
     const { avatar, cuit, ...profile } = formRaw
 
+    if (avatar.size > 4 * 1024 * 1024) return { error: 'El tamaño de la imagen es demasiado grande' }
+
     const { error: fileError } = await supabase.storage.from('installer_profiles_avatars').upload(`${userId}/avatar`, avatar, { upsert: true })
 
-    if (fileError) {
-        return { error: fileError.message }
-    }
+    if (fileError) return { error: fileError.message }
 
     const { error } = await supabase.from('installer_profiles').upsert({
         ...profile,
         userId,
         cuit,
         updated_at: new Date()
-    })
+    }, { onConflict: ['userId'] })
 
-    if (error.details.includes('already exists')) {
-        const { error } = await supabase.from('installer_profiles').update({
-            ...profile,
-            updated_at: new Date()
-        }).eq('userId', userId)
+    if (error) return { error: error.message }
 
-        if (error) {
-            return { error: error.message }
-        }
-    }
     revalidatePath('/dashboard')
     redirect('/dashboard')
 
