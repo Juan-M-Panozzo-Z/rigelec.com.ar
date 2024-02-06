@@ -1,7 +1,8 @@
 'use client'
 import { useFormStatus, useFormState } from 'react-dom'
 import { setProfile } from '../../../../../actions/supabase/user'
-import { Box, Button } from '@radix-ui/themes'
+import { Box, Button, Flex } from '@radix-ui/themes'
+import Link from 'next/link'
 
 export default function Form({ profile, types }) {
     const [state, formAction] = useFormState(setProfile, undefined)
@@ -47,7 +48,12 @@ export default function Form({ profile, types }) {
                 <label htmlFor="province" className="label">Provincia</label>
                 <input defaultValue={profile?.province} id='province' name="province" type="province" className="input input-primary w-full" required />
             </Box>
-            <Submit />
+            <Flex justify='end' align={"center"} className='space-x-4'>
+                <Submit />
+                <Link href="/dashboard" className='btn btn-sm btn-ghost'>
+                    Volver
+                </Link>
+            </Flex>
             {state?.error && <p className='text-red-500'>{state.error}</p>}
         </form>
     )
