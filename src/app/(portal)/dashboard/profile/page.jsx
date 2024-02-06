@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { getTypes } from '../../../../actions/supabase/installer_types'
 import { getProfile } from '../../../../actions/supabase/user'
 import PortalSection from '../../components/PortalSection'
