@@ -73,9 +73,9 @@ export default function Login() {
                             <Box className="modal-action">
                                 <Submit />
                                 <AlertDialog.Cancel asChild>
-                                    <Button type="button" className="btn btn-sm btn-ghost">
-                                        Cancelar
-                                    </Button>
+                                    <Link href={'/signup'} className='btn btn-sm btn-ghost'>
+                                        Registrarse
+                                    </Link>
                                 </AlertDialog.Cancel>
                             </Box>
                         </form>

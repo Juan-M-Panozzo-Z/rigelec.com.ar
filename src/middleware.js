@@ -9,7 +9,7 @@ export async function middleware(request) {
     if (!session && url.includes('/dashboard')) {
       return NextResponse.redirect(new URL('/', request.url))
     }
-    if (session && url.includes('/login')) {
+    if (session && url.includes('/signup')) {
       return NextResponse.redirect(new URL('/dashboard', request.url))
     }
     return response
