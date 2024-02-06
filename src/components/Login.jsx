@@ -86,7 +86,7 @@ export default function Login() {
                     <div tabIndex={0} role="button" className="btn btn-sm btn-circle btn-info shadow-lg grid place-content-center">
                         {
                             avatar
-                                ? <Image src={avatar} width={32} height={32} className="rounded-full" />
+                                ? <Image src={avatar} width={32} height={32} className="rounded-full aspect-square object-cover" />
                                 : <FaUser />
                         }
                     </div>

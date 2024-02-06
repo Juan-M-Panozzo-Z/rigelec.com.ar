@@ -22,7 +22,7 @@ export default async function Dashboard() {
                     <>
                         <div className="flex flex-col gap-4">
                             <div className="flex justify-between items-center gap-4">
-                                {avatar ? <Image src={avatar} width={80} height={80} className="rounded-full border shadow" /> : <span className="w-[80px] h-[80px] aspect-square rounded-full grid place-content-center border shadow text-4xl text-neutral-500">{data?.name.charAt(0)}</span>}
+                                {avatar ? <Image src={avatar} width={120} height={120} className="rounded-full border shadow aspect-square object-cover" /> : <span className="w-[80px] h-[80px] aspect-square rounded-full grid place-content-center border shadow text-4xl text-neutral-500">{data?.name.charAt(0)}</span>}
                                 <div className="flex flex-col w-full">
                                     <h3 className="text-xl uppercase text-neutral-700 tracking-tight">{data?.name}</h3>
                                     <p className="text-neutral-500">{data?.cuit}</p>
