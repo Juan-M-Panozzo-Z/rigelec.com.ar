@@ -15,30 +15,30 @@ export default function GrowattData() {
     }, []);
 
     return (
-        <div className="btn btn-xs md:btn-sm btn-primary rounded-full text-[10px] md:text-xs shadow-xl text-white">
-            <Link href="/growatt">
-                {
-                    !growattData ? (
-                        <Player
-                            autoplay
-                            loop
-                            src="/assets/lottiefiles/leaf.json"
-                            style={{ width: "1.7rem" }}
-                        ></Player>
+
+        <Link href="/growatt" className="btn btn-xs md:btn-sm btn-primary rounded-full text-[10px] md:text-xs shadow-xl text-white">
+            {
+                !growattData ? (
+                    <Player
+                        autoplay
+                        loop
+                        src="/assets/lottiefiles/leaf.json"
+                        style={{ width: "1.2rem" }}
+                    ></Player>
+                ) : (
+                    growattData?.error ? (
+                        <span>{growattData?.error}</span>
                     ) : (
-                        growattData?.error ? (
-                            <span>{growattData?.error}</span>
-                        ) : (
-                            <>
-                                <span className="hidden sm:inline">
-                                    Energía que generamos:
-                                </span>{" "}
-                                <strong>{growattData?.eTotal} Kwh</strong>
-                            </>
-                        )
+                        <>
+                            <span className="hidden sm:inline">
+                                Energía que generamos:
+                            </span>{" "}
+                            <strong>{growattData?.eTotal} Kwh</strong>
+                        </>
                     )
-                }
-            </Link>
-        </div>
+                )
+            }
+        </Link>
+
     );
 }

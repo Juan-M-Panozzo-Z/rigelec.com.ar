@@ -40,7 +40,7 @@ export default function Login() {
 
     useEffect(() => {
         if (state?.data === "success") {
-            window.location.reload()
+            window.location.replace("/dashboard");
         }
     }, [state])
 
