@@ -1,9 +1,14 @@
 import { Analytics } from '@vercel/analytics/react';
-import "../styles/globals.css";
-import { Lato } from "next/font/google";
+
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import WhatsappButton from "../components/WhatsappButton";
+
+import { Lato } from "next/font/google";
+import '@radix-ui/themes/styles.css';
+import "../styles/globals.css";
+import { Theme } from '@radix-ui/themes';
+
 
 const lato = Lato({
   subsets: ["latin"],
@@ -14,13 +19,15 @@ const lato = Lato({
 const RootLayout = ({ children }) => {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${lato.className}`}>
-        <Navbar />
-        <section className="min-h-screen">{children}</section>
-        <WhatsappButton />
-        <Footer />
-        <Analytics />
-      </body>
+      <Theme className={`${lato.className}`}>
+        <body>
+          <Navbar />
+          <section className="min-h-screen">{children}</section>
+          <WhatsappButton />
+          <Footer />
+          <Analytics />
+        </body>
+      </Theme>
     </html >
   );
 };

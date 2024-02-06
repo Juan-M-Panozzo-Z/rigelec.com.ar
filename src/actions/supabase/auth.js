@@ -1,5 +1,6 @@
 'use server'
 
+import { revalidatePath } from "next/cache";
 import createSupabaseServerClient from "../../lib/supabase/server";
 import { redirect } from "next/navigation";
 import { z } from 'zod';
@@ -12,6 +13,7 @@ export const loginFromCli = async (email, password) => {
         password: z.string().min(6),
     });
     const zod = schema.safeParse({ email, password });
+
     if (zod.error) { throw zod.error }
 
     const { error } = await supabase.auth.signInWithPassword({
@@ -25,26 +27,29 @@ export const loginFromCli = async (email, password) => {
     }
 };
 
-export const loginFromSsr = async (formData) => {
-    const supabase = await createSupabaseServerClient();
+export const loginFromSsr = async (prevState, formData) => {
     const email = formData.get('email');
     const password = formData.get('password');
+
     const schema = z.object({
         email: z.string().email(),
         password: z.string().min(6),
     });
     const zod = schema.safeParse({ email, password });
-    if (zod.error) { throw zod.error }
+    if (zod.error) return { error: zod.error.message }
 
-    const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-    });
+    if (zod.success) {
+        const supabase = await createSupabaseServerClient();
+        const { error } = await supabase.auth.signInWithPassword({
+            email,
+            password,
+        });
 
-    if (error) {
-        return JSON.stringify(error.message);
-    } else {
-        return redirect('/dashboard');
+        if (error) {
+            return { error: error.message };
+        }
+        revalidatePath('/');
+        return { data: 'success' };
     }
 };
 
