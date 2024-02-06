@@ -39,8 +39,8 @@ export default function Login() {
     }
 
     useEffect(() => {
-        if (state?.data === "success") {
-            window.location.replace("/dashboard");
+        if (state?.redirect) {
+            window.location.replace(state?.redirect)
         }
     }, [state])
 

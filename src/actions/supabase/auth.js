@@ -49,7 +49,10 @@ export const loginFromSsr = async (prevState, formData) => {
             return { error: error.message };
         }
         revalidatePath('/');
-        return { data: 'success' };
+        return {
+            data: '¡Bienvenido!',
+            redirect: '/dashboard'
+        };
     }
 };
 
