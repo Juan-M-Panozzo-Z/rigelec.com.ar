@@ -33,41 +33,62 @@ export const getProject = async (projectId) => {
     }
 }
 
-export const setProject = async (project) => {
+export const setProject = async (prevState, formData) => {
     const supabase = await createSupabaseServerClient();
     const bucket = supabase.storage.from('installer_projects')
     const { id } = await getUser()
 
-    const name = project.get('name')
-    const description = project.get('description')
-    const date = project.get('date')
-    const image = project.get('image')
+    const formRaw = Object.fromEntries(formData)
+    const { image, ...form } = formRaw
 
-    const { data, error } = await supabase.from('installer_projects').insert([
+    const { data, error } = await supabase.from('installer_projects').insert(
         {
             userId: id,
-            name,
-            description,
-            date
-        }])
+            ...form
+        })
         .select('id')
-    if (error) {
-        throw error
-    }
+        .single()
 
-    const projectId = data[0].id
+    if (error) return { error: error.message }
 
+    const projectId = data?.id
+    
     if (image) {
-        try {
-            const { error: errorImage } = await bucket.upload(`${id}/${projectId}/${image.name}`, image, { upsert: true })
-            if (errorImage) {
-                return { error: errorImage }
-            }
-        } catch {
-            return { error: 'Error uploading image' }
+        const { error: errorImage } = await bucket.upload(`${id}/${projectId}/${image.name}`, image, { upsert: true })
+        if (errorImage) {
+            return { error: errorImage }
         }
     }
+
     redirect(`/dashboard/projects/`)
+}
 
+export const updateProject = async (prevState, formData) => {
+    const supabase = await createSupabaseServerClient();
+    const bucket = supabase.storage.from('installer_projects')
+    const { id } = await getUser()
 
+    const formRaw = Object.fromEntries(formData)
+    const { image, ...form } = formRaw
+
+    const { data, error } = await supabase.from('installer_projects').update(
+        {
+            userId: id,
+            ...form
+        })
+        .eq('id', form.id)
+        .single()
+
+    if (error) return { error: error.message }
+
+    const projectId = data?.id
+    
+    if (image) {
+        const { error: errorImage } = await bucket.upload(`${id}/${projectId}/${image.name}`, image, { upsert: true })
+        if (errorImage) {
+            return { error: errorImage }
+        }
+    }
+
+    redirect(`/dashboard/projects/`)
 }

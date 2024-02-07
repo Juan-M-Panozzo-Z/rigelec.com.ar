@@ -37,7 +37,7 @@ export default async function Project({ params }) {
                     <div className="flex justify-end gap-4">
                         <Link
                             className="btn btn-sm btn-secondary"
-                            href={`/dashboard/projects/${project.id}/edit`}
+                            href={`${project.id}/edit`}
                         >
                             <FaPencil className="mr-2 inline-block" />
                             Editar

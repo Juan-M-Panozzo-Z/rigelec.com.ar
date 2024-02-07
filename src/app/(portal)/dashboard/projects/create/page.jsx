@@ -1,8 +1,12 @@
+'use client'
 import Link from "next/link";
 import { setProject } from "../../../../../actions/supabase/installer_projects"
 import PortalSection from "../../../components/PortalSection";
+import { useFormState, useFormStatus } from "react-dom"
 
 export default function CreateProject() {
+    const [state, formAction] = useFormState(setProject, undefined)
+
     return (
         <PortalSection
             title="cargar nuevo proyecto"
@@ -10,7 +14,7 @@ export default function CreateProject() {
         >
             <h3 className="font-bold text-lg">Cargar nuevo proyecto</h3>
             <div className="mt-4">
-                <form action={setProject} className="space-y-2">
+                <form action={formAction} className="space-y-2" encType="multipart/form-data">
                     <div className="form-control">
                         <label className="label" htmlFor="name">
                             <span className="label-text">Nombre del proyecto</span>
@@ -46,7 +50,7 @@ export default function CreateProject() {
                         />
                     </div>
                     <div className="flex justify-end gap-4">
-                        <button className="btn btn-sm btn-primary">Cargar proyecto</button>
+                        <Submit />
                         <Link
                             className="btn btn-sm btn-secondary"
                             href="/dashboard/projects"
@@ -55,8 +59,20 @@ export default function CreateProject() {
                         </Link>
                     </div>
                 </form>
+                {state?.error && <div className="alert alert-error mt-4 text-white">{state.error}</div>}
             </div>
 
         </PortalSection>
+    )
+}
+
+const Submit = () => {
+    const { pending } = useFormStatus()
+
+    return (
+        <button disabled={pending} className="btn btn-sm btn-primary">
+            {pending && <div className="loading loading-spinner"></div>}
+            Cargar proyecto
+        </button>
     )
 }
