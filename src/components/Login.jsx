@@ -83,7 +83,7 @@ export default function Login() {
                 </AlertDialog.Root>
             ) : (<>
                 <div className="dropdown dropdown-end">
-                    <div tabIndex={0} role="button" className="btn btn-sm btn-circle btn-info shadow-lg grid place-content-center">
+                    <div tabIndex={0} role="button" className="btn btn-sm btn-circle btn-secondary shadow-lg grid place-content-center">
                         {
                             avatar
                                 ? <Image src={avatar} width={32} height={32} className="rounded-full aspect-square object-cover" />
