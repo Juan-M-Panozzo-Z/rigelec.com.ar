@@ -99,6 +99,7 @@ export default function Login() {
                         </li>
                         <li>
                             <span
+                                className='text-white bg-error'
                                 onClick={handleLogout}>
                                 {loading
                                     ? <span className="loading loading-spinner loading-xs" />

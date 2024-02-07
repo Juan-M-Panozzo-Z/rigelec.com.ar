@@ -54,12 +54,11 @@ export const setProject = async (prevState, formData) => {
     const projectId = data?.id
     
     if (image) {
-        const { error: errorImage } = await bucket.upload(`${id}/${projectId}/${image.name}`, image, { upsert: true })
+        const { error: errorImage, data } = await bucket.upload(`${id}/${projectId}/${image.name}`, image, { upsert: true })
         if (errorImage) {
             return { error: errorImage }
         }
     }
-
     redirect(`/dashboard/projects/`)
 }
 

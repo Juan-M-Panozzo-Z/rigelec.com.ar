@@ -9,6 +9,7 @@ export default function Form({ project }) {
     return (
         <>
             <form action={formAction} className="space-y-2" encType="multipart/form-data">
+                <input type="hidden" name="id" value={project?.id} />
                 <div className="form-control">
                     <label className="label" htmlFor="name">
                         <span className="label-text">Nombre del proyecto</span>
@@ -30,7 +31,7 @@ export default function Form({ project }) {
                     <input defaultValue={project?.date} id="date" name="date" type="date" className="input input-bordered w-full" placeholder="Fecha de finalizacion" />
                 </div>
 
-                <div className="form-control">
+                {/* <div className="form-control">
                     <label className="label" htmlFor="image">
                         <span className="label-text">Elije una imagen</span>
                     </label>
@@ -42,7 +43,7 @@ export default function Form({ project }) {
                         className="file-input file-input-bordered w-full"
                         placeholder="Imagen"
                     />
-                </div>
+                </div> */}
                 <div className="flex justify-end gap-4">
                     <Submit />
                     <Link
