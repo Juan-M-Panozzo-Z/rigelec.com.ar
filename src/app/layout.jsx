@@ -18,7 +18,7 @@ const lato = Lato({
 
 const RootLayout = ({ children }) => {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" data-theme="rigelec" suppressHydrationWarning>
       <Theme className={`${lato.className}`}>
         <body>
           <Navbar />

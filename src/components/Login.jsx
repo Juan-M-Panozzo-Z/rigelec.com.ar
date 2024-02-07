@@ -90,7 +90,7 @@ export default function Login() {
                                 : <FaUser />
                         }
                     </div>
-                    <ul tabIndex={0} className="dropdown-content mt-1 z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                    <ul tabIndex={0} className="dropdown-content mt-1 z-[1] space-y-2 menu p-2 shadow bg-base-100 rounded-box w-52">
                         <li>
                             <Link href="/dashboard">
                                 <FaHouse className="mr-2" />
