@@ -9,6 +9,14 @@ import '@radix-ui/themes/styles.css';
 import "../styles/globals.css";
 import { Theme } from '@radix-ui/themes';
 
+export const metadata = {
+  title: "Rigelec | Energia En Donde Estés",
+  authors: [{
+    name: "Juan Manuel Panozzo Zénere",
+    url: "https://www.linkedin.com/in/juan-manuel-panozzo-zenere/"
+  }],
+  description: "Aqui podrás encontrar todo lo que necesites en iluminación para hogar y obra"
+};
 
 const lato = Lato({
   subsets: ["latin"],
